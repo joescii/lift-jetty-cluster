@@ -28,6 +28,7 @@ libraryDependencies ++= {
     "org.eclipse.jetty"       %  "jetty-webapp"                       % "9.2.7.v20150116"     % "compile",
     "org.eclipse.jetty"       %  "jetty-plus"                         % "9.2.7.v20150116"     % "container,test", // For Jetty Config
     "org.eclipse.jetty.orbit" %  "javax.servlet"                      % "3.0.0.v201112011016" % "container,test" artifacts Artifact("javax.servlet", "jar", "jar"),
+    "org.mariadb.jdbc"        %  "mariadb-java-client"                % "1.1.8"               % "runtime", // non-GPL alternative for mysql driver
     "ch.qos.logback"          %  "logback-classic"                    % "1.0.6"               % "compile",
     "org.specs2"              %% "specs2"                             % "2.3.12"              % "test"
   )

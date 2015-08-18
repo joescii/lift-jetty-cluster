@@ -3,6 +3,7 @@ package bootstrap.liftweb
 import net.liftweb.common.Loggable
 import net.liftweb.util.{ LoggingAutoConfigurer, Props }
 import org.eclipse.jetty.server.Server
+import org.eclipse.jetty.server.session.{JDBCSessionManager, JDBCSessionIdManager}
 import org.eclipse.jetty.webapp.WebAppContext
 
 object Start extends App with Loggable {
@@ -37,6 +38,19 @@ object Start extends App with Loggable {
 
     val server = new Server(port)
     val context = new WebAppContext(webappDir, Props.get("jetty.contextPath").openOr("/"))
+
+    val driver = Props.get("session.jdbc.driver").openOrThrowException("Cannot boot without property 'session.jdbc.driver' defined in props file")
+    val endpoint = Props.get("session.jdbc.endpoint").openOrThrowException("Cannot boot without property 'session.jdbc.endpoint' defined in props file")
+    val idMgr = new JDBCSessionIdManager(server)
+    idMgr.setWorkerName("fred") // TODO: Use machine name or something like that
+    idMgr.setDriverInfo(driver, endpoint)
+    idMgr.setScavengeInterval(60)
+    server.setSessionIdManager(idMgr)
+
+    val jdbcMgr = new JDBCSessionManager()
+    jdbcMgr.setSessionIdManager(server.getSessionIdManager())
+    context.getSessionHandler().setSessionManager(jdbcMgr)
+
     server.setHandler(context)
     server.start()
     logger.info(s"Lift server started on port $port")
