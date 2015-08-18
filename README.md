@@ -53,3 +53,8 @@ This is because we set the `JDBCSessionIdManager`'s `workerName` to the machine 
 It is important that each Lift server instance sets this uniquely.
 Here we have assumed that each instance will run on a different machine.
 You can change this in `bootstrap.liftweb.Start` where we build the `JDBCSessionIdManager`.
+
+Furthermore, this is the `JSESSIONID` cookie value which will be set on client browsers.
+(See for yourself in Chrome by looking on the _Resources_ tab in the _Developer Tools_)
+You need to decide if this is a security concern to expose machine names in the cookie values.
+I'm even contemplating using a `StringHelpers.randomString` for this `workerName`.
