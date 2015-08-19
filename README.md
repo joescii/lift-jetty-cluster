@@ -40,21 +40,16 @@ Now you will see entries in the two tables.
 
 ```text
 mysql> select * from jettysessionids;
-+--------------------------------------+
-| id                                   |
-+--------------------------------------+
-| ALH-JBW7-LT1rk706t2liv77sxfx6tix4h6n |
-+--------------------------------------+
++------------------------------------+
+| id                                 |
++------------------------------------+
+| B4LLKLNHFDomk1vhk5d9ow2rklylmi0gju |
++------------------------------------+
 1 row in set (0.00 sec)
 ```
 
-Notice how the ID is prefixed with your machine name.
-This is because we set the `JDBCSessionIdManager`'s `workerName` to the machine name.
-It is important that each Lift server instance sets this uniquely.
-Here we have assumed that each instance will run on a different machine.
-You can change this in `bootstrap.liftweb.Start` where we build the `JDBCSessionIdManager`.
-
-Furthermore, this is the `JSESSIONID` cookie value which will be set on client browsers.
+This is the `JSESSIONID` cookie value set in your browser.
 (See for yourself in Chrome by looking on the _Resources_ tab in the _Developer Tools_)
-You need to decide if this is a security concern to expose machine names in the cookie values.
-I'm even contemplating using a `StringHelpers.randomString` for this `workerName`.
+The first 10 digits were created with `net.liftweb.util.StringHelpers.randomString` in `bootstrap.liftweb.Start`.
+It is important that each Lift server instance sets this uniquely.
+A second server with this same configuration (or a second _run_ of the same server) will prefix all of the cookies with a different random string.

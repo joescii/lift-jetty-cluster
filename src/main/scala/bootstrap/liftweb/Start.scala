@@ -1,8 +1,7 @@
 package bootstrap.liftweb
 
 import net.liftweb.common.Loggable
-import net.liftweb.common.Box._
-import net.liftweb.util.{ LoggingAutoConfigurer, Props }
+import net.liftweb.util.{StringHelpers, LoggingAutoConfigurer, Props}
 import org.eclipse.jetty.server.Server
 import org.eclipse.jetty.server.session.{JDBCSessionManager, JDBCSessionIdManager}
 import org.eclipse.jetty.webapp.WebAppContext
@@ -37,22 +36,17 @@ object Start extends App with Loggable {
 
     logger.info(s"webappDir: $webappDir")
 
-    val host = {
-      val nix = Option(System.getenv("HOSTNAME"))
-      val win = Option(System.getenv("COMPUTERNAME"))
-      val jvm = scala.util.Try(java.net.InetAddress.getLocalHost().getHostName())
-      List(nix, win, jvm.toOption).flatten.headOption.openOrThrowException(
-        s"Cannot boot without machine name. Could not determine from $$HOSTNAME ($nix), %COMPUTERNAME% ($win), or InetAddress ($jvm)"
-      )
-    }
-
     val server = new Server(port)
     val context = new WebAppContext(webappDir, Props.get("jetty.contextPath").openOr("/"))
+
+    val workerName = StringHelpers.randomString(10)
+
+    logger.info(s"WorkerName: $workerName")
 
     val driver = Props.get("session.jdbc.driver").openOrThrowException("Cannot boot without property 'session.jdbc.driver' defined in props file")
     val endpoint = Props.get("session.jdbc.endpoint").openOrThrowException("Cannot boot without property 'session.jdbc.endpoint' defined in props file")
     val idMgr = new JDBCSessionIdManager(server)
-    idMgr.setWorkerName(host)
+    idMgr.setWorkerName(workerName)
     idMgr.setDriverInfo(driver, endpoint)
     idMgr.setScavengeInterval(60)
     server.setSessionIdManager(idMgr)
