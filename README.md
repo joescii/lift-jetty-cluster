@@ -4,6 +4,7 @@ Sample Lift project that runs embedded Jetty in a cluster on AWS
 ## Running Locally
 You can run this Lift project locally in development mode like any other Lift project with `sbt ~container:start`.
 Clustering is configured in `bootstrap.liftweb.Start` which is only used when running stand-alone outside of sbt.
+In stand-alone mode, clustering is configurable via Lift props files.
 
 ## MySQL Setup
 To run the project standalone with clustering, you first need to configure MySQL locally.

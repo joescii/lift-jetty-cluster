@@ -39,21 +39,23 @@ object Start extends App with Loggable {
     val server = new Server(port)
     val context = new WebAppContext(webappDir, Props.get("jetty.contextPath").openOr("/"))
 
-    val workerName = StringHelpers.randomString(10)
+    if(Props.get("cluster").map(_.equalsIgnoreCase("true")).openOr(false)) {
+      val workerName = StringHelpers.randomString(10)
 
-    logger.info(s"WorkerName: $workerName")
+      logger.info(s"WorkerName: $workerName")
 
-    val driver = Props.get("session.jdbc.driver").openOrThrowException("Cannot boot without property 'session.jdbc.driver' defined in props file")
-    val endpoint = Props.get("session.jdbc.endpoint").openOrThrowException("Cannot boot without property 'session.jdbc.endpoint' defined in props file")
-    val idMgr = new JDBCSessionIdManager(server)
-    idMgr.setWorkerName(workerName)
-    idMgr.setDriverInfo(driver, endpoint)
-    idMgr.setScavengeInterval(60)
-    server.setSessionIdManager(idMgr)
+      val driver = Props.get("cluster.jdbc.driver").openOrThrowException("Cannot boot in cluster mode without property 'session.jdbc.driver' defined in props file")
+      val endpoint = Props.get("cluster.jdbc.endpoint").openOrThrowException("Cannot boot in cluster mode without property 'session.jdbc.endpoint' defined in props file")
+      val idMgr = new JDBCSessionIdManager(server)
+      idMgr.setWorkerName(workerName)
+      idMgr.setDriverInfo(driver, endpoint)
+      idMgr.setScavengeInterval(60)
+      server.setSessionIdManager(idMgr)
 
-    val jdbcMgr = new JDBCSessionManager()
-    jdbcMgr.setSessionIdManager(server.getSessionIdManager())
-    context.getSessionHandler().setSessionManager(jdbcMgr)
+      val jdbcMgr = new JDBCSessionManager()
+      jdbcMgr.setSessionIdManager(server.getSessionIdManager())
+      context.getSessionHandler().setSessionManager(jdbcMgr)
+    }
 
     server.setHandler(context)
     server.start()

@@ -1,2 +1,3 @@
-session.jdbc.driver=org.mariadb.jdbc.Driver
-session.jdbc.endpoint=jdbc:mysql://127.0.0.1:3306/lift_sessions?user=jetty&password=lift-rocks
+cluster=true
+cluster.jdbc.driver=org.mariadb.jdbc.Driver
+cluster.jdbc.endpoint=jdbc:mysql://127.0.0.1:3306/lift_sessions?user=jetty&password=lift-rocks
