@@ -38,7 +38,7 @@ pip install awscli
 wget http://stedolan.github.io/jq/download/linux64/jq
 chmod 700 ./jq
 
-./devops/writeVars.sh
+../devops/writeVars.sh
 
 cat terraform.tfvars
 
