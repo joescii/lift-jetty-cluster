@@ -33,6 +33,10 @@ unzip terraform_0.6.3_linux_amd64.zip
 cd ..
 TF=./terraform/terraform
 
+# For some annoying reason, terraform won't read the region from our variables.tf when performing `remote config`.
+# Gotta rip it outta there ourselves.
+export AWS_DEFAULT_REGION=`grep -A 1 "variable \"region\"" variables.tf | tail -1 | awk -F\" '{print $2}'`
+
 ${TF} remote config \
   -backend=s3 \
   -backend-config="bucket=${TF_STATE_BUCKET}" \
