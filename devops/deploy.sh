@@ -31,6 +31,7 @@ cd terraform
 wget https://dl.bintray.com/mitchellh/terraform/terraform_0.6.3_linux_amd64.zip
 unzip terraform_0.6.3_linux_amd64.zip
 cd ..
+TF=./terraform/terraform
 
 # Install aws cli for using S3
 pip install awscli
@@ -38,15 +39,19 @@ pip install awscli
 # Get the current terraform state
 aws s3 cp s3://${TF_STATE_BUCKET}/${TF_STATE_KEY} ./terraform.tfstate
 
-./terraform/terraform get
+# Retrieve modules from github
+${TF} get
 
-./terraform/terraform apply \
+#${TF} apply \
+#  -var "access_key=${AWS_ACCESS_KEY_ID}" \
+#  -var "secret_key=${AWS_SECRET_ACCESS_KEY}" \
+#  -var "timestamp=${timestamp}"
+
+# If ever needed...
+${TF} destroy -force  \
   -var "access_key=${AWS_ACCESS_KEY_ID}" \
   -var "secret_key=${AWS_SECRET_ACCESS_KEY}" \
   -var "timestamp=${timestamp}"
-
-# If ever needed...
-#./terraform/terraform destroy -force  \
 
 # Save the terraform state 
 cat ./terraform.tfstate
