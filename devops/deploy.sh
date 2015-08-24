@@ -35,7 +35,7 @@ TF=./terraform/terraform
 
 # For some annoying reason, terraform won't read the region from our variables.tf when performing `remote config`.
 # Gotta rip it outta there ourselves.
-export AWS_DEFAULT_REGION=`grep -A 1 "variable \"region\"" variables.tf | tail -1 | awk -F\" '{print $2}'`
+export AWS_DEFAULT_REGION="us-east-1" #`grep -A 1 "variable \"region\"" variables.tf | tail -1 | awk -F\" '{print $2}'`
 
 ${TF} remote config \
   -backend=S3 \
