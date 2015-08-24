@@ -33,10 +33,8 @@ unzip terraform_0.6.3_linux_amd64.zip
 cd ..
 TF=./terraform/terraform
 
-# For some annoying reason, terraform won't read the region from our variables.tf when performing `remote config`.
-# Gotta rip it outta there ourselves.
-export AWS_DEFAULT_REGION="us-east-1" #`grep -A 1 "variable \"region\"" variables.tf | tail -1 | awk -F\" '{print $2}'`
-
+# It seems remote config only works if the default region is set to us-east-1
+export AWS_DEFAULT_REGION="us-east-1" 
 ${TF} remote config \
   -backend=S3 \
   -backend-config="bucket=${TF_STATE_BUCKET}" \
