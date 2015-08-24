@@ -6,8 +6,8 @@ resource "aws_db_subnet_group" "all_azs" {
   name = "all-azs"
   description = "Subnet group covering each availability zone"
   subnet_ids = [
-    "${vpc.zone_A_private_id}", 
-    "${vpc.zone_B_private_id}"
+    "${module.vpc.zone_A_private_id}", 
+    "${module.vpc.zone_B_private_id}"
   ]
 }
 
@@ -21,7 +21,7 @@ resource "aws_security_group" "lift_db_sg" {
     to_port = 3306
     protocol = "tcp"
     security_groups = [
-      #"${vpc.bastion_accessible_sg_id}",
+      "${module.vpc.bastion_accessible_sg_id}",
       "${aws_security_group.lift_instance_sg.id}"
     ]
   }
@@ -38,6 +38,6 @@ resource "aws_db_instance" "lift_db" {
   password = "${var.db_password}"
   vpc_security_group_ids = ["${aws_security_group.lift_db_sg.id}"]
   db_subnet_group_name = "${aws_db_subnet_group.all_azs.name}"
-  parameter_group_name = "${mysql56_utf8.name}"
+  parameter_group_name = "${module.mysql56_utf8.name}"
   multi_az = "true"
 }
