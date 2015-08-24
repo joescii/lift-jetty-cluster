@@ -38,7 +38,7 @@ TF=./terraform/terraform
 export AWS_DEFAULT_REGION=`grep -A 1 "variable \"region\"" variables.tf | tail -1 | awk -F\" '{print $2}'`
 
 ${TF} remote config \
-  -backend=s3 \
+  -backend=S3 \
   -backend-config="bucket=${TF_STATE_BUCKET}" \
   -backend-config="key=${TF_STATE_KEY}" 
 
