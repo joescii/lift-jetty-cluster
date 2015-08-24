@@ -24,3 +24,7 @@ variable "ec2_key_name" {
 
 # The timestamp will be provided by our deploy.sh script
 variable "timestamp" {}
+
+# The two db variables will be provided to the deploy.sh script as environment variables
+variable "db_username" {}
+variable "db_password" {}

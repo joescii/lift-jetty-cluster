@@ -8,6 +8,8 @@ set -e
 : ${AWS_SECRET_ACCESS_KEY:?"Must supply AWS_SECRET_ACCESS_KEY environment variable"}
 : ${TF_STATE_BUCKET:?"Must supply TF_STATE_BUCKET environment variable (The S3 bucket to store terraform state)"}
 : ${TF_STATE_KEY:?"Must supply TF_STATE_KEY environment variable (The S3 key to store terraform state)"}
+: ${DB_USERNAME:?"Must supply DB_USERNAME environment variable"}
+: ${DB_PASSWORD:?"Must supply DB_PASSWORD environment variable"}
 
 # Create a timestamp for uniquefying stuff
 timestamp=`date +"%Y%m%d%H%M%S"`
@@ -46,6 +48,8 @@ ${TF} get
 ${TF} apply \
   -var "access_key=${AWS_ACCESS_KEY_ID}" \
   -var "secret_key=${AWS_SECRET_ACCESS_KEY}" \
+  -var "db_username=${DB_USERNAME}" \
+  -var "db_password=${DB_PASSWORD}" \
   -var "timestamp=${timestamp}"
 
 # If ever needed...
