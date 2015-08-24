@@ -12,14 +12,11 @@ set -e
 # Create a timestamp for uniquefying stuff
 timestamp=`date +"%Y%m%d%H%M%S"`
 
-# We'll stage our deployment in ./deploy
-mkdir deploy
-
 # Build and package up the application
 #sbt stage
-#tar -zcvf ./deploy/app.tar.gz target/ 
+#tar -zcvf ./devops/app.tar.gz target/ 
 
-cd ./deploy
+cd ./devops
 
 # Install packer
 #mkdir packer
