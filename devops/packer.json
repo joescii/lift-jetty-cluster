@@ -47,7 +47,8 @@
     },
     {
       "type": "shell",
-      "script": "install.sh ${user_password}"
+      "script": "install.sh",
+      "environment_vars": ["user_password={{ user `user_password` }}"]
     }
   ]
 }
