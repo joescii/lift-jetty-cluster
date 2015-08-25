@@ -3,6 +3,8 @@
 echo "####################################################"
 sudo cat /etc/hosts
 echo "####################################################"
+sudo cat /etc/hostname
+echo "####################################################"
 
 # # Install Java 7
 # sudo apt-get install -y openjdk-7-jdk
