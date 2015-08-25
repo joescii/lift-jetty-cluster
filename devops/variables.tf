@@ -20,7 +20,7 @@ variable "bastion_ami" {
 }
 # Ubuntu. Check java.sh and install.sh before changing OS.
 variable "blank_app_ami" {
-	default = "ami-4bcf360f"
+	default = "ami-b5515af0"
 }
 variable "ec2_key_name" {
   default = "sandbox"
