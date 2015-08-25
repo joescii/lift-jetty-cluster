@@ -15,15 +15,15 @@ user_password=$8
 timestamp=$9
 
 ./packer/packer build -machine-readable -color=false \
-  -var 'aws_access_key=${aws_access_key}' \
-  -var 'aws_secret_key=${aws_secret_key}' \
-  -var 'aws_region=${aws_region}' \
-  -var 'vpc_id=${vpc_id}' \
-  -var 'subnet_id=${subnet_id}' \
-  -var 'security_group_id=${security_group_id}' \
-  -var 'source_ami=${source_ami}' \
-  -var 'user_password=${user_password}' \
-  -var 'timestamp=${timestamp}' \
+  -var "aws_access_key=${aws_access_key}" \
+  -var "aws_secret_key=${aws_secret_key}" \
+  -var "aws_region=${aws_region}" \
+  -var "vpc_id=${vpc_id}" \
+  -var "subnet_id=${subnet_id}" \
+  -var "security_group_id=${security_group_id}" \
+  -var "source_ami=${source_ami}" \
+  -var "user_password=${user_password}" \
+  -var "timestamp=${timestamp}" \
   ./packer.json \
   2>&1 | tee packer.out
 
