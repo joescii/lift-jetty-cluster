@@ -33,6 +33,13 @@
   "provisioners": [
     {
       "type": "shell",
+      "execute_command": "echo 'hosts-fix' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'",
+      "inline": [
+        "echo \"127.0.0.1 $(hostname)\" >> /etc/hosts"
+      ]
+    },
+    {
+      "type": "shell",
       "script": "java.sh"
     }, 
     {
