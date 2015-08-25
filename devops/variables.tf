@@ -18,6 +18,10 @@ variable "nat_ami" {
 variable "bastion_ami" {
 	default = "ami-896d93cd"
 }
+# Ubuntu. Check java.sh and install.sh before changing OS.
+variable "blank_app_ami" {
+	default = "ami-4bcf360f"
+}
 variable "ec2_key_name" {
   default = "sandbox"
 }

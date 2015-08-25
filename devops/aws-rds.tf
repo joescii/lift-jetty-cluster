@@ -21,8 +21,8 @@ resource "aws_security_group" "lift_db_sg" {
     to_port = 3306
     protocol = "tcp"
     security_groups = [
-      "${module.vpc.bastion_accessible_sg_id}"
-      #"${aws_security_group.lift_instance_sg.id}"
+      "${module.vpc.bastion_accessible_sg_id}",
+      "${aws_security_group.lift_instance_sg.id}"
     ]
   }
 }

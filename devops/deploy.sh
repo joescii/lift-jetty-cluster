@@ -15,17 +15,17 @@ set -e
 timestamp=`date +"%Y%m%d%H%M%S"`
 
 # Build and package up the application
-#sbt stage
-#tar -zcvf ./devops/app.tar.gz target/ 
+sbt stage
+tar -zcvf ./devops/app.tar.gz target/ 
 
 cd ./devops
 
 # Install packer
-#mkdir packer
-#cd packer
-#wget https://dl.bintray.com/mitchellh/packer/packer_0.8.6_linux_amd64.zip
-#unzip packer_0.8.6_linux_amd64.zip
-#cd ..
+mkdir packer
+cd packer
+wget https://dl.bintray.com/mitchellh/packer/packer_0.8.6_linux_amd64.zip
+unzip packer_0.8.6_linux_amd64.zip
+cd ..
 
 # Install terraform
 mkdir terraform
