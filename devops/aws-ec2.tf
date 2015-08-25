@@ -8,7 +8,7 @@ resource "aws_security_group" "lift_instance_sg" {
     from_port = 8080
     to_port = 8080
     protocol = "tcp"
-    security_groups = ["${aws_security_group.lift-elb-sg.id"]
+    security_groups = ["${aws_security_group.lift-elb-sg.id}"]
   }
 }
 
