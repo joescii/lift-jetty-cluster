@@ -65,6 +65,7 @@ resource "aws_elb" "lift-elb" {
   security_groups = ["${aws_security_group.lift-elb-sg.id}"]
   internal = false
   cross_zone_load_balancing = true
+  depends_on = "aws_autoscaling_group.lift_as"
   
   listener {
     instance_port = 8080
