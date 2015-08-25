@@ -2,21 +2,18 @@
   "variables": {
     "aws_access_key": null,
     "aws_secret_key": null,
-    "source_ami": null,
-    "region": null,
+    "aws_region": null,
     "vpc_id": null,
     "subnet_id": null,
     "security_group_id": null,
-    "timestamp": null,
-    "mgls_hostname": null,
-    "svn_id": "n/a",
-    "ahp_id": "n/a",
-    "project_root": "n/a"
+    "source_ami": null,
+    "user_password": null,
+    "timestamp": null
   },
   "builders": [
     {
       "type": "amazon-ebs",
-      "region": "{{ user `region` }}",
+      "aws_region": "{{ user `aws_region` }}",
       "source_ami": "{{ user `source_ami` }}",
       "instance_type": "t1.micro",
       "ssh_username": "root",
@@ -26,46 +23,31 @@
       "vpc_id": "{{ user `vpc_id` }}",
       "subnet_id": "{{ user `subnet_id` }}",
       "security_group_id": "{{ user `security_group_id` }}",
-      "ami_name": "ami-exp-symg-{{user `timestamp`}}",
+      "ami_name": "lift-jetty-cluster-aws-{{user `timestamp`}}",
       "tags": {
-        "Name": "ami-exp-symg",
-        "Timestamp": "{{user `timestamp`}}",
-        "SVN Revision": "{{user `svn_id`}}",
-        "AHP Build Life": "{{user `ahp_id`}}",
-        "AHP URL": "http://wv-ahpserver.wv.mentorg.com:8080/tasks/project/BuildLifeTasks/viewBuildLife?buildLifeId={{user `ahp_id`}}"
+        "Name": "lift-jetty-cluster-aws",
+        "Timestamp": "{{user `timestamp`}}"
       }
     }
   ],
   "provisioners": [
-    {
-      "type": "file",
-      "source": "{{user `project_root`}}/dependencies/java/jdk-linux-x64.rpm",
-      "destination": "/tmp/jdk-linux-x64.rpm"
-    },
     {
       "type": "shell",
       "script": "java.sh"
     }, 
     {
       "type": "file",
-      "source": "{{user `project_root`}}/dependencies/ac/ac.tar.gz",
-      "destination": "/tmp/ac.tar.gz"
+      "source": "./app.tar.gz",
+      "destination": "/tmp/app.tar.gz"
     },
     {
       "type": "file",
-      "source": "./symg",
-      "destination": "/tmp"
+      "source": "./lift-svc.sh",
+      "destination": "/tmp/lift-svc.sh"
     },
     {
       "type": "shell",
-      "execute_command": "echo 'mgls_hostname' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'",
-      "inline": [
-        "echo '{{user `mgls_hostname`}}' > /tmp/symg/mgls_hostname.dat"
-      ]
-    },
-    {
-      "type": "shell",
-      "script": "install.sh"
+      "script": "install.sh ${user_password}"
     }
   ]
 }
