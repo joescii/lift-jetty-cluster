@@ -1,5 +1,9 @@
 #!/bin/bash -eux
 
+echo "####################################################"
+sudo cat /etc/hosts
+echo "####################################################"
+
 # # Install Java 7
 # sudo apt-get install -y openjdk-7-jdk
 # echo -e "export JAVA_HOME=/usr/lib/jvm/java-7-openjdk/" | tee ~/.bash_profile ~/.bashrc
