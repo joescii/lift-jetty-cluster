@@ -13,7 +13,7 @@
   "builders": [
     {
       "type": "amazon-ebs",
-      "aws_region": "{{ user `aws_region` }}",
+      "region": "{{ user `aws_region` }}",
       "source_ami": "{{ user `source_ami` }}",
       "instance_type": "t1.micro",
       "ssh_username": "root",
