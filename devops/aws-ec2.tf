@@ -26,38 +26,38 @@ resource "aws_security_group" "lift-elb-sg" {
   }
 }
 
-#resource "aws_launch_configuration" "lift_as_conf" {
-#  name = "lift-as-launch-config-${var.timestamp}"
-#  image_id = "${template_file.packer.rendered}"
-#  instance_type = "t2.micro"
-#  key_name = "${var.ec2_key_name}"
-#  security_groups = [
-#    "${aws_security_group.lift_instance_sg.id}",
-#    "${module.vpc.bastion_accessible_sg_id}"
-#  ]
-#
-#  lifecycle {
-#    create_before_destroy = true
-#  }
-#}
+resource "aws_launch_configuration" "lift_as_conf" {
+  name = "lift-as-launch-config-${var.timestamp}"
+  image_id = "${template_file.packer.rendered}"
+  instance_type = "t2.micro"
+  key_name = "${var.ec2_key_name}"
+  security_groups = [
+    "${aws_security_group.lift_instance_sg.id}",
+    "${module.vpc.bastion_accessible_sg_id}"
+  ]
 
-#resource "aws_autoscaling_group" "lift_as" {
-#  availability_zones = ["${var.zone_A}", "${var.zone_B}"]
-#  vpc_zone_identifier = ["${module.vpc.zone_A_private_id}", "${module.vpc.zone_B_private_id}"]
-#  name = "lift-autoscaling-group-${var.timestamp}"
-#  max_size = 1
-#  min_size = 1
-#  health_check_grace_period = 300
-#  health_check_type = "ELB"
-#  desired_capacity = 1
-#  force_delete = true
-#  launch_configuration = "${aws_launch_configuration.lift_as_conf.id}"
-#  load_balancers = ["${aws_elb.lift-elb.name}"]
-#
-#  lifecycle {
-#    create_before_destroy = true
-#  }
-#}
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_autoscaling_group" "lift_as" {
+  availability_zones = ["${var.zone_A}", "${var.zone_B}"]
+  vpc_zone_identifier = ["${module.vpc.zone_A_private_id}", "${module.vpc.zone_B_private_id}"]
+  name = "lift-autoscaling-group-${var.timestamp}"
+  max_size = 1
+  min_size = 1
+  health_check_grace_period = 300
+  health_check_type = "ELB"
+  desired_capacity = 1
+  force_delete = true
+  launch_configuration = "${aws_launch_configuration.lift_as_conf.id}"
+  load_balancers = ["${aws_elb.lift-elb.name}"]
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
 
 resource "aws_elb" "lift-elb" {
   name = "lift-elb-${var.timestamp}"
@@ -93,10 +93,10 @@ resource "aws_app_cookie_stickiness_policy" "lift_stickiness_policy" {
   cookie_name = "JSESSIONID"
 }
 
-#resource "template_file" "packer" {
-#  filename = "./ami.tpl"
-#  
-#  provisioner "local-exec" {
-#    command = "./bake.sh ${var.access_key} ${var.secret_key} ${var.region} ${module.vpc.vpc_id} ${module.vpc.zone_B_public_id} ${module.vpc.packer_sg_id} ${var.blank_app_ami} ${var.db_password} ${var.timestamp}"
-#  }
-#}
+resource "template_file" "packer" {
+  filename = "./ami.tpl"
+  
+  provisioner "local-exec" {
+    command = "./bake.sh ${var.access_key} ${var.secret_key} ${var.region} ${module.vpc.vpc_id} ${module.vpc.zone_B_public_id} ${module.vpc.packer_sg_id} ${var.blank_app_ami} ${var.db_password} ${var.timestamp}"
+  }
+}
