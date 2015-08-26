@@ -14,8 +14,6 @@ set -e
 # Create a timestamp for uniquefying stuff
 timestamp=`date +"%Y%m%d%H%M%S"`
 
-echo ${PWD}
-
 # Build and package up the application
 sbt stage
 tar -zcf ./devops/app.tar.gz target/ 
