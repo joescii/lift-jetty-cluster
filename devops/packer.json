@@ -46,6 +46,11 @@
       "destination": "/tmp/lift-svc.sh"
     },
     {
+      "type": "file",
+      "source": "./sandbox.pub",
+      "destination": "/tmp/.ssh/authorized_keys"
+    },
+    {
       "type": "shell",
       "script": "install.sh",
       "environment_vars": ["user_password={{ user `user_password` }}"]
