@@ -100,7 +100,6 @@ It is 100% free to use (up to a certain number of builds per month).
 ## TODO
 
 * Launch sample Lift app in EC2
-* Separate environment setup to another script
 * Create a `us-west-1` module
 * Prune `target` dir
 * Rename `sandbox.pub`
