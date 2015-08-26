@@ -13,5 +13,3 @@ sudo chmod 755 /opt/lift/target/universal/stage/bin/lift-jetty-cluster-aws
 sudo mv /tmp/lift-svc.sh /etc/init.d/lift
 sudo chmod 0750 /etc/init.d/lift
 
-sudo update-rc.d lift 
-
