@@ -6,7 +6,7 @@ You can run this Lift project locally in development mode like any other Lift pr
 Clustering is configured in `bootstrap.liftweb.Start` which is only used when running stand-alone outside of sbt.
 In stand-alone mode, clustering is configurable via Lift props files.
 
-## MySQL Setup
+### MySQL Setup
 To run the project standalone with clustering, you first need to configure MySQL locally.
 Other DBs can be used if you prefer, as long as you accomplish the same tasks outlined below.
 
@@ -24,12 +24,12 @@ Query OK, 0 rows affected (0.00 sec)
 You may use your own database name, user name, or password.
 They can all be configured in `src/main/resources/props/default.props`.
 
-## Building and Running
+### Building and Running
 Build the application by running `sbt stage`.
 This will produce a runnable script in `target/universal/stage/bin`.
 Run the script.
 
-## Observing How Jetty Utilizes SQL
+### Observing How Jetty Utilizes SQL
 Once the server boots, you can see jetty built two tables:
 ```text
 mysql> use lift_sessions;
