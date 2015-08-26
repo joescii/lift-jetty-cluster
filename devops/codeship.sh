@@ -3,7 +3,7 @@
 # Exit if anything fails
 set -e
 
-devops="$( cd "$(dirname "$0")" ; pwd -P )"
+devops="$( cd "$(dirname "$0")" ; pwd )"
 
 echo "Script dir: ${devops}"
 
