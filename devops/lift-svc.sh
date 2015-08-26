@@ -4,7 +4,7 @@
 case "$1" in
   start)
 
-    /opt/lift/universal/stage/bin/lift-jetty-cluster-aws &
+    /opt/lift/target/universal/stage/bin/lift-jetty-cluster-aws &
     disown $!
 
     ;;
