@@ -20,32 +20,17 @@ tar -zcf ./devops/app.tar.gz target/
 
 cd ./devops
 
-# Install packer
-mkdir packer
-cd packer
-wget https://dl.bintray.com/mitchellh/packer/packer_0.8.6_linux_amd64.zip
-unzip packer_0.8.6_linux_amd64.zip
-cd ..
-
-# Install terraform
-mkdir terraform
-cd terraform
-wget https://dl.bintray.com/mitchellh/terraform/terraform_0.6.3_linux_amd64.zip
-unzip terraform_0.6.3_linux_amd64.zip
-cd ..
-TF=./terraform/terraform
-
 # It seems remote config only works if the default region is set to us-east-1
 export AWS_DEFAULT_REGION="us-east-1" 
-${TF} remote config \
+terraform remote config \
   -backend=S3 \
   -backend-config="bucket=${TF_STATE_BUCKET}" \
   -backend-config="key=${TF_STATE_KEY}" 
 
 # Retrieve modules from github
-${TF} get
+terraform get
 
-${TF} apply \
+terraform apply \
   -var "access_key=${AWS_ACCESS_KEY_ID}" \
   -var "secret_key=${AWS_SECRET_ACCESS_KEY}" \
   -var "db_username=${DB_USERNAME}" \
@@ -53,7 +38,7 @@ ${TF} apply \
   -var "timestamp=${timestamp}"
 
 # If ever needed...
-#${TF} destroy -force  \
+#terraform destroy -force  \
 #  -var "access_key=${AWS_ACCESS_KEY_ID}" \
 #  -var "secret_key=${AWS_SECRET_ACCESS_KEY}" \
 #  -var "db_username=${DB_USERNAME}" \

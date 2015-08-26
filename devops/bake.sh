@@ -14,7 +14,7 @@ source_ami=$7
 user_password=$8
 timestamp=$9
 
-./packer/packer build -machine-readable -color=false \
+packer build -machine-readable -color=false \
   -var "aws_access_key=${aws_access_key}" \
   -var "aws_secret_key=${aws_secret_key}" \
   -var "aws_region=${aws_region}" \
