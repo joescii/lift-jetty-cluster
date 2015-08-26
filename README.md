@@ -66,4 +66,10 @@ A second server with this same configuration (or a second _run_ of the same serv
 ## TODO
 
 * Separate environment setup to separate script
-* Create a us-west-1 module
+* Create a `us-west-1` module
+* Prune `target` dir
+* Launch sample Lift app in EC2
+* Load balance multiple Lift instances
+* Enable cluster in AWS
+* Document AWS usage
+* Heroku deployment
