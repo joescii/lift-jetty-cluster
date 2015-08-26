@@ -62,3 +62,8 @@ This is the `JSESSIONID` cookie value set in your browser.
 The first 10 digits were created with `net.liftweb.util.StringHelpers.randomString` in `bootstrap.liftweb.Start`.
 It is important that each Lift server instance sets this uniquely.
 A second server with this same configuration (or a second _run_ of the same server) will prefix all of the cookies with a different random string.
+
+## TODO
+
+* Separate environment setup to separate script
+* Create a us-west-1 module
