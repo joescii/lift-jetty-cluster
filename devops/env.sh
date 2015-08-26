@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Sets up the environment for deploying.
+# Downloads packer and terraform and adds them to the PATH.
+
 # Exit if anything fails
 set -e
 

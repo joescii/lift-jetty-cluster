@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Packages and deploys the project to AWS.
+# Assumes that sbt, terraform (and transitively, packer) are on the current path
+
 # Exit if anything fails
 set -e
 
