@@ -63,13 +63,47 @@ The first 10 digits were created with `net.liftweb.util.StringHelpers.randomStri
 It is important that each Lift server instance sets this uniquely.
 A second server with this same configuration (or a second _run_ of the same server) will prefix all of the cookies with a different random string.
 
+## Running on AWS 
+This project is designed to run in AWS.
+Out of the box, it knows how to define it's entire infrastructure in a blank AWS region.
+
+### Prerequisite: Key pair
+If you do not already have a suitable key pair created in AWS, you will need to create one.
+Go to the _EC2 Dashboard_ and find _Network & Security_ -> _Key Pairs_.
+Click the _Create Key Pair_ button and enter "sandbox".
+(You can name it differently, but you will need to modify the terraform files in this project to match.)
+Save the downloaded `sandbox.pem` file somewhere safe.
+
+If you already have a key pair, or you gave it a different name, then update the default value for `ec2_key_name` in `variables.tf`.
+
+Convert the `sandbox.pem` private key into a public key:
+
+```bash
+openssl rsa -in sandbox.pem -pubout -out sandbox.pub
+```
+
+Save `sandbox.pub` in the `devops/` directory.
+With this key pair, you will be able to SSH into your EC2 instances running Lift.
+
+### Environment
+The `deploy.sh` script needs to run in a unix environment with the following variables set:
+`AWS_ACCESS_KEY_ID`
+`AWS_SECRET_ACCESS_KEY`
+`TF_STATE_BUCKET`: The S3 bucket where you want to store the Terraform state.
+`TF_STATE_KEY`: The S3 key within the bucket where you want to store the Terraform state.
+`DB_USERNAME`: The username you want for the RDS MySQL DB we build.
+`DB_PASSWORD`: The password you want for the RDS MySQL DB we build.
+
+I recommend using [Codeship](http://codeship.io) as your CI for running Terraform, as that is where this has been tested.
+It is 100% free to use (up to a certain number of builds per month).
+
 ## TODO
 
-* Separate environment setup to separate script
+* Launch sample Lift app in EC2
+* Separate environment setup to another script
 * Create a `us-west-1` module
 * Prune `target` dir
-* Launch sample Lift app in EC2
+* Rename `sandbox.pub`
 * Load balance multiple Lift instances
 * Enable cluster in AWS
-* Document AWS usage
 * Heroku deployment
