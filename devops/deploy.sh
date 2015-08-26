@@ -45,18 +45,18 @@ ${TF} remote config \
 # Retrieve modules from github
 ${TF} get
 
-${TF} apply \
-  -var "access_key=${AWS_ACCESS_KEY_ID}" \
-  -var "secret_key=${AWS_SECRET_ACCESS_KEY}" \
-  -var "db_username=${DB_USERNAME}" \
-  -var "db_password=${DB_PASSWORD}" \
-  -var "timestamp=${timestamp}"
-
-# If ever needed...
-#${TF} destroy -force  \
+#${TF} apply \
 #  -var "access_key=${AWS_ACCESS_KEY_ID}" \
 #  -var "secret_key=${AWS_SECRET_ACCESS_KEY}" \
 #  -var "db_username=${DB_USERNAME}" \
 #  -var "db_password=${DB_PASSWORD}" \
 #  -var "timestamp=${timestamp}"
+
+# If ever needed...
+${TF} destroy -force  \
+  -var "access_key=${AWS_ACCESS_KEY_ID}" \
+  -var "secret_key=${AWS_SECRET_ACCESS_KEY}" \
+  -var "db_username=${DB_USERNAME}" \
+  -var "db_password=${DB_PASSWORD}" \
+  -var "timestamp=${timestamp}"
 
