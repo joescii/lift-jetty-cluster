@@ -48,7 +48,7 @@
     {
       "type": "file",
       "source": "./sandbox.pub",
-      "destination": "/tmp/.ssh/authorized_keys"
+      "destination": "/tmp/authorized_keys"
     },
     {
       "type": "shell",
