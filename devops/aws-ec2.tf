@@ -97,7 +97,7 @@ resource "aws_app_cookie_stickiness_policy" "lift_stickiness_policy" {
 resource "template_file" "packer" {
   filename = "./ami.tpl"
   
-  provisioner "local-exec" {
-    command = "./bake.sh ${var.access_key} ${var.secret_key} ${var.region} ${module.vpc.vpc_id} ${module.vpc.zone_B_public_id} ${module.vpc.packer_sg_id} ${var.blank_app_ami} ${var.db_password} ${var.timestamp}"
-  }
+#  provisioner "local-exec" {
+#    command = "./bake.sh ${var.access_key} ${var.secret_key} ${var.region} ${module.vpc.vpc_id} ${module.vpc.zone_B_public_id} ${module.vpc.packer_sg_id} ${var.blank_app_ami} ${var.db_password} ${var.timestamp}"
+#  }
 }
