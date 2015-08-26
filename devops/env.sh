@@ -27,4 +27,4 @@ cd ..
 echo "${append}"
 echo "${PATH}${append}"
 
-#export PATH="${PATH}${append}"
+export PATH="${PATH}${append}"
