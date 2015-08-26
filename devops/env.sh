@@ -4,7 +4,7 @@
 set -e
 
 mkdir tools
-cd tools
+pushd tools
 
 append=""
 
@@ -28,3 +28,5 @@ echo "${append}"
 echo "${PATH}${append}"
 
 export PATH="${PATH}${append}"
+
+popd
