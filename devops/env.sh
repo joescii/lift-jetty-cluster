@@ -24,4 +24,7 @@ unzip terraform_0.6.3_linux_amd64.zip
 append="${append}:${PWD}"
 cd ..
 
+echo "${append}"
+echo "${PATH}${append}"
+
 export PATH="${PATH}${append}"
