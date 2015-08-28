@@ -8,11 +8,13 @@ resource "aws_security_group" "lift_instance_sg" {
     from_port = 8080
     to_port = 8080
     protocol = "tcp"
-    security_groups = ["${aws_security_group.lift-elb-sg.id}"]
+    security_groups = ["${aws_security_group.lift_elb_sg.id}"]
   }
+  
+  # If you need your Lift app to talk to anything, you need to add an egress block
 }
 
-resource "aws_security_group" "lift-elb-sg" {
+resource "aws_security_group" "lift_elb_sg" {
   name = "lift-elb-sg"
   description = "SG applied to the elastic load balancer"
 	vpc_id = "${module.vpc.vpc_id}"
@@ -23,6 +25,14 @@ resource "aws_security_group" "lift-elb-sg" {
     to_port = 80
     protocol = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Open communication up to the instances
+  egress {
+    from_port = 8080
+    to_port = 8080
+    protocol = "tcp"
+    security_groups = ["${aws_security_group.lift_instance_sg.id}"]
   }
 }
 
@@ -63,7 +73,7 @@ resource "aws_autoscaling_group" "lift_as" {
 resource "aws_elb" "lift-elb" {
   name = "lift-elb-${var.timestamp}"
   subnets = ["${module.vpc.zone_A_public_id}", "${module.vpc.zone_B_public_id}"]
-  security_groups = ["${aws_security_group.lift-elb-sg.id}"]
+  security_groups = ["${aws_security_group.lift_elb_sg.id}"]
   internal = false
   cross_zone_load_balancing = true
   depends_on = "aws_launch_configuration.lift_as_conf"
