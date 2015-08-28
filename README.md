@@ -79,7 +79,7 @@ If you already have a key pair, or you gave it a different name, then update the
 Convert the `sandbox.pem` private key into a public key:
 
 ```bash
-openssl rsa -in sandbox.pem -pubout -out sandbox.pub
+ssh-keygen -y -f sandbox.pem > sandbox.pub
 ```
 
 Save `sandbox.pub` in the `devops/` directory.
