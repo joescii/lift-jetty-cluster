@@ -32,7 +32,7 @@ resource "aws_security_group" "lift_elb_sg" {
     from_port = 8080
     to_port = 8080
     protocol = "tcp"
-    security_groups = ["${aws_security_group.lift_instance_sg.id}"]
+    cidr_blocks = ["${aws_vpc.default.cidr_block}"]
   }
 }
 
