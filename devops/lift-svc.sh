@@ -3,7 +3,7 @@
 
 case "$1" in
   start)
-
+    cd /opt/lift/
     /opt/lift/target/universal/stage/bin/lift-jetty-cluster-aws &
     disown $!
 
