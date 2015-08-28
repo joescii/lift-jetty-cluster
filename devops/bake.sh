@@ -36,4 +36,4 @@ fi
 # Store the created AMI's id in a file
 ami_id=`grep 'artifact,0,id' packer.out | cut -d, -f6 | cut -d: -f2`
 echo "Produced AMI at ${ami_id}"
-echo "${ami_id}" > ./ami.tpl
+echo "${ami_id}" | tr -d '\n' > ./ami.txt

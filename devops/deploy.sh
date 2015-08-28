@@ -21,7 +21,10 @@ timestamp=`date +"%Y%m%d%H%M%S"`
 sbt stage
 tar -zcf ./devops/app.tar.gz target/ 
 
-cd ./devops
+pushd ./devops
+
+# Terraform will complain if it doesn't see this already in place
+touch ./ami.txt
 
 # It seems remote config only works if the default region is set to us-east-1
 export AWS_DEFAULT_REGION="us-east-1" 
@@ -48,3 +51,4 @@ terraform apply \
 #  -var "db_password=${DB_PASSWORD}" \
 #  -var "timestamp=${timestamp}"
 
+popd

@@ -28,7 +28,8 @@ resource "aws_security_group" "lift-elb-sg" {
 
 resource "aws_launch_configuration" "lift_as_conf" {
   name = "lift-as-launch-config-${var.timestamp}"
-  image_id = "${template_file.packer.rendered}"
+  depends_on = "template_file.packer"
+  image_id = "${template_file.packer.vars.ami}"
   instance_type = "t2.micro"
   key_name = "${var.ec2_key_name}"
   security_groups = [
@@ -95,9 +96,20 @@ resource "aws_app_cookie_stickiness_policy" "lift_stickiness_policy" {
 }
 
 resource "template_file" "packer" {
-  filename = "./ami.tpl"
+  filename = "/dev/null"
+  depends_on = "template_file.packer_runner"
+  vars {
+    ami = "${file(var.ami_txt)}"
+  }
+}
+resource "template_file" "packer_runner" {
+  filename = "/dev/null"
   
   provisioner "local-exec" {
     command = "./bake.sh ${var.access_key} ${var.secret_key} ${var.region} ${module.vpc.vpc_id} ${module.vpc.zone_B_public_id} ${module.vpc.packer_sg_id} ${var.blank_app_ami} ${var.db_password} ${var.timestamp}"
   }
+}
+
+variable "ami_txt" {
+  default = "./ami.txt"
 }
