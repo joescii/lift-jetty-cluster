@@ -115,9 +115,9 @@ resource "template_file" "packer" {
 resource "template_file" "packer_runner" {
   filename = "/dev/null"
   
-  provisioner "local-exec" {
-    command = "./bake.sh ${var.access_key} ${var.secret_key} ${var.region} ${module.vpc.vpc_id} ${module.vpc.zone_B_public_id} ${module.vpc.packer_sg_id} ${var.blank_app_ami} ${var.db_password} ${var.timestamp}"
-  }
+#  provisioner "local-exec" {
+#    command = "./bake.sh ${var.access_key} ${var.secret_key} ${var.region} ${module.vpc.vpc_id} ${module.vpc.zone_B_public_id} ${module.vpc.packer_sg_id} ${var.blank_app_ami} ${var.db_password} ${var.timestamp}"
+#  }
 }
 
 variable "ami_txt" {
