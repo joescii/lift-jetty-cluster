@@ -42,7 +42,7 @@ resource "aws_security_group" "lift_elb_sg" {
   }
 }
 
-#resource "aws_launch_configuration" "lift_as_conf" {
+resource "aws_launch_configuration" "lift_as_conf" {
   name = "lift-as-launch-config-${var.timestamp}"
   depends_on = "template_file.packer"
   image_id = "${template_file.packer.vars.ami}"
