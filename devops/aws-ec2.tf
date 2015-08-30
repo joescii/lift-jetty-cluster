@@ -59,7 +59,7 @@ resource "aws_launch_configuration" "lift_as_conf" {
 }
 
 resource "aws_autoscaling_group" "lift_as" {
-  availability_zones = ["${var.zone_A}", "${var.zone_B}"]
+  availability_zones = ["${module.region.zone_A}", "${module.region.zone_B}"]
   vpc_zone_identifier = ["${module.vpc.zone_A_private_id}", "${module.vpc.zone_B_private_id}"]
   name = "lift-autoscaling-group-${var.timestamp}"
   max_size = 1
@@ -122,7 +122,7 @@ resource "template_file" "packer_runner" {
   filename = "/dev/null"
   
   provisioner "local-exec" {
-    command = "./bake.sh ${var.access_key} ${var.secret_key} ${var.region} ${module.vpc.vpc_id} ${module.vpc.zone_B_public_id} ${module.vpc.packer_sg_id} ${var.blank_app_ami} ${var.db_password} ${var.timestamp}"
+    command = "./bake.sh ${var.access_key} ${var.secret_key} ${var.region} ${module.vpc.vpc_id} ${module.vpc.zone_B_public_id} ${module.vpc.packer_sg_id} ${module.region.ubuntu_precise_12_04_amd64} ${var.db_password} ${var.timestamp}"
   }
 }
 
