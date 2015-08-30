@@ -115,15 +115,15 @@ resource "template_file" "packer" {
   filename = "/dev/null"
   depends_on = "template_file.packer_runner"
   vars {
-    ami = "ami-73887337"
+    ami = "${file(var.ami_txt)}"
   }
 }
 resource "template_file" "packer_runner" {
   filename = "/dev/null"
   
-#  provisioner "local-exec" {
-#    command = "./bake.sh ${var.access_key} ${var.secret_key} ${module.region.region} ${module.vpc.vpc_id} ${module.vpc.zone_B_public_id} ${module.vpc.packer_sg_id} ${module.region.ubuntu_precise_12_04_amd64} ${var.db_password} ${var.timestamp}"
-#  }
+  provisioner "local-exec" {
+    command = "./bake.sh ${var.access_key} ${var.secret_key} ${module.region.region} ${module.vpc.vpc_id} ${module.vpc.zone_B_public_id} ${module.vpc.packer_sg_id} ${module.region.ubuntu_precise_12_04_amd64} ${var.db_password} ${var.timestamp}"
+  }
 }
 
 variable "ami_txt" {
