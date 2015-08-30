@@ -13,3 +13,4 @@ sudo chown -R lift /opt/lift
 # Add the application to startup
 sudo chmod 755 /opt/lift/target/universal/stage/bin/lift-jetty-cluster-aws
 sudo mv /tmp/rc.local /etc/rc.local
+sudo chmod 755 /etc/rc.local
