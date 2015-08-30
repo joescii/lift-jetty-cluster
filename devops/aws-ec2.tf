@@ -11,7 +11,13 @@ resource "aws_security_group" "lift_instance_sg" {
     security_groups = ["${aws_security_group.lift_elb_sg.id}"]
   }
   
-  # If you need your Lift app to talk to anything, you need to add an egress block
+  # Open communication back to the ELB
+  egress {
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
+    security_groups = ["${aws_security_group.lift_elb_sg.id}"]
+  }
 }
 
 resource "aws_security_group" "lift_elb_sg" {
@@ -98,12 +104,12 @@ resource "aws_elb" "lift-elb" {
   }
 }
 
-resource "aws_app_cookie_stickiness_policy" "lift_stickiness_policy" {
-  name = "lift-policy"
-  load_balancer = "${aws_elb.lift-elb.id}"
-  lb_port = 80
-  cookie_name = "JSESSIONID"
-}
+#resource "aws_app_cookie_stickiness_policy" "lift_stickiness_policy" {
+#  name = "lift-policy"
+#  load_balancer = "${aws_elb.lift-elb.id}"
+#  lb_port = 80
+#  cookie_name = "JSESSIONID"
+#}
 
 resource "template_file" "packer" {
   filename = "/dev/null"
