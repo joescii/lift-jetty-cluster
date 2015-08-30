@@ -34,26 +34,6 @@
     {
       "type": "shell",
       "script": "java.sh"
-    }, 
-    {
-      "type": "file",
-      "source": "./app.tar.gz",
-      "destination": "/tmp/app.tar.gz"
-    },
-    {
-      "type": "file",
-      "source": "./rc.local",
-      "destination": "/tmp/rc.local"
-    },
-    {
-      "type": "file",
-      "source": "./sandbox.pub",
-      "destination": "/tmp/authorized_keys"
-    },
-    {
-      "type": "shell",
-      "script": "install.sh",
-      "environment_vars": ["user_password={{ user `user_password` }}"]
     }
   ]
 }

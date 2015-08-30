@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Packages and deploys the project to AWS.
-# Assumes that sbt, terraform (and transitively, packer) are on the current path
+# Assumes that terraform (and transitively, packer) are on the current path
 
 # Exit if anything fails
 set -e
@@ -18,8 +18,8 @@ set -e
 timestamp=`date +"%Y%m%d%H%M%S"`
 
 # Build and package up the application
-sbt stage
-tar -zcf ./devops/app.tar.gz target/ 
+#sbt stage
+#tar -zcf ./devops/app.tar.gz target/ 
 
 pushd ./devops
 
