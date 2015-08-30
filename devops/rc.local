@@ -12,7 +12,6 @@
 # By default this script does nothing.
 
 cd /opt/lift/
-sudo -H -u lift /opt/lift/target/universal/stage/bin/lift-jetty-cluster-aws &
-disown $!
+sudo -H -u lift nohup /opt/lift/target/universal/stage/bin/lift-jetty-cluster-aws > /opt/lift/log.txt
 
 exit 0
