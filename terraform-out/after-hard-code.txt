@@ -5,30 +5,30 @@ Get: git::https://github.com/joescii/aws-terraform-modules.git
 Get: git::https://github.com/joescii/aws-terraform-modules.git
 template_file.packer_runner: Refreshing state... (ID: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
 template_file.packer: Refreshing state... (ID: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
-module.vpc.aws_vpc.default: Refreshing state... (ID: vpc-6302ae06)
+module.vpc.aws_vpc.default: Refreshing state... (ID: vpc-bf1cb0da)
 module.mysql56_utf8.aws_db_parameter_group.mysql56_utf8: Refreshing state... (ID: mysql56-utf8)
-module.vpc.aws_subnet.private-A: Refreshing state... (ID: subnet-8a7cb4d3)
-module.vpc.aws_subnet.public-B: Refreshing state... (ID: subnet-7e83091b)
-module.vpc.aws_internet_gateway.default: Refreshing state... (ID: igw-0c804e69)
-module.vpc.aws_security_group.packer: Refreshing state... (ID: sg-9fd2a7fa)
-module.vpc.aws_security_group.bastion: Refreshing state... (ID: sg-9ed2a7fb)
-module.vpc.aws_subnet.private-B: Refreshing state... (ID: subnet-7f83091a)
-module.vpc.aws_subnet.public-A: Refreshing state... (ID: subnet-8d7cb4d4)
-aws_security_group.lift_elb_sg: Refreshing state... (ID: sg-9cd2a7f9)
-aws_security_group.lift_instance_sg: Refreshing state... (ID: sg-9ad2a7ff)
-module.vpc.aws_route_table.public: Refreshing state... (ID: rtb-6172c104)
-module.vpc.aws_security_group.nat: Refreshing state... (ID: sg-9bd2a7fe)
+module.vpc.aws_subnet.private-A: Refreshing state... (ID: subnet-0c70b855)
+module.vpc.aws_security_group.bastion: Refreshing state... (ID: sg-d8dbaebd)
+module.vpc.aws_security_group.packer: Refreshing state... (ID: sg-dedbaebb)
+module.vpc.aws_internet_gateway.default: Refreshing state... (ID: igw-4d9e5028)
+module.vpc.aws_subnet.private-B: Refreshing state... (ID: subnet-ff860c9a)
+module.vpc.aws_subnet.public-B: Refreshing state... (ID: subnet-fc860c99)
+module.vpc.aws_subnet.public-A: Refreshing state... (ID: subnet-0d70b854)
+aws_security_group.lift_elb_sg: Refreshing state... (ID: sg-d9dbaebc)
+aws_security_group.lift_instance_sg: Refreshing state... (ID: sg-dadbaebf)
+module.vpc.aws_route_table.public: Refreshing state... (ID: rtb-2777c442)
+module.vpc.aws_security_group.bastion_accessible: Refreshing state... (ID: sg-a5dbaec0)
+module.vpc.aws_security_group.nat: Refreshing state... (ID: sg-dbdbaebe)
 aws_db_subnet_group.all_azs: Refreshing state... (ID: all-azs)
-module.vpc.aws_instance.bastion: Refreshing state... (ID: i-bc04c279)
-module.vpc.aws_security_group.bastion_accessible: Refreshing state... (ID: sg-65dda800)
-module.vpc.aws_route_table_association.public-A: Refreshing state... (ID: rtbassoc-7700bd12)
-module.vpc.aws_route_table_association.public-B: Refreshing state... (ID: rtbassoc-7400bd11)
-aws_security_group.lift_db_sg: Refreshing state... (ID: sg-64dda801)
-module.vpc.aws_instance.nat: Refreshing state... (ID: i-bd04c278)
+module.vpc.aws_instance.bastion: Refreshing state... (ID: i-b012d475)
+module.vpc.aws_route_table_association.public-A: Refreshing state... (ID: rtbassoc-39fc405c)
+module.vpc.aws_route_table_association.public-B: Refreshing state... (ID: rtbassoc-3efc405b)
+aws_security_group.lift_db_sg: Refreshing state... (ID: sg-a4dbaec1)
+module.vpc.aws_instance.nat: Refreshing state... (ID: i-ef10d62a)
 aws_db_instance.lift_db: Refreshing state... (ID: lift-db)
-module.vpc.aws_route_table.private: Refreshing state... (ID: rtb-6e72c10b)
-module.vpc.aws_route_table_association.private-A: Refreshing state... (ID: rtbassoc-7c00bd19)
-module.vpc.aws_route_table_association.private-B: Refreshing state... (ID: rtbassoc-7f00bd1a)
+module.vpc.aws_route_table.private: Refreshing state... (ID: rtb-2d77c448)
+module.vpc.aws_route_table_association.private-A: Refreshing state... (ID: rtbassoc-02fc4067)
+module.vpc.aws_route_table_association.private-B: Refreshing state... (ID: rtbassoc-03fc4066)
 template_file.packer_runner: Creating...
 filename: "" => "../../../../dev/null"
 rendered: "" => "<computed>"
@@ -37,7 +37,7 @@ template_file.packer: Creating...
 filename: "" => "../../../../dev/null"
 rendered: "" => "<computed>"
 vars.#:   "" => "1"
-vars.ami: "" => "ami-ab8a71ef"
+vars.ami: "" => "ami-b78972f3"
 template_file.packer: Creation complete
 module.vpc.aws_security_group.nat: Modifying...
 ingress.#:                            "1" => "2"
@@ -68,14 +68,14 @@ associate_public_ip_address: "" => "0"
 ebs_block_device.#:          "" => "<computed>"
 ebs_optimized:               "" => "<computed>"
 enable_monitoring:           "" => "1"
-image_id:                    "" => "ami-ab8a71ef"
+image_id:                    "" => "ami-b78972f3"
 instance_type:               "" => "t2.micro"
 key_name:                    "" => "sandbox"
-name:                        "" => "lift-as-launch-config"
+name:                        "" => "lift-as-launch-config-20150830211216"
 root_block_device.#:         "" => "<computed>"
 security_groups.#:           "" => "2"
-security_groups.1519489340:  "" => "sg-65dda800"
-security_groups.2261597553:  "" => "sg-9ad2a7ff"
+security_groups.2074684279:  "" => "sg-dadbaebf"
+security_groups.2143300919:  "" => "sg-a5dbaec0"
 module.vpc.aws_security_group.nat: Modifications complete
 aws_launch_configuration.lift_as_conf: Creation complete
 aws_elb.lift-elb: Creating...
@@ -99,13 +99,13 @@ listener.3931999347.instance_protocol:       "" => "http"
 listener.3931999347.lb_port:                 "" => "80"
 listener.3931999347.lb_protocol:             "" => "http"
 listener.3931999347.ssl_certificate_id:      "" => ""
-name:                                        "" => "lift-elb"
+name:                                        "" => "lift-elb-20150830211216"
 security_groups.#:                           "" => "1"
-security_groups.3934675005:                  "" => "sg-9cd2a7f9"
+security_groups.469334056:                   "" => "sg-d9dbaebc"
 source_security_group:                       "" => "<computed>"
 subnets.#:                                   "" => "2"
-subnets.1244896189:                          "" => "subnet-7e83091b"
-subnets.3493459473:                          "" => "subnet-8d7cb4d4"
+subnets.3604336078:                          "" => "subnet-0d70b854"
+subnets.767851453:                           "" => "subnet-fc860c99"
 zone_id:                                     "" => "<computed>"
 aws_elb.lift-elb: Creation complete
 aws_autoscaling_group.lift_as: Creating...
@@ -117,16 +117,16 @@ desired_capacity:               "" => "1"
 force_delete:                   "" => "1"
 health_check_grace_period:      "" => "300"
 health_check_type:              "" => "ELB"
-launch_configuration:           "" => "lift-as-launch-config"
+launch_configuration:           "" => "lift-as-launch-config-20150830211216"
 load_balancers.#:               "" => "1"
-load_balancers.1476891412:      "" => "lift-elb"
+load_balancers.3313861402:      "" => "lift-elb-20150830211216"
 max_size:                       "" => "1"
 min_size:                       "" => "1"
-name:                           "" => "lift-autoscaling-group"
+name:                           "" => "lift-autoscaling-group-20150830211216"
 termination_policies.#:         "" => "<computed>"
 vpc_zone_identifier.#:          "" => "2"
-vpc_zone_identifier.3805466778: "" => "subnet-7f83091a"
-vpc_zone_identifier.476400661:  "" => "subnet-8a7cb4d3"
+vpc_zone_identifier.1685439446: "" => "subnet-0c70b855"
+vpc_zone_identifier.441224668:  "" => "subnet-ff860c9a"
 aws_autoscaling_group.lift_as: Creation complete
 
 Apply complete! Resources: 5 added, 1 changed, 0 destroyed.
