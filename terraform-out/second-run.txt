@@ -1,0 +1,574 @@
+Initialized blank state with remote state enabled!
+Remote state configured and pulled.
+Get: git::https://github.com/joescii/aws-terraform-modules.git
+Get: git::https://github.com/joescii/aws-terraform-modules.git
+Get: git::https://github.com/joescii/aws-terraform-modules.git
+module.vpc.aws_vpc.default: Refreshing state... (ID: vpc-6302ae06)
+module.mysql56_utf8.aws_db_parameter_group.mysql56_utf8: Refreshing state... (ID: mysql56-utf8)
+module.vpc.aws_security_group.packer: Refreshing state... (ID: sg-9fd2a7fa)
+module.vpc.aws_subnet.private-B: Refreshing state... (ID: subnet-7f83091a)
+module.vpc.aws_subnet.public-A: Refreshing state... (ID: subnet-8d7cb4d4)
+module.vpc.aws_subnet.public-B: Refreshing state... (ID: subnet-7e83091b)
+module.vpc.aws_subnet.private-A: Refreshing state... (ID: subnet-8a7cb4d3)
+module.vpc.aws_security_group.bastion: Refreshing state... (ID: sg-9ed2a7fb)
+module.vpc.aws_internet_gateway.default: Refreshing state... (ID: igw-0c804e69)
+aws_security_group.lift_elb_sg: Refreshing state... (ID: sg-9cd2a7f9)
+aws_security_group.lift_instance_sg: Refreshing state... (ID: sg-9ad2a7ff)
+template_file.packer_runner: Refreshing state... (ID: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+template_file.packer: Refreshing state... (ID: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+module.vpc.aws_route_table.public: Refreshing state... (ID: rtb-6172c104)
+module.vpc.aws_security_group.bastion_accessible: Refreshing state... (ID: sg-65dda800)
+module.vpc.aws_security_group.nat: Refreshing state... (ID: sg-9bd2a7fe)
+aws_db_subnet_group.all_azs: Refreshing state... (ID: all-azs)
+module.vpc.aws_instance.bastion: Refreshing state... (ID: i-bc04c279)
+module.vpc.aws_route_table_association.public-B: Refreshing state... (ID: rtbassoc-7400bd11)
+module.vpc.aws_route_table_association.public-A: Refreshing state... (ID: rtbassoc-7700bd12)
+aws_security_group.lift_db_sg: Refreshing state... (ID: sg-64dda801)
+module.vpc.aws_instance.nat: Refreshing state... (ID: i-bd04c278)
+aws_db_instance.lift_db: Refreshing state... (ID: lift-db)
+module.vpc.aws_route_table.private: Refreshing state... (ID: rtb-6e72c10b)
+module.vpc.aws_route_table_association.private-B: Refreshing state... (ID: rtbassoc-7f00bd1a)
+module.vpc.aws_route_table_association.private-A: Refreshing state... (ID: rtbassoc-7c00bd19)
+template_file.packer_runner: Creating...
+filename: "" => "../../../../dev/null"
+rendered: "" => "<computed>"
+template_file.packer_runner: Provisioning with 'local-exec'...
+template_file.packer_runner (local-exec): Executing: /bin/sh -c "./bake.sh AKIAJ5CVZQ5VJPZNKN5A HfgwoxyEnOxBermeegFLXZNW0w09rUh5bkRKImYk us-west-1 vpc-6302ae06 subnet-7e83091b sg-9fd2a7fa ami-4bcf360f ****** 20150830195128"
+module.vpc.aws_security_group.nat: Modifying...
+ingress.#:                            "1" => "2"
+ingress.292801297.cidr_blocks.#:      "2" => "0"
+ingress.292801297.cidr_blocks.0:      "10.0.129.0/24" => ""
+ingress.292801297.cidr_blocks.1:      "10.0.131.0/24" => ""
+ingress.292801297.from_port:          "0" => "0"
+ingress.292801297.protocol:           "tcp" => ""
+ingress.292801297.security_groups.#:  "0" => "0"
+ingress.292801297.self:               "0" => "0"
+ingress.292801297.to_port:            "65535" => "0"
+ingress.374658840.cidr_blocks.#:      "0" => "1"
+ingress.374658840.cidr_blocks.0:      "" => "10.0.129.0/24"
+ingress.374658840.from_port:          "" => "0"
+ingress.374658840.protocol:           "" => "tcp"
+ingress.374658840.security_groups.#:  "0" => "0"
+ingress.374658840.self:               "" => "0"
+ingress.374658840.to_port:            "" => "65535"
+ingress.3910244833.cidr_blocks.#:     "0" => "1"
+ingress.3910244833.cidr_blocks.0:     "" => "10.0.131.0/24"
+ingress.3910244833.from_port:         "" => "0"
+ingress.3910244833.protocol:          "" => "tcp"
+ingress.3910244833.security_groups.#: "0" => "0"
+ingress.3910244833.self:              "" => "0"
+ingress.3910244833.to_port:           "" => "65535"
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [INFO] Packer version: 0.8.2  28c80a648c7e35c320530561a00c889837bd6b22
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 Packer Target OS/Arch: linux amd64
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 Built with Go Version: go1.4.2
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: amazon-chroot = /home/rof/.packer/packer-builder-amazon-chroot
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: amazon-ebs = /home/rof/.packer/packer-builder-amazon-ebs
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: amazon-instance = /home/rof/.packer/packer-builder-amazon-instance
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: digitalocean = /home/rof/.packer/packer-builder-digitalocean
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: docker = /home/rof/.packer/packer-builder-docker
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: file = /home/rof/.packer/packer-builder-file
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: googlecompute = /home/rof/.packer/packer-builder-googlecompute
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: null = /home/rof/.packer/packer-builder-null
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: openstack = /home/rof/.packer/packer-builder-openstack
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: parallels-iso = /home/rof/.packer/packer-builder-parallels-iso
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: parallels-pvm = /home/rof/.packer/packer-builder-parallels-pvm
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: qemu = /home/rof/.packer/packer-builder-qemu
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: virtualbox-iso = /home/rof/.packer/packer-builder-virtualbox-iso
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: virtualbox-ovf = /home/rof/.packer/packer-builder-virtualbox-ovf
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: vmware-iso = /home/rof/.packer/packer-builder-vmware-iso
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: vmware-vmx = /home/rof/.packer/packer-builder-vmware-vmx
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: atlas = /home/rof/.packer/packer-post-processor-atlas
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: compress = /home/rof/.packer/packer-post-processor-compress
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: docker-import = /home/rof/.packer/packer-post-processor-docker-import
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: docker-push = /home/rof/.packer/packer-post-processor-docker-push
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: docker-save = /home/rof/.packer/packer-post-processor-docker-save
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: docker-tag = /home/rof/.packer/packer-post-processor-docker-tag
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: vagrant = /home/rof/.packer/packer-post-processor-vagrant
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: vagrant-cloud = /home/rof/.packer/packer-post-processor-vagrant-cloud
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: vsphere = /home/rof/.packer/packer-post-processor-vsphere
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: ansible-local = /home/rof/.packer/packer-provisioner-ansible-local
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: chef-client = /home/rof/.packer/packer-provisioner-chef-client
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: chef-solo = /home/rof/.packer/packer-provisioner-chef-solo
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: file = /home/rof/.packer/packer-provisioner-file
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: powershell = /home/rof/.packer/packer-provisioner-powershell
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: puppet-masterless = /home/rof/.packer/packer-provisioner-puppet-masterless
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: puppet-server = /home/rof/.packer/packer-provisioner-puppet-server
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: salt-masterless = /home/rof/.packer/packer-provisioner-salt-masterless
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: shell = /home/rof/.packer/packer-provisioner-shell
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: shell-local = /home/rof/.packer/packer-provisioner-shell-local
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: windows-restart = /home/rof/.packer/packer-provisioner-windows-restart
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [DEBUG] Discovered plugin: windows-shell = /home/rof/.packer/packer-provisioner-windows-shell
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 Detected home directory from env var: /home/rof
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 Detected home directory from env var: /home/rof
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 Attempting to open config file: /home/rof/.packerconfig
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 [WARN] Config file doesn't exist: /home/rof/.packerconfig
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 Packer config: &{DisableCheckpoint:false DisableCheckpointSignature:false PluginMinPort:10000 PluginMaxPort:25000 Builders:map[amazon-chroot:/home/rof/.packer/packer-builder-amazon-chroot file:/home/rof/.packer/packer-builder-file parallels-pvm:/home/rof/.packer/packer-builder-parallels-pvm virtualbox-iso:/home/rof/.packer/packer-builder-virtualbox-iso googlecompute:/home/rof/.packer/packer-builder-googlecompute parallels-iso:/home/rof/.packer/packer-builder-parallels-iso vmware-vmx:/home/rof/.packer/packer-builder-vmware-vmx amazon-ebs:/home/rof/.packer/packer-builder-amazon-ebs amazon-instance:/home/rof/.packer/packer-builder-amazon-instance digitalocean:/home/rof/.packer/packer-builder-digitalocean null:/home/rof/.packer/packer-builder-null openstack:/home/rof/.packer/packer-builder-openstack qemu:/home/rof/.packer/packer-builder-qemu vmware-iso:/home/rof/.packer/packer-builder-vmware-iso docker:/home/rof/.packer/packer-builder-docker virtualbox-ovf:/home/rof/.packer/packer-builder-virtualbox-ovf] PostProcessors:map[docker-import:/home/rof/.packer/packer-post-processor-docker-import docker-save:/home/rof/.packer/packer-post-processor-docker-save docker-tag:/home/rof/.packer/packer-post-processor-docker-tag vagrant:/home/rof/.packer/packer-post-processor-vagrant vagrant-cloud:/home/rof/.packer/packer-post-processor-vagrant-cloud atlas:/home/rof/.packer/packer-post-processor-atlas docker-push:/home/rof/.packer/packer-post-processor-docker-push vsphere:/home/rof/.packer/packer-post-processor-vsphere compress:/home/rof/.packer/packer-post-processor-compress] Provisioners:map[ansible-local:/home/rof/.packer/packer-provisioner-ansible-local puppet-server:/home/rof/.packer/packer-provisioner-puppet-server shell-local:/home/rof/.packer/packer-provisioner-shell-local windows-restart:/home/rof/.packer/packer-provisioner-windows-restart puppet-masterless:/home/rof/.packer/packer-provisioner-puppet-masterless salt-masterless:/home/rof/.packer/packer-provisioner-salt-masterless shell:/home/rof/.packer/packer-provisioner-shell windows-shell:/home/rof/.packer/packer-provisioner-windows-shell chef-client:/home/rof/.packer/packer-provisioner-chef-client chef-solo:/home/rof/.packer/packer-provisioner-chef-solo file:/home/rof/.packer/packer-provisioner-file powershell:/home/rof/.packer/packer-provisioner-powershell]}
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 Setting cache directory: /home/rof/clone/devops/packer_cache
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 Detected home directory from env var: /home/rof
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 Loading builder: amazon-ebs
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 Creating plugin client for path: /home/rof/.packer/packer-builder-amazon-ebs
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 Starting plugin: /home/rof/.packer/packer-builder-amazon-ebs []string{"/home/rof/.packer/packer-builder-amazon-ebs"}
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 Waiting for RPC address for: /home/rof/.packer/packer-builder-amazon-ebs
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 packer-builder-amazon-ebs: 2015/08/30 19:51:32 Plugin minimum port: 10000
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 packer-builder-amazon-ebs: 2015/08/30 19:51:32 Plugin maximum port: 25000
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 packer-builder-amazon-ebs: 2015/08/30 19:51:32 Plugin address: unix /tmp/packer-plugin544005518
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 packer-builder-amazon-ebs: 2015/08/30 19:51:32 Waiting for connection...
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 packer-builder-amazon-ebs: 2015/08/30 19:51:32 Serving a plugin connection...
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 Loading provisioner: shell
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 Creating plugin client for path: /home/rof/.packer/packer-provisioner-shell
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 Starting plugin: /home/rof/.packer/packer-provisioner-shell []string{"/home/rof/.packer/packer-provisioner-shell"}
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 Waiting for RPC address for: /home/rof/.packer/packer-provisioner-shell
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 packer-provisioner-shell: 2015/08/30 19:51:32 Plugin minimum port: 10000
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 packer-provisioner-shell: 2015/08/30 19:51:32 Plugin maximum port: 25000
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 packer-provisioner-shell: 2015/08/30 19:51:32 Plugin address: unix /tmp/packer-plugin995138349
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 packer-provisioner-shell: 2015/08/30 19:51:32 Waiting for connection...
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 packer-provisioner-shell: 2015/08/30 19:51:32 Serving a plugin connection...
+template_file.packer_runner (local-exec): 1440964292,,ui,say,amazon-ebs output will be in this color.
+template_file.packer_runner (local-exec): 1440964292,,ui,say,
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 Build debug mode: false
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 Force build: false
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 Preparing build: amazon-ebs
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 packer-builder-amazon-ebs: 2015/08/30 19:51:32 Config: {PackerConfig:{PackerBuildName:amazon-ebs PackerBuilderType:amazon-ebs PackerDebug:false PackerForce:false PackerUserVars:map[aws_secret_key:<Filtered> security_group_id:sg-9fd2a7fa source_ami:ami-4bcf360f subnet_id:subnet-7e83091b timestamp:20150830195128 aws_access_key:<Filtered> vpc_id:vpc-6302ae06 aws_region:us-west-1 user_password:******]} AccessConfig:{AccessKey:<Filtered> SecretKey:<Filtered> RawRegion:us-west-1 Token:} AMIConfig:{AMIName:lift-jetty-cluster-aws-20150830195128 AMIDescription: AMIVirtType: AMIUsers:[] AMIGroups:[] AMIProductCodes:[] AMIRegions:[] AMITags:map[Name:lift-jetty-cluster-aws Timestamp:20150830195128] AMIEnhancedNetworking:false AMIForceDeregister:false} BlockDevices:{AMIMappings:[] LaunchMappings:[]} RunConfig:{AssociatePublicIpAddress:true AvailabilityZone: IamInstanceProfile: InstanceType:t2.micro RunTags:map[] SourceAmi:ami-4bcf360f SpotPrice: SpotPriceAutoProduct: SecurityGroupId: SecurityGroupIds:[sg-9fd2a7fa] SubnetId:subnet-7e83091b TemporaryKeyPairName:packer 55e35ec4-e0fe-069e-21e3-d5d9fe0db521 UserData: UserDataFile: WindowsPasswordTimeout:10m0s VpcId:vpc-6302ae06 Comm:{Type:ssh SSHHost: SSHPort:22 SSHUsername:ubuntu SSHPassword: SSHPrivateKey: SSHPty:false SSHTimeout:5m0s SSHDisableAgent:false SSHHandshakeAttempts:10 SSHBastionHost: SSHBastionPort:0 SSHBastionUsername: SSHBastionPassword: SSHBastionPrivateKey: WinRMUser: WinRMPassword: WinRMHost: WinRMPort:0 WinRMTimeout:0} SSHKeyPairName: SSHPrivateIp:false} ctx:{Data:<nil> Funcs:map[clean_ami_name:0x4ff580] UserVariables:map[source_ami:ami-4bcf360f aws_region:us-west-1 subnet_id:subnet-7e83091b timestamp:20150830195128 security_group_id:sg-9fd2a7fa user_password:****** aws_secret_key:<Filtered> aws_access_key:<Filtered> vpc_id:vpc-6302ae06] EnableEnv:false BuildName:amazon-ebs BuildType:amazon-ebs TemplatePath:/home/rof/clone/devops/packer.json}}
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 Waiting on builds to complete...
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 Starting build run: amazon-ebs
+template_file.packer_runner (local-exec): 2015/08/30 19:51:32 Running builder: amazon-ebs
+template_file.packer_runner (local-exec): 1440964292,,ui,say,==> amazon-ebs: Prevalidating AMI Name...
+template_file.packer_runner (local-exec): 1440964293,,ui,say,==> amazon-ebs: Inspecting the source AMI...
+module.vpc.aws_security_group.nat: Modifications complete
+template_file.packer_runner (local-exec): 1440964293,,ui,say,==> amazon-ebs: Creating temporary keypair: packer 55e35ec4-e0fe-069e-21e3-d5d9fe0db521
+template_file.packer_runner (local-exec): 2015/08/30 19:51:33 packer-builder-amazon-ebs: 2015/08/30 19:51:33 Using specified security groups: [sg-9fd2a7fa]
+template_file.packer_runner (local-exec): 1440964293,,ui,say,==> amazon-ebs: Launching a source AWS instance...
+template_file.packer_runner (local-exec): 1440964294,,ui,message,    amazon-ebs: Instance ID: i-dfcc5f1f
+template_file.packer_runner (local-exec): 1440964294,,ui,say,==> amazon-ebs: Waiting for instance (i-dfcc5f1f) to become ready...
+template_file.packer_runner (local-exec): 2015/08/30 19:51:34 packer-builder-amazon-ebs: 2015/08/30 19:51:34 Waiting for state to become: running
+template_file.packer_runner (local-exec): 2015/08/30 19:51:34 packer-builder-amazon-ebs: 2015/08/30 19:51:34 Allowing 300s to complete (change with AWS_TIMEOUT_SECONDS)
+template_file.packer_runner (local-exec): 2015/08/30 19:52:04 packer-builder-amazon-ebs: 2015/08/30 19:52:04 [INFO] Not Windows, skipping get password...
+template_file.packer_runner (local-exec): 2015/08/30 19:52:04 packer-builder-amazon-ebs: 2015/08/30 19:52:04 [INFO] Waiting for SSH, up to timeout: 5m0s
+template_file.packer_runner (local-exec): 1440964324,,ui,say,==> amazon-ebs: Waiting for SSH to become available...
+template_file.packer_runner (local-exec): 2015/08/30 19:52:20 packer-builder-amazon-ebs: 2015/08/30 19:52:20 [DEBUG] TCP connection to SSH ip/port failed: dial tcp 52.8.28.39:22: i/o timeout
+template_file.packer_runner (local-exec): 2015/08/30 19:52:40 packer-builder-amazon-ebs: 2015/08/30 19:52:40 [DEBUG] TCP connection to SSH ip/port failed: dial tcp 52.8.28.39:22: i/o timeout
+template_file.packer_runner (local-exec): 2015/08/30 19:53:00 packer-builder-amazon-ebs: 2015/08/30 19:53:00 [DEBUG] TCP connection to SSH ip/port failed: dial tcp 52.8.28.39:22: i/o timeout
+template_file.packer_runner (local-exec): 2015/08/30 19:53:20 packer-builder-amazon-ebs: 2015/08/30 19:53:20 [DEBUG] TCP connection to SSH ip/port failed: dial tcp 52.8.28.39:22: i/o timeout
+template_file.packer_runner (local-exec): 2015/08/30 19:53:40 packer-builder-amazon-ebs: 2015/08/30 19:53:40 [DEBUG] TCP connection to SSH ip/port failed: dial tcp 52.8.28.39:22: i/o timeout
+template_file.packer_runner (local-exec): 2015/08/30 19:54:00 packer-builder-amazon-ebs: 2015/08/30 19:54:00 [DEBUG] TCP connection to SSH ip/port failed: dial tcp 52.8.28.39:22: i/o timeout
+template_file.packer_runner (local-exec): 2015/08/30 19:54:20 packer-builder-amazon-ebs: 2015/08/30 19:54:20 [DEBUG] TCP connection to SSH ip/port failed: dial tcp 52.8.28.39:22: i/o timeout
+template_file.packer_runner (local-exec): 2015/08/30 19:54:26 packer-builder-amazon-ebs: 2015/08/30 19:54:26 [DEBUG] TCP connection to SSH ip/port failed: dial tcp 52.8.28.39:22: connection refused
+template_file.packer_runner (local-exec): 2015/08/30 19:54:31 packer-builder-amazon-ebs: 2015/08/30 19:54:31 [INFO] Attempting SSH connection...
+template_file.packer_runner (local-exec): 2015/08/30 19:54:31 packer-builder-amazon-ebs: 2015/08/30 19:54:31 reconnecting to TCP connection for SSH
+template_file.packer_runner (local-exec): 2015/08/30 19:54:31 packer-builder-amazon-ebs: 2015/08/30 19:54:31 handshaking with SSH
+template_file.packer_runner (local-exec): 2015/08/30 19:54:32 packer-builder-amazon-ebs: 2015/08/30 19:54:32 handshake complete!
+template_file.packer_runner (local-exec): 2015/08/30 19:54:32 packer-builder-amazon-ebs: 2015/08/30 19:54:32 opening new ssh session
+template_file.packer_runner (local-exec): 2015/08/30 19:54:36 packer-builder-amazon-ebs: 2015/08/30 19:54:36 [INFO] agent forwarding enabled
+template_file.packer_runner (local-exec): 1440964476,,ui,say,==> amazon-ebs: Connected to SSH!
+template_file.packer_runner (local-exec): 2015/08/30 19:54:36 packer-builder-amazon-ebs: 2015/08/30 19:54:36 Running the provision hook
+template_file.packer_runner (local-exec): 1440964476,,ui,say,==> amazon-ebs: Provisioning with shell script: java.sh
+template_file.packer_runner (local-exec): 2015/08/30 19:54:36 packer-provisioner-shell: 2015/08/30 19:54:36 Opening java.sh for reading
+template_file.packer_runner (local-exec): 2015/08/30 19:54:36 packer-provisioner-shell: 2015/08/30 19:54:36 [INFO] 625 bytes written for 'uploadData'
+template_file.packer_runner (local-exec): 2015/08/30 19:54:36 packer-builder-amazon-ebs: 2015/08/30 19:54:36 opening new ssh session
+template_file.packer_runner (local-exec): 2015/08/30 19:54:36 [INFO] 625 bytes written for 'uploadData'
+template_file.packer_runner (local-exec): 2015/08/30 19:54:36 packer-builder-amazon-ebs: 2015/08/30 19:54:36 Starting remote scp process:  scp -vt /tmp
+template_file.packer_runner (local-exec): 2015/08/30 19:54:36 packer-builder-amazon-ebs: 2015/08/30 19:54:36 Started SCP session, beginning transfers...
+template_file.packer_runner (local-exec): 2015/08/30 19:54:36 packer-builder-amazon-ebs: 2015/08/30 19:54:36 Copying input data into temporary file so we can read the length
+template_file.packer_runner (local-exec): 2015/08/30 19:54:36 packer-builder-amazon-ebs: 2015/08/30 19:54:36 [DEBUG] Uploading script_7943.sh: perms=C0644 size=625
+template_file.packer_runner (local-exec): 2015/08/30 19:54:36 packer-builder-amazon-ebs: 2015/08/30 19:54:36 SCP session complete, closing stdin pipe.
+template_file.packer_runner (local-exec): 2015/08/30 19:54:36 packer-builder-amazon-ebs: 2015/08/30 19:54:36 Waiting for SSH session to complete.
+template_file.packer_runner (local-exec): 2015/08/30 19:54:36 packer-builder-amazon-ebs: 2015/08/30 19:54:36 scp stderr (length 31): Sink: C0644 625 script_7943.sh
+template_file.packer_runner (local-exec): 2015/08/30 19:54:36 packer-builder-amazon-ebs: 2015/08/30 19:54:36 opening new ssh session
+template_file.packer_runner (local-exec): 2015/08/30 19:54:36 packer-builder-amazon-ebs: 2015/08/30 19:54:36 starting remote command: chmod 0755 /tmp/script_7943.sh
+template_file.packer_runner (local-exec): 2015/08/30 19:54:36 packer-builder-amazon-ebs: 2015/08/30 19:54:36 remote command exited with '0': chmod 0755 /tmp/script_7943.sh
+template_file.packer_runner (local-exec): 2015/08/30 19:54:36 packer-builder-amazon-ebs: 2015/08/30 19:54:36 [INFO] RPC endpoint: Communicator ended with: 0
+template_file.packer_runner (local-exec): 2015/08/30 19:54:36 [INFO] RPC client: Communicator ended with: 0
+template_file.packer_runner (local-exec): 2015/08/30 19:54:36 [INFO] RPC endpoint: Communicator ended with: 0
+template_file.packer_runner (local-exec): 2015/08/30 19:54:36 packer-provisioner-shell: 2015/08/30 19:54:36 [INFO] RPC client: Communicator ended with: 0
+template_file.packer_runner (local-exec): 2015/08/30 19:54:36 packer-builder-amazon-ebs: 2015/08/30 19:54:36 opening new ssh session
+template_file.packer_runner (local-exec): 2015/08/30 19:54:36 packer-builder-amazon-ebs: 2015/08/30 19:54:36 starting remote command: chmod +x /tmp/script_7943.sh; PACKER_BUILD_NAME='amazon-ebs' PACKER_BUILDER_TYPE='amazon-ebs' /tmp/script_7943.sh
+template_file.packer_runner (local-exec): 1440964476,,ui,message,    amazon-ebs: + sleep 10
+template_file.packer_runner (local-exec): 1440964486,,ui,message,    amazon-ebs: + sudo apt-get install -y python-software-properties
+template_file.packer_runner (local-exec): 1440964517,,ui,message,    amazon-ebs: Reading package lists...
+template_file.packer_runner (local-exec): 1440964517,,ui,message,    amazon-ebs: Building dependency tree...
+template_file.packer_runner (local-exec): 1440964517,,ui,message,    amazon-ebs: Reading state information...
+template_file.packer_runner (local-exec): 1440964517,,ui,message,    amazon-ebs: python-software-properties is already the newest version.
+template_file.packer_runner (local-exec): 1440964517,,ui,message,    amazon-ebs: 0 upgraded%!(PACKER_COMMA) 0 newly installed%!(PACKER_COMMA) 0 to remove and 0 not upgraded.
+template_file.packer_runner (local-exec): 1440964517,,ui,message,    amazon-ebs: + sudo add-apt-repository -y ppa:webupd8team/java
+template_file.packer_runner (local-exec): 1440964519,,ui,message,    amazon-ebs: gpg: keyring `/tmp/tmpRiA3bJ/secring.gpg' created
+template_file.packer_runner (local-exec): 1440964519,,ui,message,    amazon-ebs: gpg: keyring `/tmp/tmpRiA3bJ/pubring.gpg' created
+template_file.packer_runner (local-exec): 1440964519,,ui,message,    amazon-ebs: gpg: requesting key EEA14886 from hkp server keyserver.ubuntu.com
+template_file.packer_runner (local-exec): 1440964519,,ui,message,    amazon-ebs: gpg: /tmp/tmpRiA3bJ/trustdb.gpg: trustdb created
+template_file.packer_runner (local-exec): 1440964519,,ui,message,    amazon-ebs: gpg: key EEA14886: public key "Launchpad VLC" imported
+template_file.packer_runner (local-exec): 1440964519,,ui,message,    amazon-ebs: gpg: Total number processed: 1
+template_file.packer_runner (local-exec): 1440964519,,ui,message,    amazon-ebs: gpg:               imported: 1  (RSA: 1)
+template_file.packer_runner (local-exec): 1440964519,,ui,message,    amazon-ebs: OK
+template_file.packer_runner (local-exec): 1440964519,,ui,message,    amazon-ebs: + sudo apt-get update
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Hit http://us-west-1.ec2.archive.ubuntu.com precise Release.gpg
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Get:1 http://us-west-1.ec2.archive.ubuntu.com precise-updates Release.gpg [198 B]
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Hit http://us-west-1.ec2.archive.ubuntu.com precise Release
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Get:2 http://us-west-1.ec2.archive.ubuntu.com precise-updates Release [196 kB]
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Get:3 http://security.ubuntu.com precise-security Release.gpg [198 B]
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Get:4 http://security.ubuntu.com precise-security Release [54.3 kB]
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Get:5 http://us-west-1.ec2.archive.ubuntu.com precise/main Sources [934 kB]
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Get:6 http://ppa.launchpad.net precise Release.gpg [316 B]
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Get:7 http://us-west-1.ec2.archive.ubuntu.com precise/universe Sources [5%!(PACKER_COMMA)019 kB]
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Get:8 http://ppa.launchpad.net precise Release [13.0 kB]
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Get:9 http://security.ubuntu.com precise-security/main Sources [133 kB]
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Get:10 http://ppa.launchpad.net precise/main Sources [1%!(PACKER_COMMA)567 B]
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Hit http://us-west-1.ec2.archive.ubuntu.com precise/main amd64 Packages
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Hit http://us-west-1.ec2.archive.ubuntu.com precise/universe amd64 Packages
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Hit http://us-west-1.ec2.archive.ubuntu.com precise/main i386 Packages
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Hit http://us-west-1.ec2.archive.ubuntu.com precise/universe i386 Packages
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Hit http://us-west-1.ec2.archive.ubuntu.com precise/main TranslationIndex
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Hit http://us-west-1.ec2.archive.ubuntu.com precise/universe TranslationIndex
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Get:11 http://us-west-1.ec2.archive.ubuntu.com precise-updates/main Sources [491 kB]
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Get:12 http://us-west-1.ec2.archive.ubuntu.com precise-updates/universe Sources [122 kB]
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Get:13 http://us-west-1.ec2.archive.ubuntu.com precise-updates/main amd64 Packages [928 kB]
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Get:14 http://ppa.launchpad.net precise/main amd64 Packages [3%!(PACKER_COMMA)385 B]
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Get:15 http://us-west-1.ec2.archive.ubuntu.com precise-updates/universe amd64 Packages [268 kB]
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Get:16 http://us-west-1.ec2.archive.ubuntu.com precise-updates/main i386 Packages [979 kB]
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Get:17 http://security.ubuntu.com precise-security/universe Sources [43.9 kB]
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Get:18 http://us-west-1.ec2.archive.ubuntu.com precise-updates/universe i386 Packages [278 kB]
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Get:19 http://us-west-1.ec2.archive.ubuntu.com precise-updates/main TranslationIndex [10.6 kB]
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Get:20 http://us-west-1.ec2.archive.ubuntu.com precise-updates/universe TranslationIndex [8%!(PACKER_COMMA)333 B]
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Hit http://us-west-1.ec2.archive.ubuntu.com precise/main Translation-en
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Hit http://us-west-1.ec2.archive.ubuntu.com precise/universe Translation-en
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Get:21 http://us-west-1.ec2.archive.ubuntu.com precise-updates/main Translation-en [402 kB]
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Get:22 http://ppa.launchpad.net precise/main i386 Packages [3%!(PACKER_COMMA)385 B]
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Hit http://us-west-1.ec2.archive.ubuntu.com precise-updates/universe Translation-en
+template_file.packer_runner (local-exec): 1440964520,,ui,message,    amazon-ebs: Get:23 http://security.ubuntu.com precise-security/main amd64 Packages [541 kB]
+template_file.packer_runner (local-exec): 1440964521,,ui,message,    amazon-ebs: Get:24 http://ppa.launchpad.net precise/main TranslationIndex [199 B]
+template_file.packer_runner (local-exec): 1440964521,,ui,message,    amazon-ebs: Get:25 http://ppa.launchpad.net precise/main Translation-en [1%!(PACKER_COMMA)556 B]
+template_file.packer_runner (local-exec): 1440964523,,ui,message,    amazon-ebs: Get:26 http://security.ubuntu.com precise-security/universe amd64 Packages [124 kB]
+template_file.packer_runner (local-exec): 1440964524,,ui,message,    amazon-ebs: Get:27 http://security.ubuntu.com precise-security/main i386 Packages [591 kB]
+template_file.packer_runner (local-exec): 1440964529,,ui,message,    amazon-ebs: Get:28 http://security.ubuntu.com precise-security/universe i386 Packages [132 kB]
+template_file.packer_runner (local-exec): 1440964530,,ui,message,    amazon-ebs: Get:29 http://security.ubuntu.com precise-security/main TranslationIndex [208 B]
+template_file.packer_runner (local-exec): 1440964530,,ui,message,    amazon-ebs: Get:30 http://security.ubuntu.com precise-security/universe TranslationIndex [205 B]
+template_file.packer_runner (local-exec): 1440964530,,ui,message,    amazon-ebs: Get:31 http://security.ubuntu.com precise-security/main Translation-en [237 kB]
+template_file.packer_runner (local-exec): 1440964532,,ui,message,    amazon-ebs: Hit http://security.ubuntu.com precise-security/universe Translation-en
+template_file.packer_runner (local-exec): 1440964532,,ui,message,    amazon-ebs: Fetched 11.5 MB in 12s (911 kB/s)
+template_file.packer_runner (local-exec): 1440964537,,ui,message,    amazon-ebs: Reading package lists...
+template_file.packer_runner (local-exec): 1440964537,,ui,message,    amazon-ebs: + sudo debconf-set-selections
+template_file.packer_runner (local-exec): 1440964537,,ui,message,    amazon-ebs: + echo debconf shared/accepted-oracle-license-v1-1 select true
+template_file.packer_runner (local-exec): 1440964537,,ui,message,    amazon-ebs: + sudo debconf-set-selections
+template_file.packer_runner (local-exec): 1440964537,,ui,message,    amazon-ebs: + echo debconf shared/accepted-oracle-license-v1-1 seen true
+template_file.packer_runner (local-exec): 1440964537,,ui,message,    amazon-ebs: + sudo apt-get install -y oracle-java8-installer
+template_file.packer_runner (local-exec): 1440964537,,ui,message,    amazon-ebs: Reading package lists...
+template_file.packer_runner (local-exec): 1440964538,,ui,message,    amazon-ebs: Building dependency tree...
+template_file.packer_runner (local-exec): 1440964538,,ui,message,    amazon-ebs: Reading state information...
+template_file.packer_runner (local-exec): 1440964538,,ui,message,    amazon-ebs: The following extra packages will be installed:
+template_file.packer_runner (local-exec): 1440964538,,ui,message,    amazon-ebs: binutils gsfonts gsfonts-x11 java-common libfontenc1 libxfont1 x11-common
+template_file.packer_runner (local-exec): 1440964538,,ui,message,    amazon-ebs: xfonts-encodings xfonts-utils
+template_file.packer_runner (local-exec): 1440964538,,ui,message,    amazon-ebs: Suggested packages:
+template_file.packer_runner (local-exec): 1440964538,,ui,message,    amazon-ebs: binutils-doc default-jre equivs binfmt-support visualvm ttf-baekmuk
+template_file.packer_runner (local-exec): 1440964538,,ui,message,    amazon-ebs: ttf-unfonts ttf-unfonts-core ttf-kochi-gothic ttf-sazanami-gothic
+template_file.packer_runner (local-exec): 1440964538,,ui,message,    amazon-ebs: ttf-kochi-mincho ttf-sazanami-mincho ttf-arphic-uming firefox firefox-2
+template_file.packer_runner (local-exec): 1440964538,,ui,message,    amazon-ebs: iceweasel mozilla-firefox iceape-browser mozilla-browser epiphany-gecko
+template_file.packer_runner (local-exec): 1440964538,,ui,message,    amazon-ebs: epiphany-webkit epiphany-browser galeon midbrowser moblin-web-browser
+template_file.packer_runner (local-exec): 1440964538,,ui,message,    amazon-ebs: xulrunner xulrunner-1.9 konqueror chromium-browser midori google-chrome
+template_file.packer_runner (local-exec): 1440964538,,ui,message,    amazon-ebs: The following NEW packages will be installed:
+template_file.packer_runner (local-exec): 1440964538,,ui,message,    amazon-ebs: binutils gsfonts gsfonts-x11 java-common libfontenc1 libxfont1
+template_file.packer_runner (local-exec): 1440964538,,ui,message,    amazon-ebs: oracle-java8-installer x11-common xfonts-encodings xfonts-utils
+template_file.packer_runner (local-exec): 1440964538,,ui,message,    amazon-ebs: 0 upgraded%!(PACKER_COMMA) 10 newly installed%!(PACKER_COMMA) 0 to remove and 2 not upgraded.
+template_file.packer_runner (local-exec): 1440964538,,ui,message,    amazon-ebs: Need to get 7%!(PACKER_COMMA)005 kB of archives.
+template_file.packer_runner (local-exec): 1440964538,,ui,message,    amazon-ebs: After this operation%!(PACKER_COMMA) 16.3 MB of additional disk space will be used.
+template_file.packer_runner (local-exec): 1440964538,,ui,message,    amazon-ebs: Get:1 http://us-west-1.ec2.archive.ubuntu.com/ubuntu/ precise-updates/main binutils amd64 2.22-6ubuntu1.3 [2%!(PACKER_COMMA)657 kB]
+template_file.packer_runner (local-exec): 1440964538,,ui,message,    amazon-ebs: Get:2 http://us-west-1.ec2.archive.ubuntu.com/ubuntu/ precise/main java-common all 0.43ubuntu2 [61.7 kB]
+template_file.packer_runner (local-exec): 1440964538,,ui,message,    amazon-ebs: Get:3 http://us-west-1.ec2.archive.ubuntu.com/ubuntu/ precise/main gsfonts all 1:8.11+urwcyr1.0.7~pre44-4.2ubuntu1 [3%!(PACKER_COMMA)374 kB]
+template_file.packer_runner (local-exec): 1440964538,,ui,message,    amazon-ebs: Get:4 http://us-west-1.ec2.archive.ubuntu.com/ubuntu/ precise/main libfontenc1 amd64 1:1.1.0-1 [15.4 kB]
+template_file.packer_runner (local-exec): 1440964538,,ui,message,    amazon-ebs: Get:5 http://us-west-1.ec2.archive.ubuntu.com/ubuntu/ precise-updates/main libxfont1 amd64 1:1.4.4-1ubuntu0.3 [134 kB]
+template_file.packer_runner (local-exec): 1440964538,,ui,message,    amazon-ebs: Get:6 http://us-west-1.ec2.archive.ubuntu.com/ubuntu/ precise-updates/main x11-common all 1:7.6+12ubuntu2 [52.0 kB]
+template_file.packer_runner (local-exec): 1440964538,,ui,message,    amazon-ebs: Get:7 http://us-west-1.ec2.archive.ubuntu.com/ubuntu/ precise/main xfonts-encodings all 1:1.0.4-1ubuntu1 [583 kB]
+template_file.packer_runner (local-exec): 1440964538,,ui,message,    amazon-ebs: Get:8 http://us-west-1.ec2.archive.ubuntu.com/ubuntu/ precise/main xfonts-utils amd64 1:7.6+1 [96.4 kB]
+template_file.packer_runner (local-exec): 1440964538,,ui,message,    amazon-ebs: Get:9 http://us-west-1.ec2.archive.ubuntu.com/ubuntu/ precise/main gsfonts-x11 all 0.22 [9%!(PACKER_COMMA)108 B]
+template_file.packer_runner (local-exec): 1440964538,,ui,message,    amazon-ebs: Get:10 http://ppa.launchpad.net/webupd8team/java/ubuntu/ precise/main oracle-java8-installer all 8u60+8u60arm-1~webupd8~1 [22.4 kB]
+template_file.packer_runner (local-exec): 1440964539,,ui,message,    amazon-ebs: debconf: unable to initialize frontend: Dialog
+template_file.packer_runner (local-exec): 1440964539,,ui,message,    amazon-ebs: debconf: (Dialog frontend will not work on a dumb terminal%!(PACKER_COMMA) an emacs shell buffer%!(PACKER_COMMA) or without a controlling terminal.)
+template_file.packer_runner (local-exec): 1440964539,,ui,message,    amazon-ebs: debconf: falling back to frontend: Readline
+template_file.packer_runner (local-exec): 1440964539,,ui,message,    amazon-ebs: debconf: unable to initialize frontend: Readline
+template_file.packer_runner (local-exec): 1440964539,,ui,message,    amazon-ebs: debconf: (This frontend requires a controlling tty.)
+template_file.packer_runner (local-exec): 1440964539,,ui,message,    amazon-ebs: debconf: falling back to frontend: Teletype
+template_file.packer_runner (local-exec): 1440964539,,ui,message,    amazon-ebs: dpkg-preconfigure: unable to re-open stdin:
+template_file.packer_runner (local-exec): 1440964539,,ui,message,    amazon-ebs: Fetched 7%!(PACKER_COMMA)005 kB in 0s (14.3 MB/s)
+template_file.packer_runner (local-exec): 1440964539,,ui,message,    amazon-ebs: Selecting previously unselected package binutils.
+template_file.packer_runner (local-exec): 1440964542,,ui,message,    amazon-ebs: (Reading database ... 47562 files and directories currently installed.)
+template_file.packer_runner (local-exec): 1440964542,,ui,message,    amazon-ebs: Unpacking binutils (from .../binutils_2.22-6ubuntu1.3_amd64.deb) ...
+template_file.packer_runner (local-exec): 1440964543,,ui,message,    amazon-ebs: Selecting previously unselected package java-common.
+template_file.packer_runner (local-exec): 1440964543,,ui,message,    amazon-ebs: Unpacking java-common (from .../java-common_0.43ubuntu2_all.deb) ...
+template_file.packer_runner (local-exec): 1440964543,,ui,message,    amazon-ebs: Processing triggers for initramfs-tools ...
+template_file.packer_runner (local-exec): 1440964543,,ui,message,    amazon-ebs: update-initramfs: Generating /boot/initrd.img-3.2.0-89-virtual
+template_file.packer_runner (local-exec): 1440964548,,ui,message,    amazon-ebs: Processing triggers for man-db ...
+template_file.packer_runner (local-exec): 1440964550,,ui,message,    amazon-ebs: Setting up binutils (2.22-6ubuntu1.3) ...
+template_file.packer_runner (local-exec): 1440964550,,ui,message,    amazon-ebs: Processing triggers for libc-bin ...
+template_file.packer_runner (local-exec): 1440964550,,ui,message,    amazon-ebs: ldconfig deferred processing now taking place
+template_file.packer_runner (local-exec): 1440964551,,ui,message,    amazon-ebs: Selecting previously unselected package oracle-java8-installer.
+template_file.packer_runner (local-exec): 1440964551,,ui,message,    amazon-ebs: (Reading database ... 47745 files and directories currently installed.)
+template_file.packer_runner (local-exec): 1440964551,,ui,message,    amazon-ebs: Unpacking oracle-java8-installer (from .../oracle-java8-installer_8u60+8u60arm-1~webupd8~1_all.deb) ...
+template_file.packer_runner (local-exec): 1440964551,,ui,message,    amazon-ebs: debconf: unable to initialize frontend: Dialog
+template_file.packer_runner (local-exec): 1440964551,,ui,message,    amazon-ebs: debconf: (Dialog frontend will not work on a dumb terminal%!(PACKER_COMMA) an emacs shell buffer%!(PACKER_COMMA) or without a controlling terminal.)
+template_file.packer_runner (local-exec): 1440964551,,ui,message,    amazon-ebs: debconf: falling back to frontend: Readline
+template_file.packer_runner (local-exec): 1440964551,,ui,message,    amazon-ebs: debconf: unable to initialize frontend: Readline
+template_file.packer_runner (local-exec): 1440964551,,ui,message,    amazon-ebs: debconf: (This frontend requires a controlling tty.)
+template_file.packer_runner (local-exec): 1440964551,,ui,message,    amazon-ebs: debconf: falling back to frontend: Teletype
+template_file.packer_runner (local-exec): 1440964551,,ui,message,    amazon-ebs: oracle-license-v1-1 license has already been accepted
+template_file.packer_runner (local-exec): 1440964552,,ui,message,    amazon-ebs: Selecting previously unselected package gsfonts.
+template_file.packer_runner (local-exec): 1440964552,,ui,message,    amazon-ebs: Unpacking gsfonts (from .../gsfonts_1%3a8.11+urwcyr1.0.7~pre44-4.2ubuntu1_all.deb) ...
+template_file.packer_runner (local-exec): 1440964552,,ui,message,    amazon-ebs: Selecting previously unselected package libfontenc1.
+template_file.packer_runner (local-exec): 1440964552,,ui,message,    amazon-ebs: Unpacking libfontenc1 (from .../libfontenc1_1%3a1.1.0-1_amd64.deb) ...
+template_file.packer_runner (local-exec): 1440964552,,ui,message,    amazon-ebs: Selecting previously unselected package libxfont1.
+template_file.packer_runner (local-exec): 1440964552,,ui,message,    amazon-ebs: Unpacking libxfont1 (from .../libxfont1_1%3a1.4.4-1ubuntu0.3_amd64.deb) ...
+template_file.packer_runner (local-exec): 1440964552,,ui,message,    amazon-ebs: Selecting previously unselected package x11-common.
+template_file.packer_runner (local-exec): 1440964552,,ui,message,    amazon-ebs: Unpacking x11-common (from .../x11-common_1%3a7.6+12ubuntu2_all.deb) ...
+template_file.packer_runner (local-exec): 1440964552,,ui,message,    amazon-ebs: debconf: unable to initialize frontend: Dialog
+template_file.packer_runner (local-exec): 1440964552,,ui,message,    amazon-ebs: debconf: (Dialog frontend will not work on a dumb terminal%!(PACKER_COMMA) an emacs shell buffer%!(PACKER_COMMA) or without a controlling terminal.)
+template_file.packer_runner (local-exec): 1440964552,,ui,message,    amazon-ebs: debconf: falling back to frontend: Readline
+template_file.packer_runner (local-exec): 1440964552,,ui,message,    amazon-ebs: debconf: unable to initialize frontend: Readline
+template_file.packer_runner (local-exec): 1440964552,,ui,message,    amazon-ebs: debconf: (This frontend requires a controlling tty.)
+template_file.packer_runner (local-exec): 1440964552,,ui,message,    amazon-ebs: debconf: falling back to frontend: Teletype
+template_file.packer_runner (local-exec): 1440964553,,ui,message,    amazon-ebs: Selecting previously unselected package xfonts-encodings.
+template_file.packer_runner (local-exec): 1440964553,,ui,message,    amazon-ebs: Unpacking xfonts-encodings (from .../xfonts-encodings_1%3a1.0.4-1ubuntu1_all.deb) ...
+template_file.packer_runner (local-exec): 1440964553,,ui,message,    amazon-ebs: Selecting previously unselected package xfonts-utils.
+template_file.packer_runner (local-exec): 1440964553,,ui,message,    amazon-ebs: Unpacking xfonts-utils (from .../xfonts-utils_1%3a7.6+1_amd64.deb) ...
+template_file.packer_runner (local-exec): 1440964554,,ui,message,    amazon-ebs: Selecting previously unselected package gsfonts-x11.
+template_file.packer_runner (local-exec): 1440964554,,ui,message,    amazon-ebs: Unpacking gsfonts-x11 (from .../gsfonts-x11_0.22_all.deb) ...
+template_file.packer_runner (local-exec): 1440964554,,ui,message,    amazon-ebs: Processing triggers for man-db ...
+template_file.packer_runner (local-exec): 1440964554,,ui,message,    amazon-ebs: Processing triggers for ureadahead ...
+template_file.packer_runner (local-exec): 1440964554,,ui,message,    amazon-ebs: Setting up java-common (0.43ubuntu2) ...
+template_file.packer_runner (local-exec): 1440964554,,ui,message,    amazon-ebs: Setting up oracle-java8-installer (8u60+8u60arm-1~webupd8~1) ...
+template_file.packer_runner (local-exec): 1440964554,,ui,message,    amazon-ebs: debconf: unable to initialize frontend: Dialog
+template_file.packer_runner (local-exec): 1440964554,,ui,message,    amazon-ebs: debconf: (Dialog frontend will not work on a dumb terminal%!(PACKER_COMMA) an emacs shell buffer%!(PACKER_COMMA) or without a controlling terminal.)
+template_file.packer_runner (local-exec): 1440964554,,ui,message,    amazon-ebs: debconf: falling back to frontend: Readline
+template_file.packer_runner (local-exec): 1440964554,,ui,message,    amazon-ebs: debconf: unable to initialize frontend: Readline
+template_file.packer_runner (local-exec): 1440964554,,ui,message,    amazon-ebs: debconf: (This frontend requires a controlling tty.)
+template_file.packer_runner (local-exec): 1440964554,,ui,message,    amazon-ebs: debconf: falling back to frontend: Teletype
+template_file.packer_runner (local-exec): 1440964554,,ui,message,    amazon-ebs: Downloading Oracle Java 8...
+template_file.packer_runner (local-exec): 1440964555,,ui,message,    amazon-ebs: --2015-08-30 19:55:52--  http://download.oracle.com/otn-pub/java/jdk/8u60-b27/jdk-8u60-linux-x64.tar.gz
+template_file.packer_runner (local-exec): 1440964555,,ui,message,    amazon-ebs: Resolving download.oracle.com (download.oracle.com)... 23.61.195.115%!(PACKER_COMMA) 96.6.45.99
+template_file.packer_runner (local-exec): 1440964555,,ui,message,    amazon-ebs: Connecting to download.oracle.com (download.oracle.com)|23.61.195.115|:80... connected.
+template_file.packer_runner (local-exec): 1440964555,,ui,message,    amazon-ebs: HTTP request sent%!(PACKER_COMMA) awaiting response... 302 Moved Temporarily
+template_file.packer_runner (local-exec): 1440964555,,ui,message,    amazon-ebs: Location: https://edelivery.oracle.com/otn-pub/java/jdk/8u60-b27/jdk-8u60-linux-x64.tar.gz [following]
+template_file.packer_runner (local-exec): 1440964555,,ui,message,    amazon-ebs: --2015-08-30 19:55:53--  https://edelivery.oracle.com/otn-pub/java/jdk/8u60-b27/jdk-8u60-linux-x64.tar.gz
+template_file.packer_runner (local-exec): 1440964555,,ui,message,    amazon-ebs: Resolving edelivery.oracle.com (edelivery.oracle.com)... 23.59.198.140
+template_file.packer_runner (local-exec): 1440964555,,ui,message,    amazon-ebs: Connecting to edelivery.oracle.com (edelivery.oracle.com)|23.59.198.140|:443... connected.
+template_file.packer_runner (local-exec): 1440964555,,ui,message,    amazon-ebs: HTTP request sent%!(PACKER_COMMA) awaiting response... 302 Moved Temporarily
+template_file.packer_runner (local-exec): 1440964555,,ui,message,    amazon-ebs: Location: http://download.oracle.com/otn-pub/java/jdk/8u60-b27/jdk-8u60-linux-x64.tar.gz?AuthParam=1440964673_6e4a534fa21cfa74b95a55259c1cffa4 [following]
+template_file.packer_runner (local-exec): 1440964555,,ui,message,    amazon-ebs: --2015-08-30 19:55:53--  http://download.oracle.com/otn-pub/java/jdk/8u60-b27/jdk-8u60-linux-x64.tar.gz?AuthParam=1440964673_6e4a534fa21cfa74b95a55259c1cffa4
+template_file.packer_runner (local-exec): 1440964555,,ui,message,    amazon-ebs: Connecting to download.oracle.com (download.oracle.com)|23.61.195.115|:80... connected.
+template_file.packer_runner (local-exec): 1440964555,,ui,message,    amazon-ebs: HTTP request sent%!(PACKER_COMMA) awaiting response... 200 OK
+template_file.packer_runner (local-exec): 1440964555,,ui,message,    amazon-ebs: Length: 181238643 (173M) [application/x-gzip]
+template_file.packer_runner (local-exec): 1440964555,,ui,message,    amazon-ebs: Saving to: `jdk-8u60-linux-x64.tar.gz'
+template_file.packer_runner (local-exec): 1440964555,,ui,message,    amazon-ebs:
+template_file.packer_runner (local-exec): 1440964555,,ui,message,    amazon-ebs: 0K ........ ........ ........ ........ ........ ........  1% 6.48M 26s
+template_file.packer_runner (local-exec): 1440964555,,ui,message,    amazon-ebs: 3072K ........ ........ ........ ........ ........ ........  3% 9.24M 22s
+template_file.packer_runner (local-exec): 1440964556,,ui,message,    amazon-ebs: 6144K ........ ........ ........ ........ ........ ........  5% 14.3M 18s
+template_file.packer_runner (local-exec): 1440964556,,ui,message,    amazon-ebs: 9216K ........ ........ ........ ........ ........ ........  6% 14.7M 16s
+template_file.packer_runner (local-exec): 1440964556,,ui,message,    amazon-ebs: 12288K ........ ........ ........ ........ ........ ........  8% 16.2M 15s
+template_file.packer_runner (local-exec): 1440964556,,ui,message,    amazon-ebs: 15360K ........ ........ ........ ........ ........ ........ 10% 15.1M 14s
+template_file.packer_runner (local-exec): 1440964556,,ui,message,    amazon-ebs: 18432K ........ ........ ........ ........ ........ ........ 12% 14.1M 13s
+template_file.packer_runner (local-exec): 1440964557,,ui,message,    amazon-ebs: 21504K ........ ........ ........ ........ ........ ........ 13% 15.6M 12s
+template_file.packer_runner (local-exec): 1440964557,,ui,message,    amazon-ebs: 24576K ........ ........ ........ ........ ........ ........ 15% 15.7M 12s
+template_file.packer_runner (local-exec): 1440964557,,ui,message,    amazon-ebs: 27648K ........ ........ ........ ........ ........ ........ 17% 16.4M 11s
+template_file.packer_runner (local-exec): 1440964557,,ui,message,    amazon-ebs: 30720K ........ ........ ........ ........ ........ ........ 19% 16.1M 11s
+template_file.packer_runner (local-exec): 1440964557,,ui,message,    amazon-ebs: 33792K ........ ........ ........ ........ ........ ........ 20% 16.5M 10s
+template_file.packer_runner (local-exec): 1440964558,,ui,message,    amazon-ebs: 36864K ........ ........ ........ ........ ........ ........ 22% 14.5M 10s
+template_file.packer_runner (local-exec): 1440964558,,ui,message,    amazon-ebs: 39936K ........ ........ ........ ........ ........ ........ 24% 3.83M 12s
+template_file.packer_runner (local-exec): 1440964559,,ui,message,    amazon-ebs: 43008K ........ ........ ........ ........ ........ ........ 26% 17.8M 11s
+template_file.packer_runner (local-exec): 1440964559,,ui,message,    amazon-ebs: 46080K ........ ........ ........ ........ ........ ........ 27% 15.0M 11s
+template_file.packer_runner (local-exec): 1440964559,,ui,message,    amazon-ebs: 49152K ........ ........ ........ ........ ........ ........ 29% 12.9M 10s
+template_file.packer_runner (local-exec): 1440964559,,ui,message,    amazon-ebs: 52224K ........ ........ ........ ........ ........ ........ 31% 15.3M 10s
+template_file.packer_runner (local-exec): 1440964559,,ui,message,    amazon-ebs: 55296K ........ ........ ........ ........ ........ ........ 32% 15.1M 10s
+template_file.packer_runner (local-exec): 1440964560,,ui,message,    amazon-ebs: 58368K ........ ........ ........ ........ ........ ........ 34% 14.4M 9s
+template_file.packer_runner (local-exec): 1440964561,,ui,message,    amazon-ebs: 61440K ........ ........ ........ ........ ........ ........ 36% 3.35M 10s
+template_file.packer_runner (local-exec): 1440964561,,ui,message,    amazon-ebs: 64512K ........ ........ ........ ........ ........ ........ 38% 13.3M 10s
+template_file.packer_runner (local-exec): 1440964561,,ui,message,    amazon-ebs: 67584K ........ ........ ........ ........ ........ ........ 39% 14.8M 9s
+template_file.packer_runner (local-exec): 1440964561,,ui,message,    amazon-ebs: 70656K ........ ........ ........ ........ ........ ........ 41% 13.4M 9s
+template_file.packer_runner (local-exec): 1440964561,,ui,message,    amazon-ebs: 73728K ........ ........ ........ ........ ........ ........ 43% 14.2M 9s
+template_file.packer_runner (local-exec): 1440964562,,ui,message,    amazon-ebs: 76800K ........ ........ ........ ........ ........ ........ 45% 15.8M 8s
+template_file.packer_runner (local-exec): 1440964562,,ui,message,    amazon-ebs: 79872K ........ ........ ........ ........ ........ ........ 46% 12.1M 8s
+template_file.packer_runner (local-exec): 1440964562,,ui,message,    amazon-ebs: 82944K ........ ........ ........ ........ ........ ........ 48% 15.1M 8s
+template_file.packer_runner (local-exec): 1440964562,,ui,message,    amazon-ebs: 86016K ........ ........ ........ ........ ........ ........ 50% 15.4M 7s
+template_file.packer_runner (local-exec): 1440964562,,ui,message,    amazon-ebs: 89088K ........ ........ ........ ........ ........ ........ 52% 15.1M 7s
+template_file.packer_runner (local-exec): 1440964563,,ui,message,    amazon-ebs: 92160K ........ ........ ........ ........ ........ ........ 53% 15.5M 7s
+template_file.packer_runner (local-exec): 1440964563,,ui,message,    amazon-ebs: 95232K ........ ........ ........ ........ ........ ........ 55% 15.8M 6s
+template_file.packer_runner (local-exec): 1440964563,,ui,message,    amazon-ebs: 98304K ........ ........ ........ ........ ........ ........ 57% 8.85M 6s
+template_file.packer_runner (local-exec): 1440964563,,ui,message,    amazon-ebs: 101376K ........ ........ ........ ........ ........ ........ 59% 12.8M 6s
+template_file.packer_runner (local-exec): 1440964564,,ui,message,    amazon-ebs: 104448K ........ ........ ........ ........ ........ ........ 60% 8.24M 6s
+template_file.packer_runner (local-exec): 1440964564,,ui,message,    amazon-ebs: 107520K ........ ........ ........ ........ ........ ........ 62% 5.94M 6s
+template_file.packer_runner (local-exec): 1440964564,,ui,message,    amazon-ebs: 110592K ........ ........ ........ ........ ........ ........ 64% 13.1M 5s
+template_file.packer_runner (local-exec): 1440964565,,ui,message,    amazon-ebs: 113664K ........ ........ ........ ........ ........ ........ 65% 9.79M 5s
+template_file.packer_runner (local-exec): 1440964565,,ui,message,    amazon-ebs: 116736K ........ ........ ........ ........ ........ ........ 67% 15.2M 5s
+template_file.packer_runner (local-exec): 1440964565,,ui,message,    amazon-ebs: 119808K ........ ........ ........ ........ ........ ........ 69% 12.3M 5s
+template_file.packer_runner (local-exec): 1440964565,,ui,message,    amazon-ebs: 122880K ........ ........ ........ ........ ........ ........ 71% 16.4M 4s
+template_file.packer_runner (local-exec): 1440964566,,ui,message,    amazon-ebs: 125952K ........ ........ ........ ........ ........ ........ 72% 14.0M 4s
+template_file.packer_runner (local-exec): 1440964566,,ui,message,    amazon-ebs: 129024K ........ ........ ........ ........ ........ ........ 74% 11.8M 4s
+template_file.packer_runner (local-exec): 1440964566,,ui,message,    amazon-ebs: 132096K ........ ........ ........ ........ ........ ........ 76% 14.3M 4s
+template_file.packer_runner (local-exec): 1440964566,,ui,message,    amazon-ebs: 135168K ........ ........ ........ ........ ........ ........ 78% 14.1M 3s
+template_file.packer_runner (local-exec): 1440964566,,ui,message,    amazon-ebs: 138240K ........ ........ ........ ........ ........ ........ 79% 14.9M 3s
+template_file.packer_runner (local-exec): 1440964567,,ui,message,    amazon-ebs: 141312K ........ ........ ........ ........ ........ ........ 81% 15.0M 3s
+template_file.packer_runner (local-exec): 1440964567,,ui,message,    amazon-ebs: 144384K ........ ........ ........ ........ ........ ........ 83% 15.2M 2s
+template_file.packer_runner (local-exec): 1440964567,,ui,message,    amazon-ebs: 147456K ........ ........ ........ ........ ........ ........ 85% 16.4M 2s
+template_file.packer_runner (local-exec): 1440964567,,ui,message,    amazon-ebs: 150528K ........ ........ ........ ........ ........ ........ 86% 14.0M 2s
+template_file.packer_runner (local-exec): 1440964568,,ui,message,    amazon-ebs: 153600K ........ ........ ........ ........ ........ ........ 88% 12.8M 2s
+template_file.packer_runner (local-exec): 1440964568,,ui,message,    amazon-ebs: 156672K ........ ........ ........ ........ ........ ........ 90% 15.8M 1s
+template_file.packer_runner (local-exec): 1440964568,,ui,message,    amazon-ebs: 159744K ........ ........ ........ ........ ........ ........ 91% 16.2M 1s
+template_file.packer_runner (local-exec): 1440964568,,ui,message,    amazon-ebs: 162816K ........ ........ ........ ........ ........ ........ 93% 15.2M 1s
+template_file.packer_runner (local-exec): 1440964568,,ui,message,    amazon-ebs: 165888K ........ ........ ........ ........ ........ ........ 95% 13.8M 1s
+template_file.packer_runner (local-exec): 1440964569,,ui,message,    amazon-ebs: 168960K ........ ........ ........ ........ ........ ........ 97% 15.1M 0s
+template_file.packer_runner (local-exec): 1440964569,,ui,message,    amazon-ebs: 172032K ........ ........ ........ ........ ........ ........ 98% 15.0M 0s
+template_file.packer_runner (local-exec): 1440964569,,ui,message,    amazon-ebs: 175104K ........ ........ ........ .....                     100% 17.7M=14s
+template_file.packer_runner (local-exec): 1440964569,,ui,message,    amazon-ebs:
+template_file.packer_runner (local-exec): 1440964569,,ui,message,    amazon-ebs: 2015-08-30 19:56:07 (12.2 MB/s) - `jdk-8u60-linux-x64.tar.gz' saved [181238643/181238643]
+template_file.packer_runner (local-exec): 1440964569,,ui,message,    amazon-ebs:
+template_file.packer_runner (local-exec): 1440964569,,ui,message,    amazon-ebs: Download done.
+template_file.packer_runner (local-exec): 1440964569,,ui,message,    amazon-ebs: Removing outdated cached downloads...
+template_file.packer_runner (local-exec): 1440964607,,ui,message,    amazon-ebs: update-alternatives: error: no alternatives for java.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/jre/bin/ControlPanel to provide /usr/bin/ControlPanel (ControlPanel) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/jre/bin/java to provide /usr/bin/java (java) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/jre/bin/javaws to provide /usr/bin/javaws (javaws) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/jre/bin/jcontrol to provide /usr/bin/jcontrol (jcontrol) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/jre/bin/jjs to provide /usr/bin/jjs (jjs) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/jre/bin/keytool to provide /usr/bin/keytool (keytool) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/jre/bin/orbd to provide /usr/bin/orbd (orbd) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/jre/bin/pack200 to provide /usr/bin/pack200 (pack200) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/jre/bin/policytool to provide /usr/bin/policytool (policytool) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/jre/bin/rmid to provide /usr/bin/rmid (rmid) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/jre/bin/rmiregistry to provide /usr/bin/rmiregistry (rmiregistry) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/jre/bin/servertool to provide /usr/bin/servertool (servertool) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/jre/bin/tnameserv to provide /usr/bin/tnameserv (tnameserv) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/jre/bin/unpack200 to provide /usr/bin/unpack200 (unpack200) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/jre/lib/jexec to provide /usr/bin/jexec (jexec) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/appletviewer to provide /usr/bin/appletviewer (appletviewer) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/extcheck to provide /usr/bin/extcheck (extcheck) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/idlj to provide /usr/bin/idlj (idlj) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/jar to provide /usr/bin/jar (jar) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/jarsigner to provide /usr/bin/jarsigner (jarsigner) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/javac to provide /usr/bin/javac (javac) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/javadoc to provide /usr/bin/javadoc (javadoc) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/javafxpackager to provide /usr/bin/javafxpackager (javafxpackager) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/javah to provide /usr/bin/javah (javah) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/javap to provide /usr/bin/javap (javap) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/javapackager to provide /usr/bin/javapackager (javapackager) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/jcmd to provide /usr/bin/jcmd (jcmd) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/jconsole to provide /usr/bin/jconsole (jconsole) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/jdb to provide /usr/bin/jdb (jdb) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/jdeps to provide /usr/bin/jdeps (jdeps) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/jhat to provide /usr/bin/jhat (jhat) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/jinfo to provide /usr/bin/jinfo (jinfo) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/jmap to provide /usr/bin/jmap (jmap) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/jmc to provide /usr/bin/jmc (jmc) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/jps to provide /usr/bin/jps (jps) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/jrunscript to provide /usr/bin/jrunscript (jrunscript) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/jsadebugd to provide /usr/bin/jsadebugd (jsadebugd) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/jstack to provide /usr/bin/jstack (jstack) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/jstat to provide /usr/bin/jstat (jstat) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/jstatd to provide /usr/bin/jstatd (jstatd) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/jvisualvm to provide /usr/bin/jvisualvm (jvisualvm) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/native2ascii to provide /usr/bin/native2ascii (native2ascii) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/rmic to provide /usr/bin/rmic (rmic) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/schemagen to provide /usr/bin/schemagen (schemagen) in auto mode.
+template_file.packer_runner (local-exec): 1440964609,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/serialver to provide /usr/bin/serialver (serialver) in auto mode.
+template_file.packer_runner (local-exec): 1440964610,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/wsgen to provide /usr/bin/wsgen (wsgen) in auto mode.
+template_file.packer_runner (local-exec): 1440964610,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/wsimport to provide /usr/bin/wsimport (wsimport) in auto mode.
+template_file.packer_runner (local-exec): 1440964610,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/bin/xjc to provide /usr/bin/xjc (xjc) in auto mode.
+template_file.packer_runner (local-exec): 1440964610,,ui,message,    amazon-ebs: Oracle JDK 8 installed
+template_file.packer_runner (local-exec): 1440964610,,ui,message,    amazon-ebs: update-alternatives: using /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libnpjp2.so to provide /usr/lib/mozilla/plugins/libjavaplugin.so (mozilla-javaplugin.so) in auto mode.
+template_file.packer_runner (local-exec): 1440964610,,ui,message,    amazon-ebs: Oracle JRE 8 browser plugin installed
+template_file.packer_runner (local-exec): 1440964610,,ui,message,    amazon-ebs: Setting up gsfonts (1:8.11+urwcyr1.0.7~pre44-4.2ubuntu1) ...
+template_file.packer_runner (local-exec): 1440964610,,ui,message,    amazon-ebs: Setting up libfontenc1 (1:1.1.0-1) ...
+template_file.packer_runner (local-exec): 1440964610,,ui,message,    amazon-ebs: Setting up libxfont1 (1:1.4.4-1ubuntu0.3) ...
+template_file.packer_runner (local-exec): 1440964610,,ui,message,    amazon-ebs: Setting up x11-common (1:7.6+12ubuntu2) ...
+template_file.packer_runner (local-exec): 1440964611,,ui,message,    amazon-ebs: debconf: unable to initialize frontend: Dialog
+template_file.packer_runner (local-exec): 1440964611,,ui,message,    amazon-ebs: debconf: (Dialog frontend will not work on a dumb terminal%!(PACKER_COMMA) an emacs shell buffer%!(PACKER_COMMA) or without a controlling terminal.)
+template_file.packer_runner (local-exec): 1440964611,,ui,message,    amazon-ebs: debconf: falling back to frontend: Readline
+template_file.packer_runner (local-exec): 1440964611,,ui,message,    amazon-ebs: debconf: unable to initialize frontend: Readline
+template_file.packer_runner (local-exec): 1440964611,,ui,message,    amazon-ebs: debconf: (This frontend requires a controlling tty.)
+template_file.packer_runner (local-exec): 1440964611,,ui,message,    amazon-ebs: debconf: falling back to frontend: Teletype
+template_file.packer_runner (local-exec): 1440964612,,ui,message,    amazon-ebs: Setting up xfonts-encodings (1:1.0.4-1ubuntu1) ...
+template_file.packer_runner (local-exec): 1440964612,,ui,message,    amazon-ebs: Setting up xfonts-utils (1:7.6+1) ...
+template_file.packer_runner (local-exec): 1440964612,,ui,message,    amazon-ebs: Setting up gsfonts-x11 (0.22) ...
+template_file.packer_runner (local-exec): 1440964613,,ui,message,    amazon-ebs: Processing triggers for libc-bin ...
+template_file.packer_runner (local-exec): 1440964613,,ui,message,    amazon-ebs: ldconfig deferred processing now taking place
+template_file.packer_runner (local-exec): 1440964616,,ui,message,    amazon-ebs: + sudo apt-get install oracle-java8-set-default
+template_file.packer_runner (local-exec): 1440964616,,ui,message,    amazon-ebs: Reading package lists...
+template_file.packer_runner (local-exec): 1440964617,,ui,message,    amazon-ebs: Building dependency tree...
+template_file.packer_runner (local-exec): 1440964617,,ui,message,    amazon-ebs: Reading state information...
+template_file.packer_runner (local-exec): 1440964617,,ui,message,    amazon-ebs: The following NEW packages will be installed:
+template_file.packer_runner (local-exec): 1440964617,,ui,message,    amazon-ebs: oracle-java8-set-default
+template_file.packer_runner (local-exec): 1440964617,,ui,message,    amazon-ebs: 0 upgraded%!(PACKER_COMMA) 1 newly installed%!(PACKER_COMMA) 0 to remove and 2 not upgraded.
+template_file.packer_runner (local-exec): 1440964617,,ui,message,    amazon-ebs: Need to get 4%!(PACKER_COMMA)704 B of archives.
+template_file.packer_runner (local-exec): 1440964617,,ui,message,    amazon-ebs: After this operation%!(PACKER_COMMA) 37.9 kB of additional disk space will be used.
+template_file.packer_runner (local-exec): 1440964617,,ui,message,    amazon-ebs: Get:1 http://ppa.launchpad.net/webupd8team/java/ubuntu/ precise/main oracle-java8-set-default all 8u60+8u60arm-1~webupd8~1 [4%!(PACKER_COMMA)704 B]
+template_file.packer_runner (local-exec): 1440964617,,ui,message,    amazon-ebs: debconf: unable to initialize frontend: Dialog
+template_file.packer_runner (local-exec): 1440964617,,ui,message,    amazon-ebs: debconf: (Dialog frontend will not work on a dumb terminal%!(PACKER_COMMA) an emacs shell buffer%!(PACKER_COMMA) or without a controlling terminal.)
+template_file.packer_runner (local-exec): 1440964617,,ui,message,    amazon-ebs: debconf: falling back to frontend: Readline
+template_file.packer_runner (local-exec): 1440964617,,ui,message,    amazon-ebs: debconf: unable to initialize frontend: Readline
+template_file.packer_runner (local-exec): 1440964617,,ui,message,    amazon-ebs: debconf: (This frontend requires a controlling tty.)
+template_file.packer_runner (local-exec): 1440964617,,ui,message,    amazon-ebs: debconf: falling back to frontend: Teletype
+template_file.packer_runner (local-exec): 1440964617,,ui,message,    amazon-ebs: dpkg-preconfigure: unable to re-open stdin:
+template_file.packer_runner (local-exec): 1440964617,,ui,message,    amazon-ebs: Fetched 4%!(PACKER_COMMA)704 B in 0s (14.4 kB/s)
+template_file.packer_runner (local-exec): 1440964617,,ui,message,    amazon-ebs: Selecting previously unselected package oracle-java8-set-default.
+template_file.packer_runner (local-exec): 1440964617,,ui,message,    amazon-ebs: (Reading database ... 48075 files and directories currently installed.)
+template_file.packer_runner (local-exec): 1440964617,,ui,message,    amazon-ebs: Unpacking oracle-java8-set-default (from .../oracle-java8-set-default_8u60+8u60arm-1~webupd8~1_all.deb) ...
+template_file.packer_runner (local-exec): 1440964617,,ui,message,    amazon-ebs: Setting up oracle-java8-set-default (8u60+8u60arm-1~webupd8~1) ...
+template_file.packer_runner (local-exec): 2015/08/30 19:56:59 packer-builder-amazon-ebs: 2015/08/30 19:56:59 remote command exited with '0': chmod +x /tmp/script_7943.sh; PACKER_BUILD_NAME='amazon-ebs' PACKER_BUILDER_TYPE='amazon-ebs' /tmp/script_7943.sh
+template_file.packer_runner (local-exec): 2015/08/30 19:56:59 packer-builder-amazon-ebs: 2015/08/30 19:56:59 [INFO] RPC endpoint: Communicator ended with: 0
+template_file.packer_runner (local-exec): 2015/08/30 19:56:59 [INFO] 14870 bytes written for 'stderr'
+template_file.packer_runner (local-exec): 2015/08/30 19:56:59 [INFO] 8907 bytes written for 'stdout'
+template_file.packer_runner (local-exec): 2015/08/30 19:56:59 [INFO] RPC client: Communicator ended with: 0
+template_file.packer_runner (local-exec): 2015/08/30 19:56:59 [INFO] RPC endpoint: Communicator ended with: 0
+template_file.packer_runner (local-exec): 2015/08/30 19:56:59 packer-provisioner-shell: 2015/08/30 19:56:59 [INFO] 14870 bytes written for 'stderr'
+template_file.packer_runner (local-exec): 2015/08/30 19:56:59 packer-provisioner-shell: 2015/08/30 19:56:59 [INFO] 8907 bytes written for 'stdout'
+template_file.packer_runner (local-exec): 2015/08/30 19:56:59 packer-provisioner-shell: 2015/08/30 19:56:59 [INFO] RPC client: Communicator ended with: 0
+template_file.packer_runner (local-exec): 2015/08/30 19:56:59 packer-builder-amazon-ebs: 2015/08/30 19:56:59 opening new ssh session
+template_file.packer_runner (local-exec): 2015/08/30 19:56:59 packer-builder-amazon-ebs: 2015/08/30 19:56:59 starting remote command: rm -f /tmp/script_7943.sh
+template_file.packer_runner (local-exec): 2015/08/30 19:57:00 packer-builder-amazon-ebs: 2015/08/30 19:57:00 remote command exited with '0': rm -f /tmp/script_7943.sh
+template_file.packer_runner (local-exec): 2015/08/30 19:57:00 packer-builder-amazon-ebs: 2015/08/30 19:57:00 [INFO] RPC endpoint: Communicator ended with: 0
+template_file.packer_runner (local-exec): 2015/08/30 19:57:00 [INFO] RPC client: Communicator ended with: 0
+template_file.packer_runner (local-exec): 2015/08/30 19:57:00 [INFO] RPC endpoint: Communicator ended with: 0
+template_file.packer_runner (local-exec): 2015/08/30 19:57:00 packer-provisioner-shell: 2015/08/30 19:57:00 [INFO] RPC client: Communicator ended with: 0
+template_file.packer_runner (local-exec): 1440964620,,ui,say,==> amazon-ebs: Stopping the source instance...
+template_file.packer_runner (local-exec): 1440964620,,ui,say,==> amazon-ebs: Waiting for the instance to stop...
+template_file.packer_runner (local-exec): 2015/08/30 19:57:00 packer-builder-amazon-ebs: 2015/08/30 19:57:00 Waiting for state to become: stopped
+template_file.packer_runner (local-exec): 2015/08/30 19:57:00 packer-builder-amazon-ebs: 2015/08/30 19:57:00 Allowing 300s to complete (change with AWS_TIMEOUT_SECONDS)
+template_file.packer_runner (local-exec): 1440964648,,ui,say,==> amazon-ebs: Creating the AMI: lift-jetty-cluster-aws-20150830195128
+template_file.packer_runner (local-exec): 1440964648,,ui,message,    amazon-ebs: AMI: ami-ab8a71ef
+template_file.packer_runner (local-exec): 1440964648,,ui,say,==> amazon-ebs: Waiting for AMI to become ready...
+template_file.packer_runner (local-exec): 2015/08/30 19:57:28 packer-builder-amazon-ebs: 2015/08/30 19:57:28 Waiting for state to become: available
+template_file.packer_runner (local-exec): 2015/08/30 19:57:28 packer-builder-amazon-ebs: 2015/08/30 19:57:28 Allowing 300s to complete (change with AWS_TIMEOUT_SECONDS)
+template_file.packer_runner (local-exec): 1440964807,,ui,say,==> amazon-ebs: Adding tags to AMI (ami-ab8a71ef)...
+template_file.packer_runner (local-exec): 1440964807,,ui,message,    amazon-ebs: Adding tag: "Name": "lift-jetty-cluster-aws"
+template_file.packer_runner (local-exec): 1440964807,,ui,message,    amazon-ebs: Adding tag: "Timestamp": "20150830195128"
+template_file.packer_runner (local-exec): 1440964807,,ui,say,==> amazon-ebs: Tagging snapshot: snap-f1520bd7
+template_file.packer_runner (local-exec): 1440964807,,ui,say,==> amazon-ebs: Terminating the source AWS instance...
+template_file.packer_runner (local-exec): 2015/08/30 20:00:08 packer-builder-amazon-ebs: 2015/08/30 20:00:08 Waiting for state to become: terminated
+template_file.packer_runner (local-exec): 2015/08/30 20:00:08 packer-builder-amazon-ebs: 2015/08/30 20:00:08 Allowing 300s to complete (change with AWS_TIMEOUT_SECONDS)
+template_file.packer_runner (local-exec): 1440964814,,ui,say,==> amazon-ebs: Cleaning up any extra volumes...
+template_file.packer_runner (local-exec): 1440964815,,ui,say,==> amazon-ebs: No volumes to clean up%!(PACKER_COMMA) skipping
+template_file.packer_runner (local-exec): 1440964815,,ui,say,==> amazon-ebs: Deleting temporary keypair...
+template_file.packer_runner (local-exec): 1440964815,,ui,say,Build 'amazon-ebs' finished.
+template_file.packer_runner (local-exec): 2015/08/30 20:00:15 Builds completed. Waiting on interrupt barrier...
+template_file.packer_runner (local-exec): 1440964815,,ui,say,\n==> Builds finished. The artifacts of successful builds are:
+template_file.packer_runner (local-exec): 1440964815,amazon-ebs,artifact-count,1
+template_file.packer_runner (local-exec): 1440964815,amazon-ebs,artifact,0,builder-id,mitchellh.amazonebs
+template_file.packer_runner (local-exec): 1440964815,amazon-ebs,artifact,0,id,us-west-1:ami-ab8a71ef
+template_file.packer_runner (local-exec): 1440964815,amazon-ebs,artifact,0,string,AMIs were created:\n\nus-west-1: ami-ab8a71ef
+template_file.packer_runner (local-exec): 1440964815,amazon-ebs,artifact,0,files-count,0
+template_file.packer_runner (local-exec): 1440964815,amazon-ebs,artifact,0,end
+template_file.packer_runner (local-exec): 1440964815,,ui,say,--> amazon-ebs: AMIs were created:\n\nus-west-1: ami-ab8a71ef
+template_file.packer_runner (local-exec): 2015/08/30 20:00:15 waiting for all plugin processes to complete...
+template_file.packer_runner (local-exec): 2015/08/30 20:00:15 /home/rof/.packer/packer-provisioner-shell: plugin process exited
+template_file.packer_runner (local-exec): 2015/08/30 20:00:15 /home/rof/.packer/packer-builder-amazon-ebs: plugin process exited
+template_file.packer_runner (local-exec): Produced AMI at ami-ab8a71ef
+template_file.packer_runner: Creation complete
+template_file.packer: Creating...
+filename: "" => "../../../../dev/null"
+rendered: "" => "<computed>"
+vars.#:   "" => "1"
+vars.ami: "" => "ami-ab8a71ef"
+template_file.packer: Creation complete
+Error applying plan:
+
+1 error(s) occurred:
+
+* aws_launch_configuration.lift_as_conf: diffs didn't match during apply. This is a bug with Terraform and should be reported.
+
+Terraform does not automatically rollback in the face of errors.
+Instead, your Terraform state file has been partially updated with
+any resources that successfully completed. Please address the error
+above and apply again to incrementally change your infrastructure.
