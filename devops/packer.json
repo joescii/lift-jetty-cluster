@@ -42,8 +42,8 @@
     },
     {
       "type": "file",
-      "source": "./lift-svc.sh",
-      "destination": "/tmp/lift-svc.sh"
+      "source": "./rc.local",
+      "destination": "/tmp/rc.local"
     },
     {
       "type": "file",
