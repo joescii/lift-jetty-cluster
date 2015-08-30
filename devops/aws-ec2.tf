@@ -43,7 +43,7 @@ resource "aws_security_group" "lift_elb_sg" {
 }
 
 resource "aws_launch_configuration" "lift_as_conf" {
-  name = "lift-as-launch-config"
+  name = "lift-as-launch-config-${var.timestamp}"
   depends_on = "template_file.packer"
   image_id = "${template_file.packer.vars.ami}"
   instance_type = "t2.micro"
@@ -53,15 +53,15 @@ resource "aws_launch_configuration" "lift_as_conf" {
     "${module.vpc.bastion_accessible_sg_id}"
   ]
 
-#  lifecycle {
-#    create_before_destroy = true
-#  }
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_autoscaling_group" "lift_as" {
   availability_zones = ["${module.region.zone_A}", "${module.region.zone_B}"]
   vpc_zone_identifier = ["${module.vpc.zone_A_private_id}", "${module.vpc.zone_B_private_id}"]
-  name = "lift-autoscaling-group"
+  name = "lift-autoscaling-group-${var.timestamp}"
   max_size = 1
   min_size = 1
   health_check_grace_period = 300
@@ -71,13 +71,13 @@ resource "aws_autoscaling_group" "lift_as" {
   launch_configuration = "${aws_launch_configuration.lift_as_conf.id}"
   load_balancers = ["${aws_elb.lift-elb.name}"]
 
-#  lifecycle {
-#    create_before_destroy = true
-#  }
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_elb" "lift-elb" {
-  name = "lift-elb"
+  name = "lift-elb-${var.timestamp}"
   subnets = ["${module.vpc.zone_A_public_id}", "${module.vpc.zone_B_public_id}"]
   security_groups = ["${aws_security_group.lift_elb_sg.id}"]
   internal = false
@@ -99,9 +99,9 @@ resource "aws_elb" "lift-elb" {
     interval = 5
   }
  
-#  lifecycle {
-#    create_before_destroy = true
-#  }
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 #resource "aws_app_cookie_stickiness_policy" "lift_stickiness_policy" {
