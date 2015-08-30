@@ -2,8 +2,8 @@ variable "access_key" {}
 variable "secret_key" {}
 
 # Used to select the region template from github.com/joescii/aws-terraform-modules/
-variable "region" {
-  default = "us-west-1"
+variable "region_src" {
+  default = "github.com/joescii/aws-terraform-modules/us-west-1"
 }
 variable "ec2_key_name" {
   default = "sandbox"

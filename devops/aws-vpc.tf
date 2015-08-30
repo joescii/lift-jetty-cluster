@@ -3,7 +3,7 @@ module "vpc" {
   
   vpc_name = "lift-jetty-cluster"
   ec2_key_name = "${var.ec2_key_name}"
-  region = "${var.region}"
+  region = "${module.region.region}"
   zone_A = "${module.region.zone_A}"
   zone_B = "${module.region.zone_B}"
   nat_ami = "${module.region.nat_ami}"
