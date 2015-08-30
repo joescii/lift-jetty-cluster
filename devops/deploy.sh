@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Packages and deploys the project to AWS.
-# Assumes that terraform (and transitively, packer) are on the current path
+# Assumes that sbt, terraform (and transitively, packer) are on the current path
 
 # Exit if anything fails
 set -e
@@ -36,19 +36,19 @@ terraform remote config \
 # Retrieve modules from github
 terraform get
 
-terraform apply \
-  -var "access_key=${AWS_ACCESS_KEY_ID}" \
-  -var "secret_key=${AWS_SECRET_ACCESS_KEY}" \
-  -var "db_username=${DB_USERNAME}" \
-  -var "db_password=${DB_PASSWORD}" \
-  -var "timestamp=${timestamp}"
-
-# If ever needed...
-#terraform destroy -force  \
+#terraform apply \
 #  -var "access_key=${AWS_ACCESS_KEY_ID}" \
 #  -var "secret_key=${AWS_SECRET_ACCESS_KEY}" \
 #  -var "db_username=${DB_USERNAME}" \
 #  -var "db_password=${DB_PASSWORD}" \
 #  -var "timestamp=${timestamp}"
+
+# If ever needed...
+terraform destroy -force  \
+  -var "access_key=${AWS_ACCESS_KEY_ID}" \
+  -var "secret_key=${AWS_SECRET_ACCESS_KEY}" \
+  -var "db_username=${DB_USERNAME}" \
+  -var "db_password=${DB_PASSWORD}" \
+  -var "timestamp=${timestamp}"
 
 popd
