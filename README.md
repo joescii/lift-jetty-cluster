@@ -99,8 +99,9 @@ It is 100% free to use (up to a certain number of builds per month).
 
 ## TODO
 
-* Launch sample Lift app in EC2
+* Figure out ajax issue
 * Create a `us-west-1` module
+* Package `webapp` into jar file
 * Prune `target` dir
 * Rename `sandbox.pub`
 * Load balance multiple Lift instances
