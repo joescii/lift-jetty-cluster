@@ -1,3 +1,3 @@
 module "region" {
-  source = "${var.region_src}"
+  source = "github.com/joescii/aws-terraform-modules/us-west-1"
 }
