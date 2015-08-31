@@ -99,7 +99,6 @@ It is 100% free to use (up to a certain number of builds per month).
 
 ## TODO
 
-* Figure out ajax issue
 * Only open packer SG to the build server's public IP
 * Package `webapp` into jar file
 * Prune `target` dir

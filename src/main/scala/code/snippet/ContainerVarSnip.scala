@@ -3,7 +3,7 @@ package code.snippet
 import net.liftweb.http.ContainerVar
 import net.liftweb.http.js.JE._
 import net.liftweb.http.js.JsCmd
-import net.liftweb.http.js.JsCmds.SetHtml
+import net.liftweb.http.js.JsCmds.{SetValById, SetExp, SetHtml}
 import net.liftweb.util.Helpers._
 import net.liftweb.http.SHtml._
 
@@ -15,7 +15,7 @@ object ContainerVarSnip {
   def callback(value:String):JsCmd = {
     TestVar(value)
     SetHtml("container-var", Text(value)) &
-    (ElemById("input-text") ~> JsFunc("value", "")).cmd
+    SetValById("input-text", "")
   }
 
   def render =
