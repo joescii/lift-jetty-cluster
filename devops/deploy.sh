@@ -26,6 +26,10 @@ pushd ./devops
 # Terraform will complain if it doesn't see this already in place
 touch ./ami.txt
 
+# For best security, only allow Packer Builder to communicate with THIS server
+publicIp=`curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//' | tr -d '\n'`
+cidrBlock="${publicIp}/32"
+
 # It seems remote config only works if the default region is set to us-east-1
 export AWS_DEFAULT_REGION="us-east-1" 
 terraform remote config \
@@ -41,7 +45,8 @@ terraform apply \
   -var "secret_key=${AWS_SECRET_ACCESS_KEY}" \
   -var "db_username=${DB_USERNAME}" \
   -var "db_password=${DB_PASSWORD}" \
-  -var "timestamp=${timestamp}"
+  -var "timestamp=${timestamp}" \
+  -var "ci_server_cidr_block=${cidrBlock}"
 
 # If ever needed...
 #terraform destroy -force  \
@@ -49,6 +54,6 @@ terraform apply \
 #  -var "secret_key=${AWS_SECRET_ACCESS_KEY}" \
 #  -var "db_username=${DB_USERNAME}" \
 #  -var "db_password=${DB_PASSWORD}" \
-#  -var "timestamp=${timestamp}"
+#  -var "timestamp=${timestamp}" 
 
 popd
