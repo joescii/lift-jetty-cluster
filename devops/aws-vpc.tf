@@ -1,3 +1,7 @@
+module "public_ip" {
+  source = "github.com/joescii/aws-terraform-modules/public-ip"
+}
+
 module "vpc" {
   source = "github.com/joescii/aws-terraform-modules/vpc-2-zones"
   
@@ -8,4 +12,5 @@ module "vpc" {
   zone_B = "${module.region.zone_B}"
   nat_ami = "${module.region.nat_ami}"
   bastion_ami = "${module.region.bastion_ami}"
+  packer_sg_cidr_block = "${module.public_ip.cidr_block}"
 }
