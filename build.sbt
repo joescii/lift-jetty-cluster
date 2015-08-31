@@ -11,10 +11,6 @@ resolvers ++= Seq(
   "releases"  at "https://oss.sonatype.org/content/repositories/releases"
 )
 
-seq(webSettings :_*)
-
-unmanagedResourceDirectories in Test <+= (baseDirectory) { _ / "src/main/webapp" }
-
 scalacOptions ++= Seq("-deprecation", "-unchecked")
 
 libraryDependencies ++= {
@@ -31,6 +27,8 @@ libraryDependencies ++= {
     "org.specs2"              %% "specs2"                             % "2.3.12"              % "test"
   )
 }
+
+enablePlugins(JettyPlugin)
 
 enablePlugins(JavaAppPackaging)
 
