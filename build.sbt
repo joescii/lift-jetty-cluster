@@ -1,5 +1,3 @@
-import NativePackagerKeys._
-
 name := "lift-jetty-cluster-aws"
 
 version := "0.0.1"
@@ -34,7 +32,7 @@ libraryDependencies ++= {
   )
 }
 
-packageArchetype.java_application
+enablePlugins(JavaAppPackaging)
 
 bashScriptConfigLocation := Some("${app_home}/../conf/jvmopts")
 
