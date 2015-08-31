@@ -24,7 +24,6 @@ tar -zcf ./devops/app.tar.gz target/
 pushd ./devops
 
 # Terraform will complain if it doesn't see this already in place
-touch ./ip.txt
 touch ./ami.txt
 
 # It seems remote config only works if the default region is set to us-east-1
