@@ -71,18 +71,18 @@ Out of the box, it knows how to define it's entire infrastructure in a blank AWS
 If you do not already have a suitable key pair created in AWS, you will need to create one.
 Go to the _EC2 Dashboard_ and find _Network & Security_ -> _Key Pairs_.
 Click the _Create Key Pair_ button and enter "sandbox".
-(You can name it differently, but you will need to modify the terraform files in this project to match.)
+(You can name it differently, but you will need to modify the `ec2_key_name` variable in `devops/variables.tf` in this project to match.)
 Save the downloaded `sandbox.pem` file somewhere safe.
 
-If you already have a key pair, or you gave it a different name, then update the default value for `ec2_key_name` in `variables.tf`.
+If you already have a key pair, or you gave it a different name, then update the default value for `ec2_key_name` in `devops/variables.tf`.
 
 Convert the `sandbox.pem` private key into a public key:
 
 ```bash
-ssh-keygen -y -f sandbox.pem > sandbox.pub
+ssh-keygen -y -f sandbox.pem > ssh-key.pub
 ```
 
-Save `sandbox.pub` in the `devops/` directory.
+Save and commit `ssh-key.pub` into the `devops/` directory.
 With this key pair, you will be able to SSH into your EC2 instances running Lift.
 
 ### Environment
@@ -99,7 +99,6 @@ It is 100% free to use (up to a certain number of builds per month).
 
 ## TODO
 
-* Rename `sandbox.pub`
 * Load balance multiple Lift instances
 * Enable cluster in AWS
 * Heroku deployment
