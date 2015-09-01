@@ -19,7 +19,7 @@ timestamp=`date +"%Y%m%d%H%M%S"`
 
 # Build and package up the application
 sbt stage
-tar -zcf ./devops/app.tar.gz target/ 
+tar -zcvf ./devops/app.tar.gz target/webapp target/universal
 
 pushd ./devops
 
