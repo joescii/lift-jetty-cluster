@@ -99,7 +99,6 @@ It is 100% free to use (up to a certain number of builds per month).
 
 ## TODO
 
-* Prune `target` dir
 * Rename `sandbox.pub`
 * Load balance multiple Lift instances
 * Enable cluster in AWS
