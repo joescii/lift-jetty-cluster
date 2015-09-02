@@ -99,7 +99,6 @@ It is 100% free to use (up to a certain number of builds per month).
 
 ## TODO
 
-* Load balance multiple Lift instances
 * Enable cluster in AWS
 * Heroku deployment
 * Package `webapp` into jar file
