@@ -17,3 +17,6 @@ variable "timestamp" {}
 # The two db variables will be provided to the deploy.sh script as environment variables
 variable "db_username" {}
 variable "db_password" {}
+
+# The private_key will be provided by deploy.sh via the PRIVATE_KEY var.
+variable "private_key" {}

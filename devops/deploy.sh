@@ -13,6 +13,7 @@ set -e
 : ${TF_STATE_KEY:?"Must supply TF_STATE_KEY environment variable (The S3 key to store terraform state)"}
 : ${DB_USERNAME:?"Must supply DB_USERNAME environment variable"}
 : ${DB_PASSWORD:?"Must supply DB_PASSWORD environment variable"}
+: ${PRIVATE_KEY:?"Must supply private SSH key"}
 
 # Create a timestamp for uniquefying stuff
 timestamp=`date +"%Y%m%d%H%M%S"`
