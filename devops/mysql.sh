@@ -8,7 +8,7 @@ db_password=$2
 rds_host=$3
 rds_port=$4
 
-pushd tools
+pushd ../tools
 
 # Install mysql
 mkdir mysql
