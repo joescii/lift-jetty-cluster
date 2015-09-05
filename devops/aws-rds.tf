@@ -91,7 +91,7 @@ resource "aws_db_instance" "lift_db" {
   parameter_group_name = "${aws_db_parameter_group.mysql56_utf8.name}"
   multi_az = "true"
   
-  provisioner "local-exec" {
-    command = "./mysql.sh ${var.db_username} ${var.db_password} ${self.address} ${self.port}"
+  provisioner "remote-exec" {
+    script = "./setup.sql"
   }
 }
