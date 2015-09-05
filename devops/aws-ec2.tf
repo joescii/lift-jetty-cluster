@@ -42,6 +42,85 @@ resource "aws_security_group" "lift_elb_sg" {
   }
 }
 
+resource "aws_launch_configuration" "lift_as_conf" {
+  name = "lift-as-launch-config-${var.timestamp}"
+  depends_on = "template_file.packer"
+  image_id = "${template_file.packer.vars.ami}"
+  instance_type = "t2.micro"
+  key_name = "${var.ec2_key_name}"
+  security_groups = [
+    "${aws_security_group.lift_instance_sg.id}",
+    "${module.vpc.bastion_accessible_sg_id}"
+  ]
+  user_data = "${template_file.user_data.rendered}"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "template_file" "user_data" {
+  filename = "./user_data.sh"
+  
+  vars {
+    db_host = "${aws_db_instance.lift_db.address}"
+    db_port = "${aws_db_instance.lift_db.port}"
+  }
+}
+
+resource "aws_autoscaling_group" "lift_as" {
+  availability_zones = ["${module.region.zone_A}", "${module.region.zone_B}"]
+  vpc_zone_identifier = ["${module.vpc.zone_A_private_id}", "${module.vpc.zone_B_private_id}"]
+  name = "lift-autoscaling-group-${var.timestamp}"
+  desired_capacity = 2
+  max_size = 2
+  min_size = 2
+  health_check_grace_period = 300
+  health_check_type = "ELB"
+  force_delete = true
+  launch_configuration = "${aws_launch_configuration.lift_as_conf.id}"
+  load_balancers = ["${aws_elb.lift-elb.name}"]
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_elb" "lift-elb" {
+  name = "lift-elb-${var.timestamp}"
+  subnets = ["${module.vpc.zone_A_public_id}", "${module.vpc.zone_B_public_id}"]
+  security_groups = ["${aws_security_group.lift_elb_sg.id}"]
+  internal = false
+  cross_zone_load_balancing = true
+  depends_on = "aws_launch_configuration.lift_as_conf"
+  
+  listener {
+    instance_port = 8080
+    instance_protocol = "http"
+    lb_port = 80
+    lb_protocol = "http" 
+  }
+ 
+  health_check {
+    healthy_threshold = 2
+    unhealthy_threshold = 2
+    timeout = 3
+    target = "HTTP:8080/"
+    interval = 5
+  }
+ 
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_app_cookie_stickiness_policy" "lift_stickiness_policy" {
+  name = "lift-policy"
+  load_balancer = "${aws_elb.lift-elb.id}"
+  lb_port = 80
+  cookie_name = "JSESSIONID"
+}
+
 resource "template_file" "packer" {
   filename = "/dev/null"
   depends_on = "template_file.packer_runner"
