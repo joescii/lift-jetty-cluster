@@ -23,6 +23,7 @@ cd ..
 popd
 
 echo "-----BEGIN RSA PRIVATE KEY-----" > key.pem
+chmod 600 key.pem
 echo "${private_key}" >> key.pem
 echo "-----END RSA PRIVATE KEY-----" >> key.pem
 
