@@ -1,6 +1,8 @@
 # lift-jetty-cluster-aws
 Sample Lift project that runs embedded Jetty in a cluster on AWS
 
+[ ![Codeship Status for joescii/lift-jetty-cluster-aws](https://codeship.com/projects/c0e8eac0-2c0b-0133-b2b8-16bcb9ef4133/status?branch=master)](https://codeship.com/projects/98491)
+
 ## Running Locally
 You can run this Lift project locally in development mode like any other Lift project with `sbt ~container:start`.
 Clustering is configured in `bootstrap.liftweb.Start` which is only used when running stand-alone outside of sbt.
