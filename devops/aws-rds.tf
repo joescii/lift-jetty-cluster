@@ -71,10 +71,10 @@ resource "aws_db_parameter_group" "mysql56_utf8" {
   # We have a chicken-and-egg problem here.  TF does not run our provisioner
   # until the parameter group has been applied, and hence we have not created
   # the procedure before calling it.
-#  parameter {
-#    name = "init_connect"
-#    value = "call lift_sessions.initConnect()"
-#  }
+  parameter {
+    name = "init_connect"
+    value = "call lift_sessions.initConnect()"
+  }
 }
 
 resource "aws_db_instance" "lift_db" {
