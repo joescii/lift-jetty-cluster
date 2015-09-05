@@ -86,12 +86,17 @@ resource "aws_db_instance" "lift_db" {
   name = "LIFT"
   username = "${var.db_username}"
   password = "${var.db_password}"
-  vpc_security_group_ids = ["${aws_security_group.lift_db_sg.id}"]
+  vpc_security_group_ids = [
+    "${aws_security_group.lift_db_sg.id}",
+    "${module.vpc.ci_accessible_sg_id}"
+  ]
   db_subnet_group_name = "${aws_db_subnet_group.all_azs.name}"
   parameter_group_name = "${aws_db_parameter_group.mysql56_utf8.name}"
   multi_az = "true"
+  publicly_accessible = "true"
   
-  provisioner "remote-exec" {
-    script = "./setup.sql"
+  provisioner "local-exec" {
+    command = "./mysql.sh ${var.db_username} ${var.db_password} ${self.address} ${self.port}"
   }
 }
+
