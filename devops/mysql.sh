@@ -18,6 +18,8 @@ gunzip -cdfv mysql-5.6.19-linux-glibc2.5-x86_64.tar.gz | sudo tar -vx
 export PATH="${PATH}:${PWD}/bin"
 cd ..
 
+popd
+
 sh -c "cat > setup.sql" <<EOF
 create database lift_sessions;
 create user 'jetty'@'localhost' identified by 'lift-rocks';
@@ -26,5 +28,4 @@ EOF
 
 mysql -h ${rds_host} -P ${rds_port} --user=${db_username} --password=${db_password} < setup.sql
 
-popd
 
