@@ -47,7 +47,7 @@ terraform apply \
   -var "db_username=${DB_USERNAME}" \
   -var "db_password=${DB_PASSWORD}" \
   -var "timestamp=${timestamp}" \
-  -var "ci_server_cidr_block=${cidrBlock}"
+  -var "ci_server_cidr_block=${cidrBlock}" \
   -var "private_key=${PRIVATE_KEY}"
 
 # If ever needed...
