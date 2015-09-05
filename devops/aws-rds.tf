@@ -23,60 +23,6 @@ resource "aws_security_group" "lift_db_sg" {
   }
 }
 
-resource "aws_db_parameter_group" "mysql56_utf8" {
-  name = "mysql56-utf8"
-  family = "mysql5.6"
-  description = "RDS utf-8 parameter group"
-
-  parameter {
-    name = "character_set_client"
-    value = "utf8mb4"
-  }
-
-  parameter {
-    name = "character_set_connection"
-    value = "utf8mb4"
-  }
-
-  parameter {
-    name = "character_set_database"
-    value = "utf8mb4"
-  }
-
-  parameter {
-    name = "character_set_results"
-    value = "utf8mb4"
-  }
-
-  parameter {
-    name = "character_set_server"
-    value = "utf8mb4"
-  }
-
-  parameter {
-    name = "character_set_filesystem"
-    value = "binary"
-  }
-
-  parameter {
-    name = "collation_connection"
-    value = "utf8mb4_general_ci"
-  }
-
-  parameter {
-    name = "collation_server"
-    value = "utf8mb4_general_ci"
-  }
-
-  # We have a chicken-and-egg problem here.  TF does not run our provisioner
-  # until the parameter group has been applied, and hence we have not created
-  # the procedure before calling it.
-#  parameter {
-#    name = "init_connect"
-#    value = "call lift_sessions.initConnect()"
-#  }
-}
-
 resource "aws_db_instance" "lift_db" {
   identifier = "lift-db"
   allocated_storage = 5
@@ -91,7 +37,6 @@ resource "aws_db_instance" "lift_db" {
     "${module.vpc.ci_accessible_sg_id}"
   ]
   db_subnet_group_name = "${aws_db_subnet_group.all_azs.name}"
-  parameter_group_name = "${aws_db_parameter_group.mysql56_utf8.name}"
   multi_az = "true"
   publicly_accessible = "true"
   
