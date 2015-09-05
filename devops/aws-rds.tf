@@ -40,4 +40,8 @@ resource "aws_db_instance" "lift_db" {
   db_subnet_group_name = "${aws_db_subnet_group.all_azs.name}"
   parameter_group_name = "${module.mysql56_utf8.name}"
   multi_az = "true"
+  
+  provisioner "local-exec" {
+    command = "./mysql.sh ${var.db_username} ${var.db_password} ${aws_db_instace.lift_db.address} ${aws_db_instace.lift_db.port}"
+  }
 }
