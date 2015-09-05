@@ -14,7 +14,7 @@ pushd ../tools
 mkdir mysql
 cd mysql
 wget http://downloads.mysql.com/archives/get/file/mysql-5.6.19-linux-glibc2.5-x86_64.tar.gz
-gunzip -cdfv mysql-5.6.19-linux-glibc2.5-x86_64.tar.gz | sudo tar -vx 
+gunzip -cdfv mysql-5.6.19-linux-glibc2.5-x86_64.tar.gz | tar -vx 
 export PATH="${PATH}:${PWD}/bin"
 cd ..
 
