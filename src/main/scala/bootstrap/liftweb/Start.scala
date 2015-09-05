@@ -5,6 +5,7 @@ import net.liftweb.util.{StringHelpers, LoggingAutoConfigurer, Props}
 import org.eclipse.jetty.server.Server
 import org.eclipse.jetty.server.session.{JDBCSessionManager, JDBCSessionIdManager}
 import org.eclipse.jetty.webapp.WebAppContext
+import util.Properties
 
 object Start extends App with Loggable {
 
@@ -44,8 +45,10 @@ object Start extends App with Loggable {
 
       logger.info(s"WorkerName: $workerName")
 
+      val dbHost = Properties.envOrElse("DB_HOST", "127.0.0.1")
+      val dbPort = Properties.envOrElse("DB_PORT", "3306")
       val driver = Props.get("cluster.jdbc.driver").openOrThrowException("Cannot boot in cluster mode without property 'session.jdbc.driver' defined in props file")
-      val endpoint = Props.get("cluster.jdbc.endpoint").openOrThrowException("Cannot boot in cluster mode without property 'session.jdbc.endpoint' defined in props file")
+      val endpoint = s"jdbc:mysql://$dbHost:$dbPort/lift_sessions?user=jetty&password=lift-rocks"
       val idMgr = new JDBCSessionIdManager(server)
       idMgr.setWorkerName(workerName)
       idMgr.setDriverInfo(driver, endpoint)
