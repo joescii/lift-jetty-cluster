@@ -23,6 +23,7 @@ resource "aws_security_group" "lift_db_sg" {
   }
 }
 
+# Once you're up and running, can remove, publicly_accessible, ci_accessible_sg_id, and the provisioner.
 resource "aws_db_instance" "lift_db" {
   identifier = "lift-db"
   allocated_storage = 5
