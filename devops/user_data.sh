@@ -3,10 +3,10 @@
 # Exit if anything fails
 set -e
 
-sh -c "cat > /opt/lift/env.sh" <<EOF
 export DB_HOST=${db_host}
 export DB_PORT=${db_port}
-EOF
 
-chown -R lift /opt/lift/env.sh
-chmod 755 /opt/lift/env.sh
+cd /opt/lift/
+
+# Kick off the app
+sudo -H -u lift nohup /opt/lift/target/universal/stage/bin/lift-jetty-cluster-aws > /opt/lift/log.txt
