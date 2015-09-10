@@ -42,11 +42,6 @@
     },
     {
       "type": "file",
-      "source": "./rc.local",
-      "destination": "/tmp/rc.local"
-    },
-    {
-      "type": "file",
       "source": "./ssh-key.pub",
       "destination": "/tmp/authorized_keys"
     },
