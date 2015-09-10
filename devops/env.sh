@@ -27,9 +27,6 @@ unzip terraform_0.6.3_linux_amd64.zip
 append="${append}:${PWD}"
 cd ..
 
-# Install aws cli
-pip install awscli
-
 export PATH="${PATH}${append}"
 
 popd
