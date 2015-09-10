@@ -37,5 +37,23 @@ resource "aws_db_instance" "lift_db" {
   ]
   db_subnet_group_name = "${aws_db_subnet_group.all_azs.name}"
   multi_az = "true"
+  
+  provisioner "file" {
+    source = "./setup.sql"
+    destination = "/tmp/mysql-${var.timestamp}.sql"
+  }
+  
+  provisioner "remote-exec" {
+    connection {
+      user = "ubuntu"
+      host = "${module.vpc.bastion_host}"
+      key_file = "./key.pem"
+    }
+
+    inline = [
+      "mysql -h ${self.address} -P ${self.port} --user=${var.db_username} --password=${var.db_password} < /tmp/mysql-${var.timestamp}.sql",
+      "rm /tmp/mysql-${var.timestamp}.sql"
+    ]
+  }
 }
 

@@ -31,6 +31,12 @@ touch ./ami.txt
 publicIp=`curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//' | tr -d '\n'`
 cidrBlock="${publicIp}/32"
 
+# Toss down the private key so we can SSH as needed
+echo "-----BEGIN RSA PRIVATE KEY-----" > key.pem
+chmod 600 key.pem
+echo "${PRIVATE_KEY}" >> key.pem
+echo "-----END RSA PRIVATE KEY-----" >> key.pem
+
 # It seems remote config only works if the default region is set to us-east-1
 export AWS_DEFAULT_REGION="us-east-1" 
 terraform remote config \
@@ -47,9 +53,8 @@ terraform apply \
   -var "db_username=${DB_USERNAME}" \
   -var "db_password=${DB_PASSWORD}" \
   -var "timestamp=${timestamp}" \
-  -var "ci_server_cidr_block=${cidrBlock}" \
-  -var "private_key=${PRIVATE_KEY}"
-
+  -var "ci_server_cidr_block=${cidrBlock}" 
+  
 # If ever needed...
 #terraform destroy -force  \
 #  -var "access_key=${AWS_ACCESS_KEY_ID}" \
@@ -57,6 +62,5 @@ terraform apply \
 #  -var "db_username=${DB_USERNAME}" \
 #  -var "db_password=${DB_PASSWORD}" \
 #  -var "timestamp=${timestamp}" 
-#  -var "private_key=${PRIVATE_KEY}"
 
 popd
