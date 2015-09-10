@@ -116,8 +116,8 @@ resource "template_file" "user_data" {
   filename = "./user_data.sh"
   
   vars {
-    db_host = "0.0.0.0"
-    db_port = "3306"
+    db_host = "${aws_db_instance.lift_db.address}"
+    db_port = "${aws_db_instance.lift_db.port}"
   }
 }
 
