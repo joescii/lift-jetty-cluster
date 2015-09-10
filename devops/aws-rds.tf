@@ -39,6 +39,12 @@ resource "aws_db_instance" "lift_db" {
   multi_az = "true"
   
   provisioner "file" {
+    connection {
+      user = "ubuntu"
+      host = "${module.vpc.bastion_host}"
+      key_file = "./key.pem"
+    }
+
     source = "./setup.sql"
     destination = "/tmp/mysql-${var.timestamp}.sql"
   }
