@@ -37,9 +37,5 @@ resource "aws_db_instance" "lift_db" {
   ]
   db_subnet_group_name = "${aws_db_subnet_group.all_azs.name}"
   multi_az = "true"
-  
-  provisioner "local-exec" {
-    command = "./mysql.sh ${var.db_username} ${var.db_password} ${self.address} ${self.port} ${module.vpc.bastion_host} ${var.private_key}"
-  }
 }
 
