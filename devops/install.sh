@@ -3,6 +3,7 @@
 sudo mkdir /opt/lift
 cd /opt/lift
 sudo gunzip -cdfv /tmp/app.tar.gz | sudo tar -vx 
+rm /tmp/app.tar.gz
 
 # Set up our user
 sudo useradd --home-dir /opt/lift lift
