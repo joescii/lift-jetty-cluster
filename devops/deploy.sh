@@ -32,13 +32,16 @@ publicIp=`curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's
 cidrBlock="${publicIp}/32"
 
 # Toss down the private key so we can SSH as needed
-echo "-----BEGIN RSA PRIVATE KEY-----" > key.pem
+#echo "-----BEGIN RSA PRIVATE KEY-----" > key.pem
+#chmod 600 key.pem
+#echo "${PRIVATE_KEY}" >> key.pem
+#echo ${PRIVATE_KEY} \
+#  | awk '{print $1"\n"$2"\n"$3"\n"$4"\n"$5"\n"$6"\n"$7"\n"$8"\n"$9"\n"$10"\n"$11"\n"$12"\n"$13"\n"$14"\n"$15"\n"$16"\n"$17"\n"$18"\n"$19"\n"$20"\n"$21}' \
+#  >> key.pem
+#echo "-----END RSA PRIVATE KEY-----" >> key.pem
+
+aws s3 cp s3://exp-web/sandbox/sandbox.pem ./key.pem
 chmod 600 key.pem
-echo "${PRIVATE_KEY}" >> key.pem
-echo ${PRIVATE_KEY} \
-  | awk '{print $1"\n"$2"\n"$3"\n"$4"\n"$5"\n"$6"\n"$7"\n"$8"\n"$9"\n"$10"\n"$11"\n"$12"\n"$13"\n"$14"\n"$15"\n"$16"\n"$17"\n"$18"\n"$19"\n"$20"\n"$21}' \
-  >> key.pem
-echo "-----END RSA PRIVATE KEY-----" >> key.pem
 
 # It seems remote config only works if the default region is set to us-east-1
 export AWS_DEFAULT_REGION="us-east-1" 
