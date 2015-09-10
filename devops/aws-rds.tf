@@ -22,44 +22,4 @@ resource "aws_security_group" "lift_db_sg" {
   }
 }
 
-resource "aws_db_instance" "lift_db" {
-  identifier = "lift-db"
-  allocated_storage = 5
-  engine = "mysql"
-  engine_version = "5.6.19a"
-  instance_class = "db.t2.micro"
-  name = "LIFT"
-  username = "${var.db_username}"
-  password = "${var.db_password}"
-  vpc_security_group_ids = [
-    "${module.vpc.bastion_accessible_sg_id}",
-    "${aws_security_group.lift_db_sg.id}"
-  ]
-  db_subnet_group_name = "${aws_db_subnet_group.all_azs.name}"
-  multi_az = "true"
-  
-  provisioner "file" {
-    connection {
-      user = "ubuntu"
-      host = "${module.vpc.bastion_host}"
-      key_file = "./key.pem"
-    }
-
-    source = "./setup.sql"
-    destination = "/tmp/mysql-${var.timestamp}.sql"
-  }
-  
-  provisioner "remote-exec" {
-    connection {
-      user = "ubuntu"
-      host = "${module.vpc.bastion_host}"
-      key_file = "./key.pem"
-    }
-
-    inline = [
-      "mysql -h ${self.address} -P ${self.port} --user=${var.db_username} --password=${var.db_password} < /tmp/mysql-${var.timestamp}.sql",
-      "rm /tmp/mysql-${var.timestamp}.sql"
-    ]
-  }
-}
 
