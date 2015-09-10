@@ -59,15 +59,6 @@ resource "aws_launch_configuration" "lift_as_conf" {
   }
 }
 
-resource "template_file" "user_data" {
-  filename = "./user_data.sh"
-  
-  vars {
-    db_host = "${aws_db_instance.lift_db.address}"
-    db_port = "${aws_db_instance.lift_db.port}"
-  }
-}
-
 resource "aws_autoscaling_group" "lift_as" {
   availability_zones = ["${module.region.zone_A}", "${module.region.zone_B}"]
   vpc_zone_identifier = ["${module.vpc.zone_A_private_id}", "${module.vpc.zone_B_private_id}"]
