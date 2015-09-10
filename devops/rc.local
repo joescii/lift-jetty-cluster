@@ -15,7 +15,7 @@
 cd /opt/lift/
 
 # Our DB_HOST and DB_PORT are provided here by user_data when the EC2 was launched
-. ./env.sh
+#. ./env.sh
 
 # Kick off the app
 sudo -H -u lift nohup /opt/lift/target/universal/stage/bin/lift-jetty-cluster-aws > /opt/lift/log.txt
