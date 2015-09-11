@@ -34,7 +34,7 @@ cidrBlock="${publicIp}/32"
 # Toss down the private key so we can SSH as needed
 echo "-----BEGIN RSA PRIVATE KEY-----" > key.pem
 chmod 600 key.pem
-echo "${PRIVATE_KEY}" >> key.pem
+echo "${PRIVATE_KEY}" | tr [:blank:] '\n' >> key.pem
 echo "-----END RSA PRIVATE KEY-----" >> key.pem
 
 # It seems remote config only works if the default region is set to us-east-1

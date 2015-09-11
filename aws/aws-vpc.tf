@@ -24,4 +24,16 @@ resource "null_resource" "key-upload" {
     source = "./key.pem"
     destination = "/home/ubuntu/lift.pem"
   }
+  
+  provisioner "remote-exec" {
+    connection {
+      user = "ubuntu"
+      host = "${module.vpc.bastion_host}"
+      key_file = "./key.pem"
+    }
+
+    inline = [
+      "chmod 600 /home/ubuntu/lift.pem"
+    ]
+  }
 }
