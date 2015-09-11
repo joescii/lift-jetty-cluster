@@ -1,7 +1,7 @@
-# lift-jetty-cluster-aws
-Sample Lift project that runs embedded Jetty in a cluster on AWS
+# lift-jetty-cluster
+Sample Lift project that runs embedded Jetty in a cluster
 
-[ ![Codeship Status for joescii/lift-jetty-cluster-aws](https://codeship.com/projects/c0e8eac0-2c0b-0133-b2b8-16bcb9ef4133/status?branch=master)](https://codeship.com/projects/98491)
+[ ![Codeship Status for joescii/lift-jetty-cluster](https://codeship.com/projects/c0e8eac0-2c0b-0133-b2b8-16bcb9ef4133/status?branch=master)](https://codeship.com/projects/98491)
 
 ## Running Locally
 You can run this Lift project locally in development mode like any other Lift project with `sbt ~container:start`.
@@ -73,10 +73,10 @@ Out of the box, it knows how to define it's entire infrastructure in a blank AWS
 If you do not already have a suitable key pair created in AWS, you will need to create one.
 Go to the _EC2 Dashboard_ and find _Network & Security_ -> _Key Pairs_.
 Click the _Create Key Pair_ button and enter "sandbox".
-(You can name it differently, but you will need to modify the `ec2_key_name` variable in `devops/variables.tf` in this project to match.)
+(You can name it differently, but you will need to modify the `ec2_key_name` variable in `aws/variables.tf` in this project to match.)
 Save the downloaded `sandbox.pem` file somewhere safe.
 
-If you already have a key pair, or you gave it a different name, then update the default value for `ec2_key_name` in `devops/variables.tf`.
+If you already have a key pair, or you gave it a different name, then update the default value for `ec2_key_name` in `aws/variables.tf`.
 
 Convert the `sandbox.pem` private key into a public key:
 
@@ -84,23 +84,28 @@ Convert the `sandbox.pem` private key into a public key:
 ssh-keygen -y -f sandbox.pem > ssh-key.pub
 ```
 
-Save and commit `ssh-key.pub` into the `devops/` directory.
+Save and commit `ssh-key.pub` into the `aws/` directory.
 With this key pair, you will be able to SSH into your EC2 instances running Lift.
 
 ### Environment
 The `deploy.sh` script needs to run in a unix environment with the following variables set:
-`AWS_ACCESS_KEY_ID`
-`AWS_SECRET_ACCESS_KEY`
-`TF_STATE_BUCKET`: The S3 bucket where you want to store the Terraform state.
-`TF_STATE_KEY`: The S3 key within the bucket where you want to store the Terraform state.
-`DB_USERNAME`: The username you want for the RDS MySQL DB we build.
-`DB_PASSWORD`: The password you want for the RDS MySQL DB we build.
+* `AWS_ACCESS_KEY_ID`
+* `AWS_SECRET_ACCESS_KEY`
+* `TF_STATE_BUCKET`: The S3 bucket where you want to store the Terraform state.
+* `TF_STATE_KEY`: The S3 key within the bucket where you want to store the Terraform state.
+* `DB_USERNAME`: The username you want for the RDS MySQL DB we build.
+* `DB_PASSWORD`: The password you want for the RDS MySQL DB we build.
+* `PRIVATE_KEY`: The private SSH key copied out of the file and pasted into this variable.
+(kinda hacky, but it's the simplest way I found to have a private key which is not in this public repo)
 
-I recommend using [Codeship](http://codeship.io) as your CI for running Terraform, as that is where this has been tested.
+The `env.sh` script will download [terraform](https://terraform.io/) and [packer](https://www.packer.io/) and place them on your `$PATH`.
+The `codeship.sh` script wraps up `env.sh` and `deploy.sh` together for use in [Codeship](http://codeship.io).
+I recommend using [Codeship](http://codeship.io) as your CI at least for a starting point, as that is where all of this has been tested.
 It is 100% free to use (up to a certain number of builds per month).
+
+## Running on Heroku
+_TBD_
 
 ## TODO
 
-* Enable cluster in AWS
-* Heroku deployment
-* Package `webapp` into jar file
+* Add private key to bastion for convenience
