@@ -1,7 +1,14 @@
 # lift-jetty-cluster
-Sample Lift project that runs embedded Jetty in a cluster
+Sample Lift project that runs embedded Jetty in a cluster.
 
-[ ![Codeship Status for joescii/lift-jetty-cluster](https://codeship.com/projects/c0e8eac0-2c0b-0133-b2b8-16bcb9ef4133/status?branch=master)](https://codeship.com/projects/98491)
+Jetty implements clustering by serializing the container session object into a SQL database.
+Each Jetty instance creates `JSESSIONID` cookies with an instance-identifying string (in this project, we create a randomly-generated string at startup time).
+When an instance receives a request with a `JESSIONID` it doesn't recongnize, it will look it up in the SQL store.
+
+This project has all you need to run Lift in this configuration locally, in AWS, or Heroku (TBD).
+
+AWS status: [ ![Codeship Status for joescii/lift-jetty-cluster](https://codeship.com/projects/c0e8eac0-2c0b-0133-b2b8-16bcb9ef4133/status?branch=aws)](https://codeship.com/projects/98491)
+Heroku status: [ ![Codeship Status for joescii/lift-jetty-cluster](https://codeship.com/projects/c0e8eac0-2c0b-0133-b2b8-16bcb9ef4133/status?branch=heroku)](https://codeship.com/projects/98491)
 
 ## Running Locally
 You can run this Lift project locally in development mode like any other Lift project with `sbt ~container:start`.
@@ -10,7 +17,8 @@ Enable clustering in the appropriate Lift props file for your run mode.
 
 ### MySQL Setup
 To run the project standalone with clustering, you first need to configure MySQL locally.
-Other DBs can be used if you prefer, as long as you accomplish the same tasks outlined below.
+Other SQL DBs can be used if you prefer, as long as you accomplish the same tasks outlined below.
+Namely, you need a user named `jetty` with password `lift-rocks` with all permissions granted on a DB named `lift_sessions`.
 
 ```text
 mysql> create database lift_sessions;
@@ -32,7 +40,7 @@ This will produce a runnable script in `target/universal/stage/bin`.
 Run the script.
 
 ### Observing How Jetty Utilizes SQL
-Once the server boots, you can see jetty built two tables:
+Once the server boots, the curious developer can see jetty built two tables:
 ```text
 mysql> use lift_sessions;
 Database changed
@@ -143,6 +151,5 @@ _TBD_
 
 ## TODO
 
-* Create branches `aws` and `heroku` for separating codeship deployments
 * Log to S3 or something like that
 * Add self-downloading sbt script
