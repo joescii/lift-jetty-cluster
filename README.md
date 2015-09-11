@@ -103,6 +103,40 @@ The `codeship.sh` script wraps up `env.sh` and `deploy.sh` together for use in [
 I recommend using [Codeship](http://codeship.io) as your CI at least for a starting point, as that is where all of this has been tested.
 It is 100% free to use (up to a certain number of builds per month).
 
+### Terraform Bug Workaround
+Currently there is [a bug in Terraform](https://github.com/hashicorp/terraform/issues/3125) which this project exposes.
+Upon your first run of `deploy.sh`, you will get a failure like the following:
+
+```text
+* aws_launch_configuration.lift_as_conf: diffs didn't match during apply. This is a bug with Terraform and should be reported.
+```
+
+The workaround is to find the AMI ID created by Packer.
+The output will look something like the following:
+
+```text
+Produced AMI at ami-5153a915
+```
+
+Open `aws/aws-ec2.tf`.
+Find `resource "template_file" "packer"`.
+In that object, replace `ami = "${file(var.ami_txt)}"` with the AMI ID from the packer output.
+For instance, given the above AMI ID, you would change this line to `ami = "ami-5153a915"`.
+
+Go down a few more lines in `aws/aws-ec2.tf` and find `resource "template_file" "packer_runner"`.
+In that object, remove these three lines:
+
+```text
+provisioner "local-exec" {
+  command = "./bake.sh ${var.access_key} ${var.secret_key} ${module.region.region} ${module.vpc.vpc_id} ${module.vpc.zone_B_public_id} ${module.vpc.packer_sg_id} ${module.region.ubuntu_precise_12_04_amd64} ${var.db_password} ${var.timestamp}"
+}
+```
+
+Run `deploy.sh` again.
+It should succeed this time.
+Restore `aws/aws-ec2.tf` back to its original state.
+Terraform/Packer will happily run from now on.
+
 ## Running on Heroku
 _TBD_
 
