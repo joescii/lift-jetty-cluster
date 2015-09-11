@@ -17,7 +17,7 @@ resource "null_resource" "key-upload" {
   provisioner "file" {
     connection {
       user = "ubuntu"
-      host = "${self.bastion_host}"
+      host = "${module.vpc.bastion_host}"
       key_file = "./key.pem"
     }
 
