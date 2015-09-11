@@ -20,9 +20,9 @@ timestamp=`date +"%Y%m%d%H%M%S"`
 
 # Build and package up the application
 sbt stage
-tar -zcvf ./devops/app.tar.gz target/webapp target/universal
+tar -zcvf ./aws/app.tar.gz target/webapp target/universal
 
-pushd ./devops
+pushd ./aws
 
 # Terraform will complain if it doesn't see this already in place
 touch ./ami.txt
