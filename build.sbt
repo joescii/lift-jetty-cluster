@@ -1,3 +1,5 @@
+// The name of the project is used by sbt-native-packager to name your target/universal/stage/bin script file
+// Be sure to do a find/replace on the entire project if you change this.
 name := "lift-jetty-cluster"
 
 version := "0.0.1"

@@ -18,6 +18,6 @@ cd /opt/lift/
 #. ./env.sh
 
 # Kick off the app
-sudo -H -u lift nohup /opt/lift/target/universal/stage/bin/lift-jetty-cluster-aws > /opt/lift/log.txt
+sudo -H -u lift nohup /opt/lift/target/universal/stage/bin/lift-jetty-cluster > /opt/lift/log.txt
 
 exit 0
