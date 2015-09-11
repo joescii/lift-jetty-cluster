@@ -1,6 +1,6 @@
 create database lift_sessions;
-create user 'jetty'@'localhost' identified by 'lift-rocks';
-grant all on lift_sessions.* TO 'jetty'@'localhost';
+create user 'jetty'@'10.0.%' identified by 'lift-rocks';
+grant all on lift_sessions.* TO 'jetty'@'10.0.%';
 USE lift_sessions;
 DROP PROCEDURE IF EXISTS initConnect;
 DELIMITER //
