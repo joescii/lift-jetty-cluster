@@ -11,6 +11,8 @@ AWS status: [ ![Codeship Status for joescii/lift-jetty-cluster](https://codeship
 
 Heroku status: [ ![Codeship Status for joescii/lift-jetty-cluster](https://codeship.com/projects/c0e8eac0-2c0b-0133-b2b8-16bcb9ef4133/status?branch=heroku)](https://codeship.com/projects/98491)
 
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 ## Running Locally
 You can run this Lift project locally in development mode like any other Lift project with `sbt ~container:start`.
 Clustering is configured in `bootstrap.liftweb.Start` which is only used when running outside of sbt.

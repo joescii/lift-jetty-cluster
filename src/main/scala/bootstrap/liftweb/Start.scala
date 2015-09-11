@@ -1,5 +1,7 @@
 package bootstrap.liftweb
 
+import java.net.URI
+
 import net.liftweb.common.Loggable
 import net.liftweb.util.{StringHelpers, LoggingAutoConfigurer, Props}
 import org.eclipse.jetty.server.Server
@@ -22,11 +24,8 @@ object Start extends App with Loggable {
   def startLift(): Unit = {
     logger.info("starting Lift server")
 
-    val port = {
-      val prop = Props.get("jetty.port", "8080")
-      val str = if(prop startsWith "$") System.getenv(prop substring 1) else prop
-      str.toInt
-    }
+    val port = System.getProperty(
+      "jetty.port", Properties.envOrElse("PORT", "8080")).toInt
 
     logger.info(s"port number is $port")
 
@@ -45,10 +44,19 @@ object Start extends App with Loggable {
 
       logger.info(s"WorkerName: $workerName")
 
-      val dbHost = Properties.envOrElse("DB_HOST", "127.0.0.1")
-      val dbPort = Properties.envOrElse("DB_PORT", "3306")
       val driver = Props.get("cluster.jdbc.driver").openOrThrowException("Cannot boot in cluster mode without property 'session.jdbc.driver' defined in props file")
-      val endpoint = s"jdbc:mysql://$dbHost:$dbPort/lift_sessions?user=jetty&password=lift-rocks"
+
+      val endpoint = if (System.getenv("CLEARDB_DATABASE_URL") == null) {
+        val dbHost = Properties.envOrElse("DB_HOST", "127.0.0.1")
+        val dbPort = Properties.envOrElse("DB_PORT", "3306")
+        s"jdbc:mysql://$dbHost:$dbPort/lift_sessions?user=jetty&password=lift-rocks"
+      } else {
+        val dbUri = new URI(System.getenv("CLEARDB_DATABASE_URL"))
+        val username = dbUri.getUserInfo.split(":")(0)
+        val password = dbUri.getUserInfo.split(":")(1)
+        s"jdbc:mysql://${dbUri.getHost}${dbUri.getPath}?user=$username&password=$password&${dbUri.getQuery}"
+      }
+
       val idMgr = new JDBCSessionIdManager(server)
       idMgr.setWorkerName(workerName)
       idMgr.setDriverInfo(driver, endpoint)
