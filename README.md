@@ -142,4 +142,6 @@ _TBD_
 
 ## TODO
 
+* Try NOT adding public ssh key to Lift instances
 * Add private key to bastion for convenience
+* Log to S3 or something like that
