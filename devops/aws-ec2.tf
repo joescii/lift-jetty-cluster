@@ -11,12 +11,12 @@ resource "aws_security_group" "lift_instance_sg" {
     security_groups = ["${aws_security_group.lift_elb_sg.id}"]
   }
   
-  # Open communication back to the ELB
+  # Open communication to anything in the VPC (particularly the RDS instance)
   egress {
     from_port = 0
     to_port = 0
     protocol = "-1"
-    security_groups = ["${aws_security_group.lift_elb_sg.id}"]
+    cidr_blocks = ["${module.vpc.cidr_block}"]
   }
 }
 
@@ -33,7 +33,7 @@ resource "aws_security_group" "lift_elb_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # Open communication up to the instances
+  # Open communication up to anything in the VPC (particularly the Lift instances)
   egress {
     from_port = 8080
     to_port = 8080
