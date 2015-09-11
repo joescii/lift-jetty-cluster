@@ -85,7 +85,7 @@ ssh-keygen -y -f sandbox.pem > ssh-key.pub
 ```
 
 Save and commit `ssh-key.pub` into the `aws/` directory.
-With this key pair, you will be able to SSH into your EC2 instances running Lift.
+With this key pair, you will be able to SSH into your EC2 instances running Lift as the `lift` user.
 
 ### Environment
 The `deploy.sh` script needs to run in a unix environment with the following variables set:
@@ -142,6 +142,5 @@ _TBD_
 
 ## TODO
 
-* Try NOT adding public ssh key to Lift instances
 * Add private key to bastion for convenience
 * Log to S3 or something like that
