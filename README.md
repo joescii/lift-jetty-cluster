@@ -8,6 +8,7 @@ When an instance receives a request with a `JESSIONID` it doesn't recongnize, it
 This project has all you need to run Lift in this configuration locally, in AWS, or Heroku (TBD).
 
 AWS status: [ ![Codeship Status for joescii/lift-jetty-cluster](https://codeship.com/projects/c0e8eac0-2c0b-0133-b2b8-16bcb9ef4133/status?branch=aws)](https://codeship.com/projects/98491)
+
 Heroku status: [ ![Codeship Status for joescii/lift-jetty-cluster](https://codeship.com/projects/c0e8eac0-2c0b-0133-b2b8-16bcb9ef4133/status?branch=heroku)](https://codeship.com/projects/98491)
 
 ## Running Locally
