@@ -1,4 +1,4 @@
-name := "lift-jetty-cluster-aws"
+name := "lift-jetty-cluster"
 
 version := "0.0.1"
 
