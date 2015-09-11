@@ -142,5 +142,4 @@ _TBD_
 
 ## TODO
 
-* Add private key to bastion for convenience
 * Log to S3 or something like that
