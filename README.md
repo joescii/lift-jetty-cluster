@@ -99,6 +99,7 @@ The `deploy.sh` script needs to run in a unix environment with the following var
 (kinda hacky, but it's the simplest way I found to have a private key which is not in this public repo)
 
 The `env.sh` script will download [terraform](https://terraform.io/) and [packer](https://www.packer.io/) and place them on your `$PATH`.
+It will NOT set up java on your local system, which is a prerequisite for [sbt](http://www.scala-sbt.org/).
 The `codeship.sh` script wraps up `env.sh` and `deploy.sh` together for use in [Codeship](http://codeship.io).
 I recommend using [Codeship](http://codeship.io) as your CI at least for a starting point, as that is where all of this has been tested.
 It is 100% free to use (up to a certain number of builds per month).
@@ -142,4 +143,6 @@ _TBD_
 
 ## TODO
 
+* Create branches `aws` and `heroku` for separating codeship deployments
 * Log to S3 or something like that
+* Add self-downloading sbt script
