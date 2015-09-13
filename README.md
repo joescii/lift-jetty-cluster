@@ -98,6 +98,9 @@ $ heroku labs:enable http-session-affinity
 $ heroku ps:scale web=2
 ```
 
+### Project Cleanup
+If you are going the Heroku route, then you can remove the `aws/` directory from your project as it is only used for AWS deployment.
+
 ## Deploying to AWS 
 This project includes everything you need to deploy in AWS.
 Out of the box, it knows how to define it's entire infrastructure in a blank AWS region.
@@ -170,6 +173,9 @@ Run `deploy.sh` again.
 It should succeed this time.
 Restore `aws/aws-ec2.tf` back to its original state.
 Terraform/Packer will happily run from now on.
+
+### Project Cleanup
+If you are going the AWS route, then you can remove `Procfile` and `app.json` from your project as they are only used for Heroku deployment.
 
 ## TODO
 
