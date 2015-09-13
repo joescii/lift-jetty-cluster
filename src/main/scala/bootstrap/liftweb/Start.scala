@@ -47,10 +47,12 @@ object Start extends App with Loggable {
       val driver = Props.get("cluster.jdbc.driver").openOrThrowException("Cannot boot in cluster mode without property 'session.jdbc.driver' defined in props file")
 
       val endpoint = if (System.getenv("CLEARDB_DATABASE_URL") == null) {
+        // Non-heroku deployment. Either local or AWS
         val dbHost = Properties.envOrElse("DB_HOST", "127.0.0.1")
         val dbPort = Properties.envOrElse("DB_PORT", "3306")
         s"jdbc:mysql://$dbHost:$dbPort/lift_sessions?user=jetty&password=lift-rocks"
       } else {
+        // Heroku deployment
         val dbUri = new URI(System.getenv("CLEARDB_DATABASE_URL"))
         val username = dbUri.getUserInfo.split(":")(0)
         val password = dbUri.getUserInfo.split(":")(1)
