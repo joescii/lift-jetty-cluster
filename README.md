@@ -89,6 +89,13 @@ $ heroku addons:create cleardb
 $ git push heroku master
 ```
 
+Once you are ready to run multiple instances of Lift, you need to enable [session affinity](https://blog.heroku.com/archives/2015/4/28/introducing_session_affinity) and bump up the number of web workers:
+
+```shell
+$ heroku labs:enable http-session-affinity
+$ heroku ps:scale web=2
+```
+
 ## Deploying to AWS 
 This project includes everything you need to deploy in AWS.
 Out of the box, it knows how to define it's entire infrastructure in a blank AWS region.
