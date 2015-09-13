@@ -5,7 +5,11 @@ Jetty implements clustering by serializing the container session object into a S
 Each Jetty instance creates `JSESSIONID` cookies with an instance-identifying string (in this project, we create a randomly-generated string at startup time).
 When an instance receives a request with a `JESSIONID` it doesn't recongnize, it will look it up in the SQL store.
 
-This project has all you need to run Lift in this configuration locally, in AWS, or Heroku (TBD).
+This sample app takes advantage of Lift's [`ContainerVar`](http://timperrett.com/2010/11/18/meet-lifts-containerva/).
+They work just like Lift's `SessionVar`, except that the values are stored in the container's session rather than Lift's session.
+Coupled with a clustered container, this allows the `ContainerVar` values to survive container instance failures.
+
+This project has all you need to run Lift in this configuration locally, on Heroku, or on AWS.
 
 AWS status: [ ![Codeship Status for joescii/lift-jetty-cluster](https://codeship.com/projects/c0e8eac0-2c0b-0133-b2b8-16bcb9ef4133/status?branch=aws)](https://codeship.com/projects/98491)
 
