@@ -76,7 +76,16 @@ The first 10 digits were created with `net.liftweb.util.StringHelpers.randomStri
 It is important that each Lift server instance sets this uniquely.
 A second server with this same configuration (or a second _run_ of the same server) will prefix all of the cookies with a different random string.
 
-## Running on AWS 
+## Deploying to Heroku
+If not using the _Deploy to Heroku_ button [above](#lift-jetty-cluster), you simply need to run these commands:
+
+```shell
+$ heroku create [optional_app_name]
+$ heroku addons:create cleardb
+$ git push heroku master
+```
+
+## Deploying to AWS 
 This project includes everything you need to deploy in AWS.
 Out of the box, it knows how to define it's entire infrastructure in a blank AWS region.
 
@@ -148,9 +157,6 @@ Run `deploy.sh` again.
 It should succeed this time.
 Restore `aws/aws-ec2.tf` back to its original state.
 Terraform/Packer will happily run from now on.
-
-## Running on Heroku
-_TBD_
 
 ## TODO
 
