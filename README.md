@@ -1,6 +1,8 @@
 # lift-jetty-cluster
 Sample Lift project that runs embedded Jetty in a cluster.
 
+Go to [http://lift-jetty-cluster.herokuapp.com/](http://lift-jetty-cluster.herokuapp.com/) to see this sample app running live.
+
 Jetty implements clustering by serializing the container session object into a SQL database.
 Each Jetty instance creates `JSESSIONID` cookies with an instance-identifying string (in this project, we create a randomly-generated string at startup time).
 When an instance receives a request with a `JESSIONID` it doesn't recongnize, it will look it up in the SQL store.
