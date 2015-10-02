@@ -16,11 +16,11 @@ resolvers ++= Seq(
 scalacOptions ++= Seq("-deprecation", "-unchecked")
 
 libraryDependencies ++= {
-  val liftVersion = "2.6.2"
+  val liftVersion = "3.0-SNAPSHOT"
   val liftEdition = liftVersion.substring(0, 3)
   Seq(
     "net.liftweb"             %% "lift-webkit"                        % liftVersion           % "compile",
-    "net.liftmodules"         %% ("lift-jquery-module_"+liftEdition)  % "2.8"                 % "compile",
+    "net.liftmodules"         %% ("lift-jquery-module_"+liftEdition)  % "2.9"                 % "compile",
     "org.eclipse.jetty"       %  "jetty-webapp"                       % "9.2.7.v20150116"     % "compile",
     "org.eclipse.jetty"       %  "jetty-plus"                         % "9.2.7.v20150116"     % "container,test", // For Jetty Config
     "org.eclipse.jetty.orbit" %  "javax.servlet"                      % "3.0.0.v201112011016" % "container,test" artifacts Artifact("javax.servlet", "jar", "jar"),

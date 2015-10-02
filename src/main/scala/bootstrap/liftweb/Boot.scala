@@ -49,5 +49,17 @@ class Boot {
     JQueryModule.InitParam.JQuery=JQueryModule.JQuery191
     JQueryModule.init()
 
+    // We're doing some evil stuff in the browser, so tell Lift to let us have our pitfalls.
+    LiftRules.securityRules = () => {
+      SecurityRules(content = Some(ContentSecurityPolicy(
+        styleSources = List(
+          ContentSourceRestriction.UnsafeInline
+        ),
+        scriptSources = List(
+          ContentSourceRestriction.UnsafeEval,
+          ContentSourceRestriction.Self
+        )
+      )))
+    }
   }
 }
