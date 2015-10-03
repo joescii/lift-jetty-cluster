@@ -49,6 +49,9 @@ class Boot {
     JQueryModule.InitParam.JQuery=JQueryModule.JQuery191
     JQueryModule.init()
 
+    LiftRules.putAjaxFnsInContainerSession = true
+    LiftRules.redirectAsyncOnSessionLoss = false
+
     // We're doing some evil stuff in the browser, so tell Lift to let us have our pitfalls.
     LiftRules.securityRules = () => {
       SecurityRules(content = Some(ContentSecurityPolicy(
