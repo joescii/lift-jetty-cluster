@@ -1,6 +1,7 @@
 package bootstrap.liftweb
 
 import net.liftweb._
+import net.liftweb.http.js.JE.JsRaw
 import util._
 import Helpers._
 
@@ -51,6 +52,12 @@ class Boot {
 
     LiftRules.putAjaxFnsInContainerSession = true
     LiftRules.redirectAsyncOnSessionLoss = false
+
+    val rehydrate = JsRaw(
+      """
+
+      """.stripMargin).cmd
+    LiftRules.noCometSessionCmd.default.set(() => rehydrate)
 
     // We're doing some evil stuff in the browser, so tell Lift to let us have our pitfalls.
     LiftRules.securityRules = () => {
