@@ -62,5 +62,6 @@ terraform destroy -force  \
   -var "db_username=${DB_USERNAME}" \
   -var "db_password=${DB_PASSWORD}" \
   -var "timestamp=${timestamp}" 
-
+  -var "ci_server_cidr_block=${cidrBlock}" 
+  
 popd
