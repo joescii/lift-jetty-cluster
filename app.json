@@ -1,0 +1,7 @@
+{
+  "name": "Lift Jetty Cluster Sample",
+  "description": "Sample Lift project that runs embedded Jetty in a cluster.",
+  "website": "http://liftweb.org",
+  "success_url": "/",
+  "addons": ["cleardb"]
+}

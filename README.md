@@ -1,7 +1,23 @@
 # lift-jetty-cluster
-Sample Lift project that runs embedded Jetty in a cluster
+Sample Lift project that runs embedded Jetty in a cluster.
 
-[ ![Codeship Status for joescii/lift-jetty-cluster](https://codeship.com/projects/c0e8eac0-2c0b-0133-b2b8-16bcb9ef4133/status?branch=master)](https://codeship.com/projects/98491)
+Go to [http://lift-jetty-cluster.herokuapp.com/](http://lift-jetty-cluster.herokuapp.com/) to see this sample app running live.
+
+Jetty implements clustering by serializing the container session object into a SQL database.
+Each Jetty instance creates `JSESSIONID` cookies with an instance-identifying string (in this project, we create a randomly-generated string at startup time).
+When an instance receives a request with a `JESSIONID` it doesn't recongnize, it will look it up in the SQL store.
+
+This sample app takes advantage of Lift's [`ContainerVar`](http://timperrett.com/2010/11/18/meet-lifts-containerva/).
+They work just like Lift's `SessionVar`, except that the values are stored in the container's session rather than Lift's session.
+Coupled with a clustered container, this allows the `ContainerVar` values to survive container instance failures.
+
+This project has all you need to run Lift in this configuration locally, on Heroku, or on AWS.
+
+AWS status: [ ![Codeship Status for joescii/lift-jetty-cluster](https://codeship.com/projects/c0e8eac0-2c0b-0133-b2b8-16bcb9ef4133/status?branch=aws)](https://codeship.com/projects/98491)
+
+Heroku status: [ ![Codeship Status for joescii/lift-jetty-cluster](https://codeship.com/projects/c0e8eac0-2c0b-0133-b2b8-16bcb9ef4133/status?branch=heroku)](https://codeship.com/projects/98491)
+
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 ## Running Locally
 You can run this Lift project locally in development mode like any other Lift project with `sbt ~container:start`.
@@ -10,7 +26,8 @@ Enable clustering in the appropriate Lift props file for your run mode.
 
 ### MySQL Setup
 To run the project standalone with clustering, you first need to configure MySQL locally.
-Other DBs can be used if you prefer, as long as you accomplish the same tasks outlined below.
+Other SQL DBs can be used if you prefer, as long as you accomplish the same tasks outlined below.
+Namely, you need a user named `jetty` with password `lift-rocks` with all permissions granted on a DB named `lift_sessions`.
 
 ```text
 mysql> create database lift_sessions;
@@ -32,7 +49,7 @@ This will produce a runnable script in `target/universal/stage/bin`.
 Run the script.
 
 ### Observing How Jetty Utilizes SQL
-Once the server boots, you can see jetty built two tables:
+Once the server boots, the curious developer can see jetty built two tables:
 ```text
 mysql> use lift_sessions;
 Database changed
@@ -65,7 +82,26 @@ The first 10 digits were created with `net.liftweb.util.StringHelpers.randomStri
 It is important that each Lift server instance sets this uniquely.
 A second server with this same configuration (or a second _run_ of the same server) will prefix all of the cookies with a different random string.
 
-## Running on AWS 
+## Deploying to Heroku
+If not using the _Deploy to Heroku_ button [above](#lift-jetty-cluster), you simply need to run these commands:
+
+```shell
+$ heroku create [optional_app_name]
+$ heroku addons:create cleardb
+$ git push heroku master
+```
+
+Once you are ready to run multiple instances of Lift, you need to enable [session affinity](https://blog.heroku.com/archives/2015/4/28/introducing_session_affinity) and bump up the number of web workers:
+
+```shell
+$ heroku labs:enable http-session-affinity
+$ heroku ps:scale web=2
+```
+
+### Project Cleanup
+If you are going the Heroku route, then you can remove the `aws/` directory from your project as it is only used for AWS deployment.
+
+## Deploying to AWS 
 This project includes everything you need to deploy in AWS.
 Out of the box, it knows how to define it's entire infrastructure in a blank AWS region.
 
@@ -138,11 +174,10 @@ It should succeed this time.
 Restore `aws/aws-ec2.tf` back to its original state.
 Terraform/Packer will happily run from now on.
 
-## Running on Heroku
-_TBD_
+### Project Cleanup
+If you are going the AWS route, then you can remove `Procfile` and `app.json` from your project as they are only used for Heroku deployment.
 
 ## TODO
 
-* Create branches `aws` and `heroku` for separating codeship deployments
 * Log to S3 or something like that
 * Add self-downloading sbt script
