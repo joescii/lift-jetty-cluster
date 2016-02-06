@@ -1,3 +1,27 @@
+# failover-testing
+This particular branch of **lift-jetty-cluster** is intended to be built against the [`joe-ajax-fns-in-session`](https://github.com/lift/framework/tree/joe-ajax-fns-in-session) branch of Lift.
+See [MySQL Setup](#mysql-setup) and [Building and Running](#building-and-running) below to run this app after publishing Lift locally.
+
+## Testing Ajax
+The `index` page will let you test an ajax call's ability to work against a different Lift server than what served the page.
+This particular call puts the value in the text box into a `ContainerVar` upon pressing the button.
+Take note of the server's timestamp reported on the page.
+Set the container value to something.
+Restart the server.
+Set the container value to something else, and note that the timestamp does not change demonstrating that the page did not need to be reloaded to fulfil the ajax call.
+Refresh the page to see the timestamp updates but the container var remains set as before.
+
+## Testing Comet
+(Work in Progress)
+The `comet` page will let you test a comet's ability to rehydrate itself on a page served by a previous Lift server instance.
+This comet simply increments by 1 every second that the server runs.
+Refreshing the page does not reset the counter because it is session-scoped.
+Take note of the server's timestamp reported on the page.
+Restart the server.
+Take note that the counter restarts, but the timestamp does not change demonstrating that the page did not need to be reloaded to resume the comet.
+Refresh the page to see the timestamp updates but the counter continues.
+
+
 # lift-jetty-cluster
 Sample Lift project that runs embedded Jetty in a cluster.
 
