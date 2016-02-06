@@ -16,8 +16,8 @@ resolvers ++= Seq(
 scalacOptions ++= Seq("-deprecation", "-unchecked")
 
 libraryDependencies ++= {
-  val liftVersion = "3.0-SNAPSHOT"
-  val liftEdition = liftVersion.substring(0, 3)
+  val liftVersion = "3.1-SNAPSHOT"
+  val liftEdition = "3.0" //liftVersion.substring(0, 3)
   Seq(
     "net.liftweb"             %% "lift-webkit"                        % liftVersion           % "compile",
     "net.liftmodules"         %% ("lift-jquery-module_"+liftEdition)  % "2.9"                 % "compile",
