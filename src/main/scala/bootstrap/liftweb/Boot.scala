@@ -2,6 +2,7 @@ package bootstrap.liftweb
 
 import net.liftweb._
 import net.liftweb.http.js.JE.JsRaw
+import net.liftweb.http.js.JsCmds
 import util._
 import Helpers._
 
@@ -51,14 +52,10 @@ class Boot {
     JQueryModule.InitParam.JQuery=JQueryModule.JQuery191
     JQueryModule.init()
 
-    LiftRules.putAjaxFnsInContainerSession = true
+//    LiftRules.putAjaxFnsInContainerSession = true
     LiftRules.redirectAsyncOnSessionLoss = false
 
-    val rehydrate = JsRaw(
-      """
-
-      """.stripMargin).cmd
-    LiftRules.noCometSessionCmd.default.set(() => rehydrate)
+    LiftRules.noCometSessionCmd.default.set(() => JsCmds.Run("lift.rehydrateComets()"))
 
     // We're doing some evil stuff in the browser, so tell Lift to let us have our pitfalls.
     LiftRules.securityRules = () => {
