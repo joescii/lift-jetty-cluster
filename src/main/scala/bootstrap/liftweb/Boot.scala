@@ -57,6 +57,8 @@ class Boot {
 
     LiftRules.noCometSessionCmd.default.set(() => JsCmds.Run("lift.rehydrateComets()"))
 
+    LiftRules.cometFailureRetryTimeout = 5000
+
     // We're doing some evil stuff in the browser, so tell Lift to let us have our pitfalls.
     LiftRules.securityRules = () => {
       SecurityRules(content = Some(ContentSecurityPolicy(
