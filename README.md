@@ -57,8 +57,8 @@ mysql> show tables;
 +-------------------------+
 | Tables_in_lift_sessions |
 +-------------------------+
-| jettysessionids         |
-| jettysessions           |
+| JettySessionIds         |
+| JettySessions           |
 +-------------------------+
 2 rows in set (0.00 sec)
 ```
@@ -67,7 +67,7 @@ Open your browser to `http://localhost:8080`.
 Now you will see entries in the two tables.
 
 ```text
-mysql> select * from jettysessionids;
+mysql> select * from JettySessionIds;
 +------------------------------------+
 | id                                 |
 +------------------------------------+
