@@ -53,7 +53,7 @@ class Boot {
     JQueryModule.InitParam.JQuery=JQueryModule.JQuery191
     JQueryModule.init()
 
-//    LiftRules.putAjaxFnsInContainerSession = true
+    LiftRules.putAjaxFnsInContainerSession = true
     LiftRules.redirectAsyncOnSessionLoss = false
 
     LiftRules.noCometSessionCmd.default.set(() => JsCmds.Run("lift.rehydrateComets()"))
