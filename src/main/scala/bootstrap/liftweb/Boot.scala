@@ -27,6 +27,7 @@ class Boot {
       Menu.i("Home") / "index", // the simple way to declare a menu
       Menu.i("Comet") / "comet",
       Menu.i("Stateful Snippet") / "stateful",
+      Menu.i("Example Screen") / "screen",
 
       // more complex because this menu allows anything in the
       // /static path to be visible
