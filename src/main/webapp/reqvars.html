@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body data-lift-content-id="main">
+<div id="main" data-lift="surround?with=default;at=content">
+    <h2>Welcome to your project!</h2>
+    <p>
+        <span data-lift="HelloWorld.howdy">
+          Welcome to your Lift app at <span id="time">Time goes here</span>
+        </span>
+    </p>
+
+    <div>
+        Using RequestVars to store state
+    </div>
+
+    <div>
+        <form data-lift="ReqVar?form=post">
+            Name: <input name="name"><br>
+            Age: <input name="age" id="the_age" value="0"><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</div>
+</body>
+</html>

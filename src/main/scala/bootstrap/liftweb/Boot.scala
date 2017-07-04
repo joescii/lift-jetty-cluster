@@ -28,6 +28,7 @@ class Boot {
       Menu.i("Comet") / "comet",
       Menu.i("Stateful Snippet") / "stateful",
       Menu.i("Example Screen") / "screen",
+      Menu.i("ReqVars") / "reqvars",
 
       // more complex because this menu allows anything in the
       // /static path to be visible
