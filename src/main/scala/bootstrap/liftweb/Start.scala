@@ -63,6 +63,7 @@ object Start extends App with Loggable {
       idMgr.setWorkerName(workerName)
       idMgr.setDriverInfo(driver, endpoint)
       idMgr.setScavengeInterval(60)
+      idMgr.setBlobType("LONGBLOB")
       server.setSessionIdManager(idMgr)
 
       val jdbcMgr = new JDBCSessionManager()
