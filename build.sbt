@@ -21,6 +21,7 @@ libraryDependencies ++= {
   Seq(
     "net.liftweb"             %% "lift-webkit"                        % liftVersion           % "compile",
     "net.liftmodules"         %% ("lift-jquery-module_"+liftEdition)  % "2.10"                % "compile",
+    "com.joescii"             %% ("lift-cluster-kryo_3.2")            % "0.0.1-SNAPSHOT"      % "compile",
     "org.eclipse.jetty"       %  "jetty-webapp"                       % "9.2.7.v20150116"     % "compile",
     "org.eclipse.jetty"       %  "jetty-plus"                         % "9.2.7.v20150116"     % "container,test", // For Jetty Config
     "org.eclipse.jetty.orbit" %  "javax.servlet"                      % "3.0.0.v201112011016" % "container,test" artifacts Artifact("javax.servlet", "jar", "jar"),

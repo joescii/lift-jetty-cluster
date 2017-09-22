@@ -5,12 +5,13 @@ import net.liftweb.http.js.JE.JsRaw
 import net.liftweb.http.js.JsCmds
 import util._
 import Helpers._
-
 import common._
 import http._
 import sitemap._
 import Loc._
 import net.liftmodules.JQueryModule
+import net.liftmodules.cluster.{LiftCluster, LiftClusterConfig}
+import net.liftmodules.cluster.kryo.KryoSerializableLiftSession
 import net.liftweb.http.js.jquery._
 
 /**
@@ -55,11 +56,6 @@ class Boot {
     JQueryModule.InitParam.JQuery=JQueryModule.JQuery191
     JQueryModule.init()
 
-    LiftRules.putAjaxFnsInContainerSession = true
-    LiftRules.redirectAsyncOnSessionLoss = false
-
-    LiftRules.noCometSessionCmd.default.set(() => JsCmds.Run("lift.rehydrateComets()"))
-
     LiftRules.cometFailureRetryTimeout = 5000
 
     // We're doing some evil stuff in the browser, so tell Lift to let us have our pitfalls.
@@ -74,5 +70,8 @@ class Boot {
         )
       )))
     }
+
+    val clusterConfig = LiftClusterConfig(KryoSerializableLiftSession.serializer)
+    LiftCluster.init(clusterConfig)
   }
 }
