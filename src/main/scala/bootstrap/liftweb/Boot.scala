@@ -30,6 +30,7 @@ class Boot {
       Menu.i("Stateful Snippet") / "stateful",
       Menu.i("Example Screen") / "screen",
       Menu.i("ReqVars") / "reqvars",
+      Menu.i("ReqVar State") / "reqvar-state",
 
       // more complex because this menu allows anything in the
       // /static path to be visible
