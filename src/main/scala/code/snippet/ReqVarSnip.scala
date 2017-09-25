@@ -19,7 +19,7 @@ class ReqVarSnip {
   }
 
   def render =
-    "#req-var *" #> TestVar.get &
+    "#req-var *" #> TestReqVar.get &
     "#update [onclick]" #> ajaxCall(
       (ElemById("input-text") ~> JsVal("value")),
       callback
