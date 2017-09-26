@@ -1,12 +1,9 @@
 package bootstrap.liftweb
 
-import java.net.URI
-
+import net.liftmodules.cluster.jetty9._
 import net.liftweb.common.Loggable
-import net.liftweb.util.{StringHelpers, LoggingAutoConfigurer, Props}
-import org.eclipse.jetty.server.Server
-import org.eclipse.jetty.server.session.{JDBCSessionManager, JDBCSessionIdManager}
-import org.eclipse.jetty.webapp.WebAppContext
+import net.liftweb.util.{LoggingAutoConfigurer, Props, StringHelpers}
+
 import util.Properties
 
 object Start extends App with Loggable {
@@ -20,61 +17,37 @@ object Start extends App with Loggable {
   logger.info("args: " + args.toList)
 
   startLift()
-  
-  def startLift(): Unit = {
-    logger.info("starting Lift server")
 
+  def startLift(): Unit = {
     val port = System.getProperty(
       "jetty.port", Properties.envOrElse("PORT", "8080")).toInt
 
     logger.info(s"port number is $port")
 
-    val webappDir: String = Option(this.getClass.getClassLoader.getResource("webapp"))
-      .map(_.toExternalForm)
-      .filter(_.contains("jar:file:")) // this is a hack to distinguish in-jar mode from "expanded"
-      .getOrElse("target/webapp")
+    val contextPath = Props.get("jetty.contextPath").openOr("/")
 
-    logger.info(s"webappDir: $webappDir")
-
-    val server = new Server(port)
-    val context = new WebAppContext(webappDir, Props.get("jetty.contextPath").openOr("/"))
-
-    if(Props.get("cluster").map(_.equalsIgnoreCase("true")).openOr(false)) {
+    val maybeClusterConfig = if(Props.get("cluster").map(_.equalsIgnoreCase("true")).openOr(false)) {
+      val dbHost = Properties.envOrElse("DB_HOST", "127.0.0.1")
+      val dbPort = Properties.envOrElse("DB_PORT", "3306").toInt
+      val endpoint: SqlEndpointConfig = SqlEndpointConfig.forHeroku.openOr(
+        SqlEndpointConfig.forMySQL(dbHost, dbPort, "lift_sessions", "jetty", "lift-rocks")
+      )
       val workerName = StringHelpers.randomString(10)
 
       logger.info(s"WorkerName: $workerName")
 
-      val driver = Props.get("cluster.jdbc.driver").openOrThrowException("Cannot boot in cluster mode without property 'session.jdbc.driver' defined in props file")
+      val driver = DriverMariaDB
 
-      val endpoint = if (System.getenv("CLEARDB_DATABASE_URL") == null) {
-        // Non-heroku deployment. Either local or AWS
-        val dbHost = Properties.envOrElse("DB_HOST", "127.0.0.1")
-        val dbPort = Properties.envOrElse("DB_PORT", "3306")
-        s"jdbc:mysql://$dbHost:$dbPort/lift_sessions?user=jetty&password=lift-rocks"
-      } else {
-        // Heroku deployment
-        val dbUri = new URI(System.getenv("CLEARDB_DATABASE_URL"))
-        val username = dbUri.getUserInfo.split(":")(0)
-        val password = dbUri.getUserInfo.split(":")(1)
-        s"jdbc:mysql://${dbUri.getHost}${dbUri.getPath}?user=$username&password=$password&${dbUri.getQuery}"
-      }
+      Some(Jetty9ClusterConfig(workerName, DriverMariaDB, endpoint))
+    } else None
 
-      val idMgr = new JDBCSessionIdManager(server)
-      idMgr.setWorkerName(workerName)
-      idMgr.setDriverInfo(driver, endpoint)
-      idMgr.setScavengeInterval(60)
-      idMgr.setBlobType("LONGBLOB")
-      server.setSessionIdManager(idMgr)
+    val startConfig = Jetty9Config(
+      port = port,
+      contextPath = contextPath,
+      clusterConfig = maybeClusterConfig
+    )
 
-      val jdbcMgr = new JDBCSessionManager()
-      jdbcMgr.setSessionIdManager(server.getSessionIdManager())
-      context.getSessionHandler().setSessionManager(jdbcMgr)
-    }
-
-    server.setHandler(context)
-    server.start()
-    logger.info(s"Lift server started on port $port")
-    server.join()
+    Jetty9Starter.start(startConfig)
   }
 
 }
