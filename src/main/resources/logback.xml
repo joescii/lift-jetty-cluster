@@ -12,8 +12,7 @@
         </encoder>
     </appender>
 
-
-
+    <logger name="net.liftmodules.cluster" level="debug" />
     <logger name="code.snippet" level="info" />
     <logger name="net.liftweb" level="warn" />
     <logger name="bootstrap.liftweb" level="info" />
