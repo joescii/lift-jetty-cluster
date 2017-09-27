@@ -22,10 +22,10 @@ object ReqVar {
     // we don't need an explicit function because RequestVar
     // extends Settable{type=String}, so Lift knows how to
     // get/set the RequestVar for text element creation
-    "name=name" #> SHtml.textElem(name) &
+    "name=name" #> SHtml.textElem(name, "id" -> "the_name") &
       // add a hidden field that sets whence so we
       // know where to go
-      "name=age" #> (SHtml.textElem(age) ++
+      "name=age" #> (SHtml.textElem(age, "id" -> "the_age") ++
         SHtml.hidden(() => whence.set(w))) &
       "type=submit" #> SHtml.onSubmitUnit(process)
   }
