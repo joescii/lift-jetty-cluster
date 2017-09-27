@@ -11,7 +11,11 @@ import firefox.FirefoxDriver
 import chrome.ChromeDriver
 
 trait BaseSpec extends FlatSpecLike with Matchers with Eventually with WebBrowser with BeforeAndAfterAll {
-  override def afterAll = close()
+  override protected def beforeAll(): Unit = Server.start()
+  override protected def afterAll(): Unit = {
+    Server.stop()
+    close()
+  }
 
   val index = "http://localhost:8080"
 

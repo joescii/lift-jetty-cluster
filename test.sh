@@ -1,8 +1,8 @@
 #!/bin/bash
 
 ARGS="-Dnet.liftmodules.cluster.test.browser=chrome -Dwebdriver.chrome.driver=$HOME/tools/selenium/chromedriver"
-TASKS="clean update test"
-MULLIGANS=3
+TASKS="clean update stage test"
+MULLIGANS=0
 
 run_tests() {
   run_tests_rec $1 $2 $MULLIGANS
@@ -19,6 +19,7 @@ run_tests_rec () {
   scala=$2
   mulligans=$3
 
+  mysql -uroot -e "drop table lift_sessions.JettySessions; drop table lift_sessions.JettySessionIds;"
   sbt -Dlift.version=$lift -Dscala.version=$scala $ARGS $TASKS
   status=$?
 
