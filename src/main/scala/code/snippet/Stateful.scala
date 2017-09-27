@@ -26,7 +26,7 @@ class Stateful extends StatefulSnippet {
   // associate behavior with each HTML element
   def render =
     "name=name" #> SHtml.text(name, name = _, "id" -> "the_name") &
-      "name=age" #> SHtml.text(age, age = _) &
+      "name=age" #> SHtml.text(age, age = _, "id" -> "the_age") &
       "type=submit" #> SHtml.onSubmitUnit(process)
 
   // process the form
