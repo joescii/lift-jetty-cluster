@@ -31,7 +31,8 @@ lazy val root = (project in file("."))
         "org.seleniumhq.selenium" %  "selenium-java"                            % "2.51.0"              % "test"
       )
     },
-    bashScriptConfigLocation := Some("${app_home}/../conf/jvmopts")
+    bashScriptConfigLocation := Some("${app_home}/../conf/jvmopts"),
+    parallelExecution in Test := false
   )
 
 
