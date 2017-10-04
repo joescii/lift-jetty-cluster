@@ -35,6 +35,7 @@ object Start extends App with Loggable {
       val workerName = StringHelpers.randomString(10)
 
       logger.info(s"WorkerName: $workerName")
+      logger.info(s"endpoint config: $endpoint")
 
       val driver = DriverMariaDB
 

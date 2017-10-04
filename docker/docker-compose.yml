@@ -1,0 +1,22 @@
+version: '2'
+services:
+  mysql:
+    image: mysql:8.0.3
+    ports:
+       - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: jetty
+      MYSQL_PASSWORD: lift-rocks
+
+  lift-jetty-cluster:
+    image: lift-jetty-cluster
+    depends_on:
+      - mysql
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+    ports:
+      - "8080:8080"
+
+
