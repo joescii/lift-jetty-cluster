@@ -1,2 +1,2 @@
-cluster=true
+cluster=false
 cluster.jdbc.driver=org.mariadb.jdbc.Driver

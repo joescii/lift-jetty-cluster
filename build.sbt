@@ -1,8 +1,16 @@
+import com.typesafe.sbt.packager.docker.Cmd
+
 val liftVersion = SettingKey[String]("liftVersion", "Full version number of the Lift Web Framework")
 val liftEdition = SettingKey[String]("liftEdition", "Lift Edition (short version number to append to artifact name)")
 
+val copyWebapp = taskKey[Unit]("Copies target/webapp into the docker staging area")
+
+copyWebapp := IO.copyDirectory((target in webappPrepare).value, (target in Docker).value / "stage" / "opt" / "docker" / "webapp")
+copyWebapp := (copyWebapp dependsOn (webappPrepare in Compile)).value
+
 lazy val root = (project in file("."))
   .enablePlugins(JettyPlugin)
+  .enablePlugins(DockerPlugin)
   .enablePlugins(JavaAppPackaging)
   .settings(
     name := "lift-jetty-cluster",
@@ -32,7 +40,19 @@ lazy val root = (project in file("."))
       )
     },
     bashScriptConfigLocation := Some("${app_home}/../conf/jvmopts"),
-    parallelExecution in Test := false
+//    (unmanagedResourceDirectories in Compile) += (sourceDirectory in Compile).value / "webapp",
+//    mappings in Docker ++= {
+//      val webapp = (target in Compile).value / "webapp"
+//
+//      for {
+//        (file, relativePath) <-  (webapp.*** --- webapp) pair relativeTo(webapp)
+//      } yield file -> s"webapp/$relativePath"
+//    },
+//    dockerCommands += Cmd("ADD", "target/webapp", (defaultLinuxInstallLocation in Docker).value + "/webapp"),
+
+    (stage in Docker) := ((stage in Docker) dependsOn copyWebapp).value,
+    parallelExecution in Test := false,
+    dockerExposedPorts += 8080
   )
 
 

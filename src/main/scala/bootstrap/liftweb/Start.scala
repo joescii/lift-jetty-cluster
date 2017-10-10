@@ -44,7 +44,8 @@ object Start extends App with Loggable {
     val startConfig = Jetty9Config(
       port = port,
       contextPath = contextPath,
-      clusterConfig = maybeClusterConfig
+      clusterConfig = maybeClusterConfig,
+      webappPath = "/opt/docker/webapp"
     )
 
     Jetty9Starter.start(startConfig)
